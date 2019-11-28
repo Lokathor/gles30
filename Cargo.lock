@@ -17,7 +17,7 @@ dependencies = [
 
 [[package]]
 name = "gles30"
-version = "0.1.0"
+version = "0.1.1-alpha.0"
 dependencies = [
  "gl_generator 0.15.0 (git+https://github.com/Lokathor/gl-rs?branch=the-big-fix)",
  "libc 0.2.65 (registry+https://github.com/rust-lang/crates.io-index)",
