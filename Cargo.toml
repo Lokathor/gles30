@@ -1,0 +1,17 @@
+[package]
+name = "gles30"
+description = "GLES 3.0 loader/bindings"
+version = "0.1.0-alpha"
+authors = ["Lokathor <zefria@gmail.com>"]
+edition = "2018"
+license = "Zlib"
+
+[target."cfg(not(windows))".dependencies]
+libc = "0.2"
+
+[features]
+debug_error_checks = []
+debug_trace_messages = []
+
+[dev-dependencies]
+gl_generator = { git = "https://github.com/Lokathor/gl-rs", branch = "the-big-fix" }
