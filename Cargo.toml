@@ -1,6 +1,7 @@
 [package]
 name = "gles30"
 description = "GLES 3.0 loader/bindings"
+repository = "https://github.com/Lokathor/gles30"
 version = "0.1.1-alpha.0"
 authors = ["Lokathor <zefria@gmail.com>"]
 edition = "2018"
