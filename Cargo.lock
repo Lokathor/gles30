@@ -20,7 +20,7 @@ dependencies = [
 
 [[package]]
 name = "gles30"
-version = "0.2.0"
+version = "0.2.1-alpha.0"
 dependencies = [
  "beryllium 0.2.0-alpha.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "libc 0.2.65 (registry+https://github.com/rust-lang/crates.io-index)",
