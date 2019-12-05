@@ -2,7 +2,7 @@
 name = "gles30"
 description = "GLES 3.0 loader/bindings"
 repository = "https://github.com/Lokathor/gles30"
-version = "0.1.2-alpha.0"
+version = "0.2.0-alpha.0"
 authors = ["Lokathor <zefria@gmail.com>"]
 edition = "2018"
 license = "Zlib"
@@ -15,4 +15,4 @@ debug_error_checks = []
 debug_trace_messages = []
 
 [dev-dependencies]
-gl_generator = { git = "https://github.com/Lokathor/gl-rs", branch = "the-big-fix" }
+beryllium = "0.2.0-alpha.2"

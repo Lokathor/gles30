@@ -16,7 +16,7 @@ use super::*;
 ///
 /// * This mostly trusts whatever the loader function says, so the loader must
 ///   provide the correct pointer or a null pointer for each request.
-pub unsafe fn load_with<F>(mut load_fn: F)
+pub unsafe fn load_gles_with<F>(mut load_fn: F)
 where
   F: FnMut(*const c_char) -> *const c_void,
 {
@@ -401,628 +401,628 @@ pub mod types {
 pub use consts::*;
 pub mod consts {
   use super::*;
-  pub const ACTIVE_ATTRIBUTES: GLenum = 0x8B89;
-  pub const ACTIVE_ATTRIBUTE_MAX_LENGTH: GLenum = 0x8B8A;
-  pub const ACTIVE_TEXTURE: GLenum = 0x84E0;
-  pub const ACTIVE_UNIFORMS: GLenum = 0x8B86;
-  pub const ACTIVE_UNIFORM_BLOCKS: GLenum = 0x8A36;
-  pub const ACTIVE_UNIFORM_BLOCK_MAX_NAME_LENGTH: GLenum = 0x8A35;
-  pub const ACTIVE_UNIFORM_MAX_LENGTH: GLenum = 0x8B87;
-  pub const ALIASED_LINE_WIDTH_RANGE: GLenum = 0x846E;
-  pub const ALIASED_POINT_SIZE_RANGE: GLenum = 0x846D;
-  pub const ALPHA: GLenum = 0x1906;
-  pub const ALPHA_BITS: GLenum = 0x0D55;
-  pub const ALREADY_SIGNALED: GLenum = 0x911A;
-  pub const ALWAYS: GLenum = 0x0207;
-  pub const ANY_SAMPLES_PASSED: GLenum = 0x8C2F;
-  pub const ANY_SAMPLES_PASSED_CONSERVATIVE: GLenum = 0x8D6A;
-  pub const ARRAY_BUFFER: GLenum = 0x8892;
-  pub const ARRAY_BUFFER_BINDING: GLenum = 0x8894;
-  pub const ATTACHED_SHADERS: GLenum = 0x8B85;
-  pub const BACK: GLenum = 0x0405;
-  pub const BLEND: GLenum = 0x0BE2;
-  pub const BLEND_COLOR: GLenum = 0x8005;
-  pub const BLEND_DST_ALPHA: GLenum = 0x80CA;
-  pub const BLEND_DST_RGB: GLenum = 0x80C8;
-  pub const BLEND_EQUATION: GLenum = 0x8009;
-  pub const BLEND_EQUATION_ALPHA: GLenum = 0x883D;
-  pub const BLEND_EQUATION_RGB: GLenum = 0x8009;
-  pub const BLEND_SRC_ALPHA: GLenum = 0x80CB;
-  pub const BLEND_SRC_RGB: GLenum = 0x80C9;
-  pub const BLUE: GLenum = 0x1905;
-  pub const BLUE_BITS: GLenum = 0x0D54;
-  pub const BOOL: GLenum = 0x8B56;
-  pub const BOOL_VEC2: GLenum = 0x8B57;
-  pub const BOOL_VEC3: GLenum = 0x8B58;
-  pub const BOOL_VEC4: GLenum = 0x8B59;
-  pub const BUFFER_ACCESS_FLAGS: GLenum = 0x911F;
-  pub const BUFFER_MAPPED: GLenum = 0x88BC;
-  pub const BUFFER_MAP_LENGTH: GLenum = 0x9120;
-  pub const BUFFER_MAP_OFFSET: GLenum = 0x9121;
-  pub const BUFFER_MAP_POINTER: GLenum = 0x88BD;
-  pub const BUFFER_SIZE: GLenum = 0x8764;
-  pub const BUFFER_USAGE: GLenum = 0x8765;
-  pub const BYTE: GLenum = 0x1400;
-  pub const CCW: GLenum = 0x0901;
-  pub const CLAMP_TO_EDGE: GLenum = 0x812F;
-  pub const COLOR: GLenum = 0x1800;
-  pub const COLOR_ATTACHMENT0: GLenum = 0x8CE0;
-  pub const COLOR_ATTACHMENT1: GLenum = 0x8CE1;
-  pub const COLOR_ATTACHMENT10: GLenum = 0x8CEA;
-  pub const COLOR_ATTACHMENT11: GLenum = 0x8CEB;
-  pub const COLOR_ATTACHMENT12: GLenum = 0x8CEC;
-  pub const COLOR_ATTACHMENT13: GLenum = 0x8CED;
-  pub const COLOR_ATTACHMENT14: GLenum = 0x8CEE;
-  pub const COLOR_ATTACHMENT15: GLenum = 0x8CEF;
-  pub const COLOR_ATTACHMENT16: GLenum = 0x8CF0;
-  pub const COLOR_ATTACHMENT17: GLenum = 0x8CF1;
-  pub const COLOR_ATTACHMENT18: GLenum = 0x8CF2;
-  pub const COLOR_ATTACHMENT19: GLenum = 0x8CF3;
-  pub const COLOR_ATTACHMENT2: GLenum = 0x8CE2;
-  pub const COLOR_ATTACHMENT20: GLenum = 0x8CF4;
-  pub const COLOR_ATTACHMENT21: GLenum = 0x8CF5;
-  pub const COLOR_ATTACHMENT22: GLenum = 0x8CF6;
-  pub const COLOR_ATTACHMENT23: GLenum = 0x8CF7;
-  pub const COLOR_ATTACHMENT24: GLenum = 0x8CF8;
-  pub const COLOR_ATTACHMENT25: GLenum = 0x8CF9;
-  pub const COLOR_ATTACHMENT26: GLenum = 0x8CFA;
-  pub const COLOR_ATTACHMENT27: GLenum = 0x8CFB;
-  pub const COLOR_ATTACHMENT28: GLenum = 0x8CFC;
-  pub const COLOR_ATTACHMENT29: GLenum = 0x8CFD;
-  pub const COLOR_ATTACHMENT3: GLenum = 0x8CE3;
-  pub const COLOR_ATTACHMENT30: GLenum = 0x8CFE;
-  pub const COLOR_ATTACHMENT31: GLenum = 0x8CFF;
-  pub const COLOR_ATTACHMENT4: GLenum = 0x8CE4;
-  pub const COLOR_ATTACHMENT5: GLenum = 0x8CE5;
-  pub const COLOR_ATTACHMENT6: GLenum = 0x8CE6;
-  pub const COLOR_ATTACHMENT7: GLenum = 0x8CE7;
-  pub const COLOR_ATTACHMENT8: GLenum = 0x8CE8;
-  pub const COLOR_ATTACHMENT9: GLenum = 0x8CE9;
-  pub const COLOR_BUFFER_BIT: GLenum = 0x00004000;
-  pub const COLOR_CLEAR_VALUE: GLenum = 0x0C22;
-  pub const COLOR_WRITEMASK: GLenum = 0x0C23;
-  pub const COMPARE_REF_TO_TEXTURE: GLenum = 0x884E;
-  pub const COMPILE_STATUS: GLenum = 0x8B81;
-  pub const COMPRESSED_R11_EAC: GLenum = 0x9270;
-  pub const COMPRESSED_RG11_EAC: GLenum = 0x9272;
-  pub const COMPRESSED_RGB8_ETC2: GLenum = 0x9274;
-  pub const COMPRESSED_RGB8_PUNCHTHROUGH_ALPHA1_ETC2: GLenum = 0x9276;
-  pub const COMPRESSED_RGBA8_ETC2_EAC: GLenum = 0x9278;
-  pub const COMPRESSED_SIGNED_R11_EAC: GLenum = 0x9271;
-  pub const COMPRESSED_SIGNED_RG11_EAC: GLenum = 0x9273;
-  pub const COMPRESSED_SRGB8_ALPHA8_ETC2_EAC: GLenum = 0x9279;
-  pub const COMPRESSED_SRGB8_ETC2: GLenum = 0x9275;
-  pub const COMPRESSED_SRGB8_PUNCHTHROUGH_ALPHA1_ETC2: GLenum = 0x9277;
-  pub const COMPRESSED_TEXTURE_FORMATS: GLenum = 0x86A3;
-  pub const CONDITION_SATISFIED: GLenum = 0x911C;
-  pub const CONSTANT_ALPHA: GLenum = 0x8003;
-  pub const CONSTANT_COLOR: GLenum = 0x8001;
-  pub const COPY_READ_BUFFER: GLenum = 0x8F36;
-  pub const COPY_READ_BUFFER_BINDING: GLenum = 0x8F36;
-  pub const COPY_WRITE_BUFFER: GLenum = 0x8F37;
-  pub const COPY_WRITE_BUFFER_BINDING: GLenum = 0x8F37;
-  pub const CULL_FACE: GLenum = 0x0B44;
-  pub const CULL_FACE_MODE: GLenum = 0x0B45;
-  pub const CURRENT_PROGRAM: GLenum = 0x8B8D;
-  pub const CURRENT_QUERY: GLenum = 0x8865;
-  pub const CURRENT_VERTEX_ATTRIB: GLenum = 0x8626;
-  pub const CW: GLenum = 0x0900;
-  pub const DECR: GLenum = 0x1E03;
-  pub const DECR_WRAP: GLenum = 0x8508;
-  pub const DELETE_STATUS: GLenum = 0x8B80;
-  pub const DEPTH: GLenum = 0x1801;
-  pub const DEPTH24_STENCIL8: GLenum = 0x88F0;
-  pub const DEPTH32F_STENCIL8: GLenum = 0x8CAD;
-  pub const DEPTH_ATTACHMENT: GLenum = 0x8D00;
-  pub const DEPTH_BITS: GLenum = 0x0D56;
-  pub const DEPTH_BUFFER_BIT: GLenum = 0x00000100;
-  pub const DEPTH_CLEAR_VALUE: GLenum = 0x0B73;
-  pub const DEPTH_COMPONENT: GLenum = 0x1902;
-  pub const DEPTH_COMPONENT16: GLenum = 0x81A5;
-  pub const DEPTH_COMPONENT24: GLenum = 0x81A6;
-  pub const DEPTH_COMPONENT32F: GLenum = 0x8CAC;
-  pub const DEPTH_FUNC: GLenum = 0x0B74;
-  pub const DEPTH_RANGE: GLenum = 0x0B70;
-  pub const DEPTH_STENCIL: GLenum = 0x84F9;
-  pub const DEPTH_STENCIL_ATTACHMENT: GLenum = 0x821A;
-  pub const DEPTH_TEST: GLenum = 0x0B71;
-  pub const DEPTH_WRITEMASK: GLenum = 0x0B72;
-  pub const DITHER: GLenum = 0x0BD0;
-  pub const DONT_CARE: GLenum = 0x1100;
-  pub const DRAW_BUFFER0: GLenum = 0x8825;
-  pub const DRAW_BUFFER1: GLenum = 0x8826;
-  pub const DRAW_BUFFER10: GLenum = 0x882F;
-  pub const DRAW_BUFFER11: GLenum = 0x8830;
-  pub const DRAW_BUFFER12: GLenum = 0x8831;
-  pub const DRAW_BUFFER13: GLenum = 0x8832;
-  pub const DRAW_BUFFER14: GLenum = 0x8833;
-  pub const DRAW_BUFFER15: GLenum = 0x8834;
-  pub const DRAW_BUFFER2: GLenum = 0x8827;
-  pub const DRAW_BUFFER3: GLenum = 0x8828;
-  pub const DRAW_BUFFER4: GLenum = 0x8829;
-  pub const DRAW_BUFFER5: GLenum = 0x882A;
-  pub const DRAW_BUFFER6: GLenum = 0x882B;
-  pub const DRAW_BUFFER7: GLenum = 0x882C;
-  pub const DRAW_BUFFER8: GLenum = 0x882D;
-  pub const DRAW_BUFFER9: GLenum = 0x882E;
-  pub const DRAW_FRAMEBUFFER: GLenum = 0x8CA9;
-  pub const DRAW_FRAMEBUFFER_BINDING: GLenum = 0x8CA6;
-  pub const DST_ALPHA: GLenum = 0x0304;
-  pub const DST_COLOR: GLenum = 0x0306;
-  pub const DYNAMIC_COPY: GLenum = 0x88EA;
-  pub const DYNAMIC_DRAW: GLenum = 0x88E8;
-  pub const DYNAMIC_READ: GLenum = 0x88E9;
-  pub const ELEMENT_ARRAY_BUFFER: GLenum = 0x8893;
-  pub const ELEMENT_ARRAY_BUFFER_BINDING: GLenum = 0x8895;
-  pub const EQUAL: GLenum = 0x0202;
-  pub const EXTENSIONS: GLenum = 0x1F03;
-  pub const FALSE: GLboolean = 0;
-  pub const FASTEST: GLenum = 0x1101;
-  pub const FIXED: GLenum = 0x140C;
-  pub const FLOAT: GLenum = 0x1406;
-  pub const FLOAT_32_UNSIGNED_INT_24_8_REV: GLenum = 0x8DAD;
-  pub const FLOAT_MAT2: GLenum = 0x8B5A;
-  pub const FLOAT_MAT2x3: GLenum = 0x8B65;
-  pub const FLOAT_MAT2x4: GLenum = 0x8B66;
-  pub const FLOAT_MAT3: GLenum = 0x8B5B;
-  pub const FLOAT_MAT3x2: GLenum = 0x8B67;
-  pub const FLOAT_MAT3x4: GLenum = 0x8B68;
-  pub const FLOAT_MAT4: GLenum = 0x8B5C;
-  pub const FLOAT_MAT4x2: GLenum = 0x8B69;
-  pub const FLOAT_MAT4x3: GLenum = 0x8B6A;
-  pub const FLOAT_VEC2: GLenum = 0x8B50;
-  pub const FLOAT_VEC3: GLenum = 0x8B51;
-  pub const FLOAT_VEC4: GLenum = 0x8B52;
-  pub const FRAGMENT_SHADER: GLenum = 0x8B30;
-  pub const FRAGMENT_SHADER_DERIVATIVE_HINT: GLenum = 0x8B8B;
-  pub const FRAMEBUFFER: GLenum = 0x8D40;
-  pub const FRAMEBUFFER_ATTACHMENT_ALPHA_SIZE: GLenum = 0x8215;
-  pub const FRAMEBUFFER_ATTACHMENT_BLUE_SIZE: GLenum = 0x8214;
-  pub const FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING: GLenum = 0x8210;
-  pub const FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE: GLenum = 0x8211;
-  pub const FRAMEBUFFER_ATTACHMENT_DEPTH_SIZE: GLenum = 0x8216;
-  pub const FRAMEBUFFER_ATTACHMENT_GREEN_SIZE: GLenum = 0x8213;
-  pub const FRAMEBUFFER_ATTACHMENT_OBJECT_NAME: GLenum = 0x8CD1;
-  pub const FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE: GLenum = 0x8CD0;
-  pub const FRAMEBUFFER_ATTACHMENT_RED_SIZE: GLenum = 0x8212;
-  pub const FRAMEBUFFER_ATTACHMENT_STENCIL_SIZE: GLenum = 0x8217;
-  pub const FRAMEBUFFER_ATTACHMENT_TEXTURE_CUBE_MAP_FACE: GLenum = 0x8CD3;
-  pub const FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER: GLenum = 0x8CD4;
-  pub const FRAMEBUFFER_ATTACHMENT_TEXTURE_LEVEL: GLenum = 0x8CD2;
-  pub const FRAMEBUFFER_BINDING: GLenum = 0x8CA6;
-  pub const FRAMEBUFFER_COMPLETE: GLenum = 0x8CD5;
-  pub const FRAMEBUFFER_DEFAULT: GLenum = 0x8218;
-  pub const FRAMEBUFFER_INCOMPLETE_ATTACHMENT: GLenum = 0x8CD6;
-  pub const FRAMEBUFFER_INCOMPLETE_DIMENSIONS: GLenum = 0x8CD9;
-  pub const FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT: GLenum = 0x8CD7;
-  pub const FRAMEBUFFER_INCOMPLETE_MULTISAMPLE: GLenum = 0x8D56;
-  pub const FRAMEBUFFER_UNDEFINED: GLenum = 0x8219;
-  pub const FRAMEBUFFER_UNSUPPORTED: GLenum = 0x8CDD;
-  pub const FRONT: GLenum = 0x0404;
-  pub const FRONT_AND_BACK: GLenum = 0x0408;
-  pub const FRONT_FACE: GLenum = 0x0B46;
-  pub const FUNC_ADD: GLenum = 0x8006;
-  pub const FUNC_REVERSE_SUBTRACT: GLenum = 0x800B;
-  pub const FUNC_SUBTRACT: GLenum = 0x800A;
-  pub const GENERATE_MIPMAP_HINT: GLenum = 0x8192;
-  pub const GEQUAL: GLenum = 0x0206;
-  pub const GREATER: GLenum = 0x0204;
-  pub const GREEN: GLenum = 0x1904;
-  pub const GREEN_BITS: GLenum = 0x0D53;
-  pub const HALF_FLOAT: GLenum = 0x140B;
-  pub const HIGH_FLOAT: GLenum = 0x8DF2;
-  pub const HIGH_INT: GLenum = 0x8DF5;
-  pub const IMPLEMENTATION_COLOR_READ_FORMAT: GLenum = 0x8B9B;
-  pub const IMPLEMENTATION_COLOR_READ_TYPE: GLenum = 0x8B9A;
-  pub const INCR: GLenum = 0x1E02;
-  pub const INCR_WRAP: GLenum = 0x8507;
-  pub const INFO_LOG_LENGTH: GLenum = 0x8B84;
-  pub const INT: GLenum = 0x1404;
-  pub const INTERLEAVED_ATTRIBS: GLenum = 0x8C8C;
-  pub const INT_2_10_10_10_REV: GLenum = 0x8D9F;
-  pub const INT_SAMPLER_2D: GLenum = 0x8DCA;
-  pub const INT_SAMPLER_2D_ARRAY: GLenum = 0x8DCF;
-  pub const INT_SAMPLER_3D: GLenum = 0x8DCB;
-  pub const INT_SAMPLER_CUBE: GLenum = 0x8DCC;
-  pub const INT_VEC2: GLenum = 0x8B53;
-  pub const INT_VEC3: GLenum = 0x8B54;
-  pub const INT_VEC4: GLenum = 0x8B55;
-  pub const INVALID_ENUM: GLenum = 0x0500;
-  pub const INVALID_FRAMEBUFFER_OPERATION: GLenum = 0x0506;
-  pub const INVALID_INDEX: GLuint = 0xFFFFFFFF;
-  pub const INVALID_OPERATION: GLenum = 0x0502;
-  pub const INVALID_VALUE: GLenum = 0x0501;
-  pub const INVERT: GLenum = 0x150A;
-  pub const KEEP: GLenum = 0x1E00;
-  pub const LEQUAL: GLenum = 0x0203;
-  pub const LESS: GLenum = 0x0201;
-  pub const LINEAR: GLenum = 0x2601;
-  pub const LINEAR_MIPMAP_LINEAR: GLenum = 0x2703;
-  pub const LINEAR_MIPMAP_NEAREST: GLenum = 0x2701;
-  pub const LINES: GLenum = 0x0001;
-  pub const LINE_LOOP: GLenum = 0x0002;
-  pub const LINE_STRIP: GLenum = 0x0003;
-  pub const LINE_WIDTH: GLenum = 0x0B21;
-  pub const LINK_STATUS: GLenum = 0x8B82;
-  pub const LOW_FLOAT: GLenum = 0x8DF0;
-  pub const LOW_INT: GLenum = 0x8DF3;
-  pub const LUMINANCE: GLenum = 0x1909;
-  pub const LUMINANCE_ALPHA: GLenum = 0x190A;
-  pub const MAJOR_VERSION: GLenum = 0x821B;
-  pub const MAP_FLUSH_EXPLICIT_BIT: GLenum = 0x0010;
-  pub const MAP_INVALIDATE_BUFFER_BIT: GLenum = 0x0008;
-  pub const MAP_INVALIDATE_RANGE_BIT: GLenum = 0x0004;
-  pub const MAP_READ_BIT: GLenum = 0x0001;
-  pub const MAP_UNSYNCHRONIZED_BIT: GLenum = 0x0020;
-  pub const MAP_WRITE_BIT: GLenum = 0x0002;
-  pub const MAX: GLenum = 0x8008;
-  pub const MAX_3D_TEXTURE_SIZE: GLenum = 0x8073;
-  pub const MAX_ARRAY_TEXTURE_LAYERS: GLenum = 0x88FF;
-  pub const MAX_COLOR_ATTACHMENTS: GLenum = 0x8CDF;
-  pub const MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS: GLenum = 0x8A33;
-  pub const MAX_COMBINED_TEXTURE_IMAGE_UNITS: GLenum = 0x8B4D;
-  pub const MAX_COMBINED_UNIFORM_BLOCKS: GLenum = 0x8A2E;
-  pub const MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS: GLenum = 0x8A31;
-  pub const MAX_CUBE_MAP_TEXTURE_SIZE: GLenum = 0x851C;
-  pub const MAX_DRAW_BUFFERS: GLenum = 0x8824;
-  pub const MAX_ELEMENTS_INDICES: GLenum = 0x80E9;
-  pub const MAX_ELEMENTS_VERTICES: GLenum = 0x80E8;
-  pub const MAX_ELEMENT_INDEX: GLenum = 0x8D6B;
-  pub const MAX_FRAGMENT_INPUT_COMPONENTS: GLenum = 0x9125;
-  pub const MAX_FRAGMENT_UNIFORM_BLOCKS: GLenum = 0x8A2D;
-  pub const MAX_FRAGMENT_UNIFORM_COMPONENTS: GLenum = 0x8B49;
-  pub const MAX_FRAGMENT_UNIFORM_VECTORS: GLenum = 0x8DFD;
-  pub const MAX_PROGRAM_TEXEL_OFFSET: GLenum = 0x8905;
-  pub const MAX_RENDERBUFFER_SIZE: GLenum = 0x84E8;
-  pub const MAX_SAMPLES: GLenum = 0x8D57;
-  pub const MAX_SERVER_WAIT_TIMEOUT: GLenum = 0x9111;
-  pub const MAX_TEXTURE_IMAGE_UNITS: GLenum = 0x8872;
-  pub const MAX_TEXTURE_LOD_BIAS: GLenum = 0x84FD;
-  pub const MAX_TEXTURE_SIZE: GLenum = 0x0D33;
-  pub const MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS: GLenum = 0x8C8A;
-  pub const MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS: GLenum = 0x8C8B;
-  pub const MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS: GLenum = 0x8C80;
-  pub const MAX_UNIFORM_BLOCK_SIZE: GLenum = 0x8A30;
-  pub const MAX_UNIFORM_BUFFER_BINDINGS: GLenum = 0x8A2F;
-  pub const MAX_VARYING_COMPONENTS: GLenum = 0x8B4B;
-  pub const MAX_VARYING_VECTORS: GLenum = 0x8DFC;
-  pub const MAX_VERTEX_ATTRIBS: GLenum = 0x8869;
-  pub const MAX_VERTEX_OUTPUT_COMPONENTS: GLenum = 0x9122;
-  pub const MAX_VERTEX_TEXTURE_IMAGE_UNITS: GLenum = 0x8B4C;
-  pub const MAX_VERTEX_UNIFORM_BLOCKS: GLenum = 0x8A2B;
-  pub const MAX_VERTEX_UNIFORM_COMPONENTS: GLenum = 0x8B4A;
-  pub const MAX_VERTEX_UNIFORM_VECTORS: GLenum = 0x8DFB;
-  pub const MAX_VIEWPORT_DIMS: GLenum = 0x0D3A;
-  pub const MEDIUM_FLOAT: GLenum = 0x8DF1;
-  pub const MEDIUM_INT: GLenum = 0x8DF4;
-  pub const MIN: GLenum = 0x8007;
-  pub const MINOR_VERSION: GLenum = 0x821C;
-  pub const MIN_PROGRAM_TEXEL_OFFSET: GLenum = 0x8904;
-  pub const MIRRORED_REPEAT: GLenum = 0x8370;
-  pub const NEAREST: GLenum = 0x2600;
-  pub const NEAREST_MIPMAP_LINEAR: GLenum = 0x2702;
-  pub const NEAREST_MIPMAP_NEAREST: GLenum = 0x2700;
-  pub const NEVER: GLenum = 0x0200;
-  pub const NICEST: GLenum = 0x1102;
-  pub const NONE: GLenum = 0;
-  pub const NOTEQUAL: GLenum = 0x0205;
-  pub const NO_ERROR: GLenum = 0;
-  pub const NUM_COMPRESSED_TEXTURE_FORMATS: GLenum = 0x86A2;
-  pub const NUM_EXTENSIONS: GLenum = 0x821D;
-  pub const NUM_PROGRAM_BINARY_FORMATS: GLenum = 0x87FE;
-  pub const NUM_SAMPLE_COUNTS: GLenum = 0x9380;
-  pub const NUM_SHADER_BINARY_FORMATS: GLenum = 0x8DF9;
-  pub const OBJECT_TYPE: GLenum = 0x9112;
-  pub const ONE: GLenum = 1;
-  pub const ONE_MINUS_CONSTANT_ALPHA: GLenum = 0x8004;
-  pub const ONE_MINUS_CONSTANT_COLOR: GLenum = 0x8002;
-  pub const ONE_MINUS_DST_ALPHA: GLenum = 0x0305;
-  pub const ONE_MINUS_DST_COLOR: GLenum = 0x0307;
-  pub const ONE_MINUS_SRC_ALPHA: GLenum = 0x0303;
-  pub const ONE_MINUS_SRC_COLOR: GLenum = 0x0301;
-  pub const OUT_OF_MEMORY: GLenum = 0x0505;
-  pub const PACK_ALIGNMENT: GLenum = 0x0D05;
-  pub const PACK_ROW_LENGTH: GLenum = 0x0D02;
-  pub const PACK_SKIP_PIXELS: GLenum = 0x0D04;
-  pub const PACK_SKIP_ROWS: GLenum = 0x0D03;
-  pub const PIXEL_PACK_BUFFER: GLenum = 0x88EB;
-  pub const PIXEL_PACK_BUFFER_BINDING: GLenum = 0x88ED;
-  pub const PIXEL_UNPACK_BUFFER: GLenum = 0x88EC;
-  pub const PIXEL_UNPACK_BUFFER_BINDING: GLenum = 0x88EF;
-  pub const POINTS: GLenum = 0x0000;
-  pub const POLYGON_OFFSET_FACTOR: GLenum = 0x8038;
-  pub const POLYGON_OFFSET_FILL: GLenum = 0x8037;
-  pub const POLYGON_OFFSET_UNITS: GLenum = 0x2A00;
-  pub const PRIMITIVE_RESTART_FIXED_INDEX: GLenum = 0x8D69;
-  pub const PROGRAM_BINARY_FORMATS: GLenum = 0x87FF;
-  pub const PROGRAM_BINARY_LENGTH: GLenum = 0x8741;
-  pub const PROGRAM_BINARY_RETRIEVABLE_HINT: GLenum = 0x8257;
-  pub const QUERY_RESULT: GLenum = 0x8866;
-  pub const QUERY_RESULT_AVAILABLE: GLenum = 0x8867;
-  pub const R11F_G11F_B10F: GLenum = 0x8C3A;
-  pub const R16F: GLenum = 0x822D;
-  pub const R16I: GLenum = 0x8233;
-  pub const R16UI: GLenum = 0x8234;
-  pub const R32F: GLenum = 0x822E;
-  pub const R32I: GLenum = 0x8235;
-  pub const R32UI: GLenum = 0x8236;
-  pub const R8: GLenum = 0x8229;
-  pub const R8I: GLenum = 0x8231;
-  pub const R8UI: GLenum = 0x8232;
-  pub const R8_SNORM: GLenum = 0x8F94;
-  pub const RASTERIZER_DISCARD: GLenum = 0x8C89;
-  pub const READ_BUFFER: GLenum = 0x0C02;
-  pub const READ_FRAMEBUFFER: GLenum = 0x8CA8;
-  pub const READ_FRAMEBUFFER_BINDING: GLenum = 0x8CAA;
-  pub const RED: GLenum = 0x1903;
-  pub const RED_BITS: GLenum = 0x0D52;
-  pub const RED_INTEGER: GLenum = 0x8D94;
-  pub const RENDERBUFFER: GLenum = 0x8D41;
-  pub const RENDERBUFFER_ALPHA_SIZE: GLenum = 0x8D53;
-  pub const RENDERBUFFER_BINDING: GLenum = 0x8CA7;
-  pub const RENDERBUFFER_BLUE_SIZE: GLenum = 0x8D52;
-  pub const RENDERBUFFER_DEPTH_SIZE: GLenum = 0x8D54;
-  pub const RENDERBUFFER_GREEN_SIZE: GLenum = 0x8D51;
-  pub const RENDERBUFFER_HEIGHT: GLenum = 0x8D43;
-  pub const RENDERBUFFER_INTERNAL_FORMAT: GLenum = 0x8D44;
-  pub const RENDERBUFFER_RED_SIZE: GLenum = 0x8D50;
-  pub const RENDERBUFFER_SAMPLES: GLenum = 0x8CAB;
-  pub const RENDERBUFFER_STENCIL_SIZE: GLenum = 0x8D55;
-  pub const RENDERBUFFER_WIDTH: GLenum = 0x8D42;
-  pub const RENDERER: GLenum = 0x1F01;
-  pub const REPEAT: GLenum = 0x2901;
-  pub const REPLACE: GLenum = 0x1E01;
-  pub const RG: GLenum = 0x8227;
-  pub const RG16F: GLenum = 0x822F;
-  pub const RG16I: GLenum = 0x8239;
-  pub const RG16UI: GLenum = 0x823A;
-  pub const RG32F: GLenum = 0x8230;
-  pub const RG32I: GLenum = 0x823B;
-  pub const RG32UI: GLenum = 0x823C;
-  pub const RG8: GLenum = 0x822B;
-  pub const RG8I: GLenum = 0x8237;
-  pub const RG8UI: GLenum = 0x8238;
-  pub const RG8_SNORM: GLenum = 0x8F95;
-  pub const RGB: GLenum = 0x1907;
-  pub const RGB10_A2: GLenum = 0x8059;
-  pub const RGB10_A2UI: GLenum = 0x906F;
-  pub const RGB16F: GLenum = 0x881B;
-  pub const RGB16I: GLenum = 0x8D89;
-  pub const RGB16UI: GLenum = 0x8D77;
-  pub const RGB32F: GLenum = 0x8815;
-  pub const RGB32I: GLenum = 0x8D83;
-  pub const RGB32UI: GLenum = 0x8D71;
-  pub const RGB565: GLenum = 0x8D62;
-  pub const RGB5_A1: GLenum = 0x8057;
-  pub const RGB8: GLenum = 0x8051;
-  pub const RGB8I: GLenum = 0x8D8F;
-  pub const RGB8UI: GLenum = 0x8D7D;
-  pub const RGB8_SNORM: GLenum = 0x8F96;
-  pub const RGB9_E5: GLenum = 0x8C3D;
-  pub const RGBA: GLenum = 0x1908;
-  pub const RGBA16F: GLenum = 0x881A;
-  pub const RGBA16I: GLenum = 0x8D88;
-  pub const RGBA16UI: GLenum = 0x8D76;
-  pub const RGBA32F: GLenum = 0x8814;
-  pub const RGBA32I: GLenum = 0x8D82;
-  pub const RGBA32UI: GLenum = 0x8D70;
-  pub const RGBA4: GLenum = 0x8056;
-  pub const RGBA8: GLenum = 0x8058;
-  pub const RGBA8I: GLenum = 0x8D8E;
-  pub const RGBA8UI: GLenum = 0x8D7C;
-  pub const RGBA8_SNORM: GLenum = 0x8F97;
-  pub const RGBA_INTEGER: GLenum = 0x8D99;
-  pub const RGB_INTEGER: GLenum = 0x8D98;
-  pub const RG_INTEGER: GLenum = 0x8228;
-  pub const SAMPLER_2D: GLenum = 0x8B5E;
-  pub const SAMPLER_2D_ARRAY: GLenum = 0x8DC1;
-  pub const SAMPLER_2D_ARRAY_SHADOW: GLenum = 0x8DC4;
-  pub const SAMPLER_2D_SHADOW: GLenum = 0x8B62;
-  pub const SAMPLER_3D: GLenum = 0x8B5F;
-  pub const SAMPLER_BINDING: GLenum = 0x8919;
-  pub const SAMPLER_CUBE: GLenum = 0x8B60;
-  pub const SAMPLER_CUBE_SHADOW: GLenum = 0x8DC5;
-  pub const SAMPLES: GLenum = 0x80A9;
-  pub const SAMPLE_ALPHA_TO_COVERAGE: GLenum = 0x809E;
-  pub const SAMPLE_BUFFERS: GLenum = 0x80A8;
-  pub const SAMPLE_COVERAGE: GLenum = 0x80A0;
-  pub const SAMPLE_COVERAGE_INVERT: GLenum = 0x80AB;
-  pub const SAMPLE_COVERAGE_VALUE: GLenum = 0x80AA;
-  pub const SCISSOR_BOX: GLenum = 0x0C10;
-  pub const SCISSOR_TEST: GLenum = 0x0C11;
-  pub const SEPARATE_ATTRIBS: GLenum = 0x8C8D;
-  pub const SHADER_BINARY_FORMATS: GLenum = 0x8DF8;
-  pub const SHADER_COMPILER: GLenum = 0x8DFA;
-  pub const SHADER_SOURCE_LENGTH: GLenum = 0x8B88;
-  pub const SHADER_TYPE: GLenum = 0x8B4F;
-  pub const SHADING_LANGUAGE_VERSION: GLenum = 0x8B8C;
-  pub const SHORT: GLenum = 0x1402;
-  pub const SIGNALED: GLenum = 0x9119;
-  pub const SIGNED_NORMALIZED: GLenum = 0x8F9C;
-  pub const SRC_ALPHA: GLenum = 0x0302;
-  pub const SRC_ALPHA_SATURATE: GLenum = 0x0308;
-  pub const SRC_COLOR: GLenum = 0x0300;
-  pub const SRGB: GLenum = 0x8C40;
-  pub const SRGB8: GLenum = 0x8C41;
-  pub const SRGB8_ALPHA8: GLenum = 0x8C43;
-  pub const STATIC_COPY: GLenum = 0x88E6;
-  pub const STATIC_DRAW: GLenum = 0x88E4;
-  pub const STATIC_READ: GLenum = 0x88E5;
-  pub const STENCIL: GLenum = 0x1802;
-  pub const STENCIL_ATTACHMENT: GLenum = 0x8D20;
-  pub const STENCIL_BACK_FAIL: GLenum = 0x8801;
-  pub const STENCIL_BACK_FUNC: GLenum = 0x8800;
-  pub const STENCIL_BACK_PASS_DEPTH_FAIL: GLenum = 0x8802;
-  pub const STENCIL_BACK_PASS_DEPTH_PASS: GLenum = 0x8803;
-  pub const STENCIL_BACK_REF: GLenum = 0x8CA3;
-  pub const STENCIL_BACK_VALUE_MASK: GLenum = 0x8CA4;
-  pub const STENCIL_BACK_WRITEMASK: GLenum = 0x8CA5;
-  pub const STENCIL_BITS: GLenum = 0x0D57;
-  pub const STENCIL_BUFFER_BIT: GLenum = 0x00000400;
-  pub const STENCIL_CLEAR_VALUE: GLenum = 0x0B91;
-  pub const STENCIL_FAIL: GLenum = 0x0B94;
-  pub const STENCIL_FUNC: GLenum = 0x0B92;
-  pub const STENCIL_INDEX8: GLenum = 0x8D48;
-  pub const STENCIL_PASS_DEPTH_FAIL: GLenum = 0x0B95;
-  pub const STENCIL_PASS_DEPTH_PASS: GLenum = 0x0B96;
-  pub const STENCIL_REF: GLenum = 0x0B97;
-  pub const STENCIL_TEST: GLenum = 0x0B90;
-  pub const STENCIL_VALUE_MASK: GLenum = 0x0B93;
-  pub const STENCIL_WRITEMASK: GLenum = 0x0B98;
-  pub const STREAM_COPY: GLenum = 0x88E2;
-  pub const STREAM_DRAW: GLenum = 0x88E0;
-  pub const STREAM_READ: GLenum = 0x88E1;
-  pub const SUBPIXEL_BITS: GLenum = 0x0D50;
-  pub const SYNC_CONDITION: GLenum = 0x9113;
-  pub const SYNC_FENCE: GLenum = 0x9116;
-  pub const SYNC_FLAGS: GLenum = 0x9115;
-  pub const SYNC_FLUSH_COMMANDS_BIT: GLenum = 0x00000001;
-  pub const SYNC_GPU_COMMANDS_COMPLETE: GLenum = 0x9117;
-  pub const SYNC_STATUS: GLenum = 0x9114;
-  pub const TEXTURE: GLenum = 0x1702;
-  pub const TEXTURE0: GLenum = 0x84C0;
-  pub const TEXTURE1: GLenum = 0x84C1;
-  pub const TEXTURE10: GLenum = 0x84CA;
-  pub const TEXTURE11: GLenum = 0x84CB;
-  pub const TEXTURE12: GLenum = 0x84CC;
-  pub const TEXTURE13: GLenum = 0x84CD;
-  pub const TEXTURE14: GLenum = 0x84CE;
-  pub const TEXTURE15: GLenum = 0x84CF;
-  pub const TEXTURE16: GLenum = 0x84D0;
-  pub const TEXTURE17: GLenum = 0x84D1;
-  pub const TEXTURE18: GLenum = 0x84D2;
-  pub const TEXTURE19: GLenum = 0x84D3;
-  pub const TEXTURE2: GLenum = 0x84C2;
-  pub const TEXTURE20: GLenum = 0x84D4;
-  pub const TEXTURE21: GLenum = 0x84D5;
-  pub const TEXTURE22: GLenum = 0x84D6;
-  pub const TEXTURE23: GLenum = 0x84D7;
-  pub const TEXTURE24: GLenum = 0x84D8;
-  pub const TEXTURE25: GLenum = 0x84D9;
-  pub const TEXTURE26: GLenum = 0x84DA;
-  pub const TEXTURE27: GLenum = 0x84DB;
-  pub const TEXTURE28: GLenum = 0x84DC;
-  pub const TEXTURE29: GLenum = 0x84DD;
-  pub const TEXTURE3: GLenum = 0x84C3;
-  pub const TEXTURE30: GLenum = 0x84DE;
-  pub const TEXTURE31: GLenum = 0x84DF;
-  pub const TEXTURE4: GLenum = 0x84C4;
-  pub const TEXTURE5: GLenum = 0x84C5;
-  pub const TEXTURE6: GLenum = 0x84C6;
-  pub const TEXTURE7: GLenum = 0x84C7;
-  pub const TEXTURE8: GLenum = 0x84C8;
-  pub const TEXTURE9: GLenum = 0x84C9;
-  pub const TEXTURE_2D: GLenum = 0x0DE1;
-  pub const TEXTURE_2D_ARRAY: GLenum = 0x8C1A;
-  pub const TEXTURE_3D: GLenum = 0x806F;
-  pub const TEXTURE_BASE_LEVEL: GLenum = 0x813C;
-  pub const TEXTURE_BINDING_2D: GLenum = 0x8069;
-  pub const TEXTURE_BINDING_2D_ARRAY: GLenum = 0x8C1D;
-  pub const TEXTURE_BINDING_3D: GLenum = 0x806A;
-  pub const TEXTURE_BINDING_CUBE_MAP: GLenum = 0x8514;
-  pub const TEXTURE_COMPARE_FUNC: GLenum = 0x884D;
-  pub const TEXTURE_COMPARE_MODE: GLenum = 0x884C;
-  pub const TEXTURE_CUBE_MAP: GLenum = 0x8513;
-  pub const TEXTURE_CUBE_MAP_NEGATIVE_X: GLenum = 0x8516;
-  pub const TEXTURE_CUBE_MAP_NEGATIVE_Y: GLenum = 0x8518;
-  pub const TEXTURE_CUBE_MAP_NEGATIVE_Z: GLenum = 0x851A;
-  pub const TEXTURE_CUBE_MAP_POSITIVE_X: GLenum = 0x8515;
-  pub const TEXTURE_CUBE_MAP_POSITIVE_Y: GLenum = 0x8517;
-  pub const TEXTURE_CUBE_MAP_POSITIVE_Z: GLenum = 0x8519;
-  pub const TEXTURE_IMMUTABLE_FORMAT: GLenum = 0x912F;
-  pub const TEXTURE_IMMUTABLE_LEVELS: GLenum = 0x82DF;
-  pub const TEXTURE_MAG_FILTER: GLenum = 0x2800;
-  pub const TEXTURE_MAX_LEVEL: GLenum = 0x813D;
-  pub const TEXTURE_MAX_LOD: GLenum = 0x813B;
-  pub const TEXTURE_MIN_FILTER: GLenum = 0x2801;
-  pub const TEXTURE_MIN_LOD: GLenum = 0x813A;
-  pub const TEXTURE_SWIZZLE_A: GLenum = 0x8E45;
-  pub const TEXTURE_SWIZZLE_B: GLenum = 0x8E44;
-  pub const TEXTURE_SWIZZLE_G: GLenum = 0x8E43;
-  pub const TEXTURE_SWIZZLE_R: GLenum = 0x8E42;
-  pub const TEXTURE_WRAP_R: GLenum = 0x8072;
-  pub const TEXTURE_WRAP_S: GLenum = 0x2802;
-  pub const TEXTURE_WRAP_T: GLenum = 0x2803;
-  pub const TIMEOUT_EXPIRED: GLenum = 0x911B;
-  pub const TIMEOUT_IGNORED: GLuint64 = 0xFFFFFFFFFFFFFFFF;
-  pub const TRANSFORM_FEEDBACK: GLenum = 0x8E22;
-  pub const TRANSFORM_FEEDBACK_ACTIVE: GLenum = 0x8E24;
-  pub const TRANSFORM_FEEDBACK_BINDING: GLenum = 0x8E25;
-  pub const TRANSFORM_FEEDBACK_BUFFER: GLenum = 0x8C8E;
-  pub const TRANSFORM_FEEDBACK_BUFFER_BINDING: GLenum = 0x8C8F;
-  pub const TRANSFORM_FEEDBACK_BUFFER_MODE: GLenum = 0x8C7F;
-  pub const TRANSFORM_FEEDBACK_BUFFER_SIZE: GLenum = 0x8C85;
-  pub const TRANSFORM_FEEDBACK_BUFFER_START: GLenum = 0x8C84;
-  pub const TRANSFORM_FEEDBACK_PAUSED: GLenum = 0x8E23;
-  pub const TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN: GLenum = 0x8C88;
-  pub const TRANSFORM_FEEDBACK_VARYINGS: GLenum = 0x8C83;
-  pub const TRANSFORM_FEEDBACK_VARYING_MAX_LENGTH: GLenum = 0x8C76;
-  pub const TRIANGLES: GLenum = 0x0004;
-  pub const TRIANGLE_FAN: GLenum = 0x0006;
-  pub const TRIANGLE_STRIP: GLenum = 0x0005;
-  pub const TRUE: GLboolean = 1;
-  pub const UNIFORM_ARRAY_STRIDE: GLenum = 0x8A3C;
-  pub const UNIFORM_BLOCK_ACTIVE_UNIFORMS: GLenum = 0x8A42;
-  pub const UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES: GLenum = 0x8A43;
-  pub const UNIFORM_BLOCK_BINDING: GLenum = 0x8A3F;
-  pub const UNIFORM_BLOCK_DATA_SIZE: GLenum = 0x8A40;
-  pub const UNIFORM_BLOCK_INDEX: GLenum = 0x8A3A;
-  pub const UNIFORM_BLOCK_NAME_LENGTH: GLenum = 0x8A41;
-  pub const UNIFORM_BLOCK_REFERENCED_BY_FRAGMENT_SHADER: GLenum = 0x8A46;
-  pub const UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER: GLenum = 0x8A44;
-  pub const UNIFORM_BUFFER: GLenum = 0x8A11;
-  pub const UNIFORM_BUFFER_BINDING: GLenum = 0x8A28;
-  pub const UNIFORM_BUFFER_OFFSET_ALIGNMENT: GLenum = 0x8A34;
-  pub const UNIFORM_BUFFER_SIZE: GLenum = 0x8A2A;
-  pub const UNIFORM_BUFFER_START: GLenum = 0x8A29;
-  pub const UNIFORM_IS_ROW_MAJOR: GLenum = 0x8A3E;
-  pub const UNIFORM_MATRIX_STRIDE: GLenum = 0x8A3D;
-  pub const UNIFORM_NAME_LENGTH: GLenum = 0x8A39;
-  pub const UNIFORM_OFFSET: GLenum = 0x8A3B;
-  pub const UNIFORM_SIZE: GLenum = 0x8A38;
-  pub const UNIFORM_TYPE: GLenum = 0x8A37;
-  pub const UNPACK_ALIGNMENT: GLenum = 0x0CF5;
-  pub const UNPACK_IMAGE_HEIGHT: GLenum = 0x806E;
-  pub const UNPACK_ROW_LENGTH: GLenum = 0x0CF2;
-  pub const UNPACK_SKIP_IMAGES: GLenum = 0x806D;
-  pub const UNPACK_SKIP_PIXELS: GLenum = 0x0CF4;
-  pub const UNPACK_SKIP_ROWS: GLenum = 0x0CF3;
-  pub const UNSIGNALED: GLenum = 0x9118;
-  pub const UNSIGNED_BYTE: GLenum = 0x1401;
-  pub const UNSIGNED_INT: GLenum = 0x1405;
-  pub const UNSIGNED_INT_10F_11F_11F_REV: GLenum = 0x8C3B;
-  pub const UNSIGNED_INT_24_8: GLenum = 0x84FA;
-  pub const UNSIGNED_INT_2_10_10_10_REV: GLenum = 0x8368;
-  pub const UNSIGNED_INT_5_9_9_9_REV: GLenum = 0x8C3E;
-  pub const UNSIGNED_INT_SAMPLER_2D: GLenum = 0x8DD2;
-  pub const UNSIGNED_INT_SAMPLER_2D_ARRAY: GLenum = 0x8DD7;
-  pub const UNSIGNED_INT_SAMPLER_3D: GLenum = 0x8DD3;
-  pub const UNSIGNED_INT_SAMPLER_CUBE: GLenum = 0x8DD4;
-  pub const UNSIGNED_INT_VEC2: GLenum = 0x8DC6;
-  pub const UNSIGNED_INT_VEC3: GLenum = 0x8DC7;
-  pub const UNSIGNED_INT_VEC4: GLenum = 0x8DC8;
-  pub const UNSIGNED_NORMALIZED: GLenum = 0x8C17;
-  pub const UNSIGNED_SHORT: GLenum = 0x1403;
-  pub const UNSIGNED_SHORT_4_4_4_4: GLenum = 0x8033;
-  pub const UNSIGNED_SHORT_5_5_5_1: GLenum = 0x8034;
-  pub const UNSIGNED_SHORT_5_6_5: GLenum = 0x8363;
-  pub const VALIDATE_STATUS: GLenum = 0x8B83;
-  pub const VENDOR: GLenum = 0x1F00;
-  pub const VERSION: GLenum = 0x1F02;
-  pub const VERTEX_ARRAY_BINDING: GLenum = 0x85B5;
-  pub const VERTEX_ATTRIB_ARRAY_BUFFER_BINDING: GLenum = 0x889F;
-  pub const VERTEX_ATTRIB_ARRAY_DIVISOR: GLenum = 0x88FE;
-  pub const VERTEX_ATTRIB_ARRAY_ENABLED: GLenum = 0x8622;
-  pub const VERTEX_ATTRIB_ARRAY_INTEGER: GLenum = 0x88FD;
-  pub const VERTEX_ATTRIB_ARRAY_NORMALIZED: GLenum = 0x886A;
-  pub const VERTEX_ATTRIB_ARRAY_POINTER: GLenum = 0x8645;
-  pub const VERTEX_ATTRIB_ARRAY_SIZE: GLenum = 0x8623;
-  pub const VERTEX_ATTRIB_ARRAY_STRIDE: GLenum = 0x8624;
-  pub const VERTEX_ATTRIB_ARRAY_TYPE: GLenum = 0x8625;
-  pub const VERTEX_SHADER: GLenum = 0x8B31;
-  pub const VIEWPORT: GLenum = 0x0BA2;
-  pub const WAIT_FAILED: GLenum = 0x911D;
-  pub const ZERO: GLenum = 0;
+  pub const GL_ACTIVE_ATTRIBUTES: GLenum = 0x8B89;
+  pub const GL_ACTIVE_ATTRIBUTE_MAX_LENGTH: GLenum = 0x8B8A;
+  pub const GL_ACTIVE_TEXTURE: GLenum = 0x84E0;
+  pub const GL_ACTIVE_UNIFORMS: GLenum = 0x8B86;
+  pub const GL_ACTIVE_UNIFORM_BLOCKS: GLenum = 0x8A36;
+  pub const GL_ACTIVE_UNIFORM_BLOCK_MAX_NAME_LENGTH: GLenum = 0x8A35;
+  pub const GL_ACTIVE_UNIFORM_MAX_LENGTH: GLenum = 0x8B87;
+  pub const GL_ALIASED_LINE_WIDTH_RANGE: GLenum = 0x846E;
+  pub const GL_ALIASED_POINT_SIZE_RANGE: GLenum = 0x846D;
+  pub const GL_ALPHA: GLenum = 0x1906;
+  pub const GL_ALPHA_BITS: GLenum = 0x0D55;
+  pub const GL_ALREADY_SIGNALED: GLenum = 0x911A;
+  pub const GL_ALWAYS: GLenum = 0x0207;
+  pub const GL_ANY_SAMPLES_PASSED: GLenum = 0x8C2F;
+  pub const GL_ANY_SAMPLES_PASSED_CONSERVATIVE: GLenum = 0x8D6A;
+  pub const GL_ARRAY_BUFFER: GLenum = 0x8892;
+  pub const GL_ARRAY_BUFFER_BINDING: GLenum = 0x8894;
+  pub const GL_ATTACHED_SHADERS: GLenum = 0x8B85;
+  pub const GL_BACK: GLenum = 0x0405;
+  pub const GL_BLEND: GLenum = 0x0BE2;
+  pub const GL_BLEND_COLOR: GLenum = 0x8005;
+  pub const GL_BLEND_DST_ALPHA: GLenum = 0x80CA;
+  pub const GL_BLEND_DST_RGB: GLenum = 0x80C8;
+  pub const GL_BLEND_EQUATION: GLenum = 0x8009;
+  pub const GL_BLEND_EQUATION_ALPHA: GLenum = 0x883D;
+  pub const GL_BLEND_EQUATION_RGB: GLenum = 0x8009;
+  pub const GL_BLEND_SRC_ALPHA: GLenum = 0x80CB;
+  pub const GL_BLEND_SRC_RGB: GLenum = 0x80C9;
+  pub const GL_BLUE: GLenum = 0x1905;
+  pub const GL_BLUE_BITS: GLenum = 0x0D54;
+  pub const GL_BOOL: GLenum = 0x8B56;
+  pub const GL_BOOL_VEC2: GLenum = 0x8B57;
+  pub const GL_BOOL_VEC3: GLenum = 0x8B58;
+  pub const GL_BOOL_VEC4: GLenum = 0x8B59;
+  pub const GL_BUFFER_ACCESS_FLAGS: GLenum = 0x911F;
+  pub const GL_BUFFER_MAPPED: GLenum = 0x88BC;
+  pub const GL_BUFFER_MAP_LENGTH: GLenum = 0x9120;
+  pub const GL_BUFFER_MAP_OFFSET: GLenum = 0x9121;
+  pub const GL_BUFFER_MAP_POINTER: GLenum = 0x88BD;
+  pub const GL_BUFFER_SIZE: GLenum = 0x8764;
+  pub const GL_BUFFER_USAGE: GLenum = 0x8765;
+  pub const GL_BYTE: GLenum = 0x1400;
+  pub const GL_CCW: GLenum = 0x0901;
+  pub const GL_CLAMP_TO_EDGE: GLenum = 0x812F;
+  pub const GL_COLOR: GLenum = 0x1800;
+  pub const GL_COLOR_ATTACHMENT0: GLenum = 0x8CE0;
+  pub const GL_COLOR_ATTACHMENT1: GLenum = 0x8CE1;
+  pub const GL_COLOR_ATTACHMENT10: GLenum = 0x8CEA;
+  pub const GL_COLOR_ATTACHMENT11: GLenum = 0x8CEB;
+  pub const GL_COLOR_ATTACHMENT12: GLenum = 0x8CEC;
+  pub const GL_COLOR_ATTACHMENT13: GLenum = 0x8CED;
+  pub const GL_COLOR_ATTACHMENT14: GLenum = 0x8CEE;
+  pub const GL_COLOR_ATTACHMENT15: GLenum = 0x8CEF;
+  pub const GL_COLOR_ATTACHMENT16: GLenum = 0x8CF0;
+  pub const GL_COLOR_ATTACHMENT17: GLenum = 0x8CF1;
+  pub const GL_COLOR_ATTACHMENT18: GLenum = 0x8CF2;
+  pub const GL_COLOR_ATTACHMENT19: GLenum = 0x8CF3;
+  pub const GL_COLOR_ATTACHMENT2: GLenum = 0x8CE2;
+  pub const GL_COLOR_ATTACHMENT20: GLenum = 0x8CF4;
+  pub const GL_COLOR_ATTACHMENT21: GLenum = 0x8CF5;
+  pub const GL_COLOR_ATTACHMENT22: GLenum = 0x8CF6;
+  pub const GL_COLOR_ATTACHMENT23: GLenum = 0x8CF7;
+  pub const GL_COLOR_ATTACHMENT24: GLenum = 0x8CF8;
+  pub const GL_COLOR_ATTACHMENT25: GLenum = 0x8CF9;
+  pub const GL_COLOR_ATTACHMENT26: GLenum = 0x8CFA;
+  pub const GL_COLOR_ATTACHMENT27: GLenum = 0x8CFB;
+  pub const GL_COLOR_ATTACHMENT28: GLenum = 0x8CFC;
+  pub const GL_COLOR_ATTACHMENT29: GLenum = 0x8CFD;
+  pub const GL_COLOR_ATTACHMENT3: GLenum = 0x8CE3;
+  pub const GL_COLOR_ATTACHMENT30: GLenum = 0x8CFE;
+  pub const GL_COLOR_ATTACHMENT31: GLenum = 0x8CFF;
+  pub const GL_COLOR_ATTACHMENT4: GLenum = 0x8CE4;
+  pub const GL_COLOR_ATTACHMENT5: GLenum = 0x8CE5;
+  pub const GL_COLOR_ATTACHMENT6: GLenum = 0x8CE6;
+  pub const GL_COLOR_ATTACHMENT7: GLenum = 0x8CE7;
+  pub const GL_COLOR_ATTACHMENT8: GLenum = 0x8CE8;
+  pub const GL_COLOR_ATTACHMENT9: GLenum = 0x8CE9;
+  pub const GL_COLOR_BUFFER_BIT: GLenum = 0x00004000;
+  pub const GL_COLOR_CLEAR_VALUE: GLenum = 0x0C22;
+  pub const GL_COLOR_WRITEMASK: GLenum = 0x0C23;
+  pub const GL_COMPARE_REF_TO_TEXTURE: GLenum = 0x884E;
+  pub const GL_COMPILE_STATUS: GLenum = 0x8B81;
+  pub const GL_COMPRESSED_R11_EAC: GLenum = 0x9270;
+  pub const GL_COMPRESSED_RG11_EAC: GLenum = 0x9272;
+  pub const GL_COMPRESSED_RGB8_ETC2: GLenum = 0x9274;
+  pub const GL_COMPRESSED_RGB8_PUNCHTHROUGH_ALPHA1_ETC2: GLenum = 0x9276;
+  pub const GL_COMPRESSED_RGBA8_ETC2_EAC: GLenum = 0x9278;
+  pub const GL_COMPRESSED_SIGNED_R11_EAC: GLenum = 0x9271;
+  pub const GL_COMPRESSED_SIGNED_RG11_EAC: GLenum = 0x9273;
+  pub const GL_COMPRESSED_SRGB8_ALPHA8_ETC2_EAC: GLenum = 0x9279;
+  pub const GL_COMPRESSED_SRGB8_ETC2: GLenum = 0x9275;
+  pub const GL_COMPRESSED_SRGB8_PUNCHTHROUGH_ALPHA1_ETC2: GLenum = 0x9277;
+  pub const GL_COMPRESSED_TEXTURE_FORMATS: GLenum = 0x86A3;
+  pub const GL_CONDITION_SATISFIED: GLenum = 0x911C;
+  pub const GL_CONSTANT_ALPHA: GLenum = 0x8003;
+  pub const GL_CONSTANT_COLOR: GLenum = 0x8001;
+  pub const GL_COPY_READ_BUFFER: GLenum = 0x8F36;
+  pub const GL_COPY_READ_BUFFER_BINDING: GLenum = 0x8F36;
+  pub const GL_COPY_WRITE_BUFFER: GLenum = 0x8F37;
+  pub const GL_COPY_WRITE_BUFFER_BINDING: GLenum = 0x8F37;
+  pub const GL_CULL_FACE: GLenum = 0x0B44;
+  pub const GL_CULL_FACE_MODE: GLenum = 0x0B45;
+  pub const GL_CURRENT_PROGRAM: GLenum = 0x8B8D;
+  pub const GL_CURRENT_QUERY: GLenum = 0x8865;
+  pub const GL_CURRENT_VERTEX_ATTRIB: GLenum = 0x8626;
+  pub const GL_CW: GLenum = 0x0900;
+  pub const GL_DECR: GLenum = 0x1E03;
+  pub const GL_DECR_WRAP: GLenum = 0x8508;
+  pub const GL_DELETE_STATUS: GLenum = 0x8B80;
+  pub const GL_DEPTH: GLenum = 0x1801;
+  pub const GL_DEPTH24_STENCIL8: GLenum = 0x88F0;
+  pub const GL_DEPTH32F_STENCIL8: GLenum = 0x8CAD;
+  pub const GL_DEPTH_ATTACHMENT: GLenum = 0x8D00;
+  pub const GL_DEPTH_BITS: GLenum = 0x0D56;
+  pub const GL_DEPTH_BUFFER_BIT: GLenum = 0x00000100;
+  pub const GL_DEPTH_CLEAR_VALUE: GLenum = 0x0B73;
+  pub const GL_DEPTH_COMPONENT: GLenum = 0x1902;
+  pub const GL_DEPTH_COMPONENT16: GLenum = 0x81A5;
+  pub const GL_DEPTH_COMPONENT24: GLenum = 0x81A6;
+  pub const GL_DEPTH_COMPONENT32F: GLenum = 0x8CAC;
+  pub const GL_DEPTH_FUNC: GLenum = 0x0B74;
+  pub const GL_DEPTH_RANGE: GLenum = 0x0B70;
+  pub const GL_DEPTH_STENCIL: GLenum = 0x84F9;
+  pub const GL_DEPTH_STENCIL_ATTACHMENT: GLenum = 0x821A;
+  pub const GL_DEPTH_TEST: GLenum = 0x0B71;
+  pub const GL_DEPTH_WRITEMASK: GLenum = 0x0B72;
+  pub const GL_DITHER: GLenum = 0x0BD0;
+  pub const GL_DONT_CARE: GLenum = 0x1100;
+  pub const GL_DRAW_BUFFER0: GLenum = 0x8825;
+  pub const GL_DRAW_BUFFER1: GLenum = 0x8826;
+  pub const GL_DRAW_BUFFER10: GLenum = 0x882F;
+  pub const GL_DRAW_BUFFER11: GLenum = 0x8830;
+  pub const GL_DRAW_BUFFER12: GLenum = 0x8831;
+  pub const GL_DRAW_BUFFER13: GLenum = 0x8832;
+  pub const GL_DRAW_BUFFER14: GLenum = 0x8833;
+  pub const GL_DRAW_BUFFER15: GLenum = 0x8834;
+  pub const GL_DRAW_BUFFER2: GLenum = 0x8827;
+  pub const GL_DRAW_BUFFER3: GLenum = 0x8828;
+  pub const GL_DRAW_BUFFER4: GLenum = 0x8829;
+  pub const GL_DRAW_BUFFER5: GLenum = 0x882A;
+  pub const GL_DRAW_BUFFER6: GLenum = 0x882B;
+  pub const GL_DRAW_BUFFER7: GLenum = 0x882C;
+  pub const GL_DRAW_BUFFER8: GLenum = 0x882D;
+  pub const GL_DRAW_BUFFER9: GLenum = 0x882E;
+  pub const GL_DRAW_FRAMEBUFFER: GLenum = 0x8CA9;
+  pub const GL_DRAW_FRAMEBUFFER_BINDING: GLenum = 0x8CA6;
+  pub const GL_DST_ALPHA: GLenum = 0x0304;
+  pub const GL_DST_COLOR: GLenum = 0x0306;
+  pub const GL_DYNAMIC_COPY: GLenum = 0x88EA;
+  pub const GL_DYNAMIC_DRAW: GLenum = 0x88E8;
+  pub const GL_DYNAMIC_READ: GLenum = 0x88E9;
+  pub const GL_ELEMENT_ARRAY_BUFFER: GLenum = 0x8893;
+  pub const GL_ELEMENT_ARRAY_BUFFER_BINDING: GLenum = 0x8895;
+  pub const GL_EQUAL: GLenum = 0x0202;
+  pub const GL_EXTENSIONS: GLenum = 0x1F03;
+  pub const GL_FALSE: GLboolean = 0;
+  pub const GL_FASTEST: GLenum = 0x1101;
+  pub const GL_FIXED: GLenum = 0x140C;
+  pub const GL_FLOAT: GLenum = 0x1406;
+  pub const GL_FLOAT_32_UNSIGNED_INT_24_8_REV: GLenum = 0x8DAD;
+  pub const GL_FLOAT_MAT2: GLenum = 0x8B5A;
+  pub const GL_FLOAT_MAT2x3: GLenum = 0x8B65;
+  pub const GL_FLOAT_MAT2x4: GLenum = 0x8B66;
+  pub const GL_FLOAT_MAT3: GLenum = 0x8B5B;
+  pub const GL_FLOAT_MAT3x2: GLenum = 0x8B67;
+  pub const GL_FLOAT_MAT3x4: GLenum = 0x8B68;
+  pub const GL_FLOAT_MAT4: GLenum = 0x8B5C;
+  pub const GL_FLOAT_MAT4x2: GLenum = 0x8B69;
+  pub const GL_FLOAT_MAT4x3: GLenum = 0x8B6A;
+  pub const GL_FLOAT_VEC2: GLenum = 0x8B50;
+  pub const GL_FLOAT_VEC3: GLenum = 0x8B51;
+  pub const GL_FLOAT_VEC4: GLenum = 0x8B52;
+  pub const GL_FRAGMENT_SHADER: GLenum = 0x8B30;
+  pub const GL_FRAGMENT_SHADER_DERIVATIVE_HINT: GLenum = 0x8B8B;
+  pub const GL_FRAMEBUFFER: GLenum = 0x8D40;
+  pub const GL_FRAMEBUFFER_ATTACHMENT_ALPHA_SIZE: GLenum = 0x8215;
+  pub const GL_FRAMEBUFFER_ATTACHMENT_BLUE_SIZE: GLenum = 0x8214;
+  pub const GL_FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING: GLenum = 0x8210;
+  pub const GL_FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE: GLenum = 0x8211;
+  pub const GL_FRAMEBUFFER_ATTACHMENT_DEPTH_SIZE: GLenum = 0x8216;
+  pub const GL_FRAMEBUFFER_ATTACHMENT_GREEN_SIZE: GLenum = 0x8213;
+  pub const GL_FRAMEBUFFER_ATTACHMENT_OBJECT_NAME: GLenum = 0x8CD1;
+  pub const GL_FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE: GLenum = 0x8CD0;
+  pub const GL_FRAMEBUFFER_ATTACHMENT_RED_SIZE: GLenum = 0x8212;
+  pub const GL_FRAMEBUFFER_ATTACHMENT_STENCIL_SIZE: GLenum = 0x8217;
+  pub const GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_CUBE_MAP_FACE: GLenum = 0x8CD3;
+  pub const GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER: GLenum = 0x8CD4;
+  pub const GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_LEVEL: GLenum = 0x8CD2;
+  pub const GL_FRAMEBUFFER_BINDING: GLenum = 0x8CA6;
+  pub const GL_FRAMEBUFFER_COMPLETE: GLenum = 0x8CD5;
+  pub const GL_FRAMEBUFFER_DEFAULT: GLenum = 0x8218;
+  pub const GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT: GLenum = 0x8CD6;
+  pub const GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS: GLenum = 0x8CD9;
+  pub const GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT: GLenum = 0x8CD7;
+  pub const GL_FRAMEBUFFER_INCOMPLETE_MULTISAMPLE: GLenum = 0x8D56;
+  pub const GL_FRAMEBUFFER_UNDEFINED: GLenum = 0x8219;
+  pub const GL_FRAMEBUFFER_UNSUPPORTED: GLenum = 0x8CDD;
+  pub const GL_FRONT: GLenum = 0x0404;
+  pub const GL_FRONT_AND_BACK: GLenum = 0x0408;
+  pub const GL_FRONT_FACE: GLenum = 0x0B46;
+  pub const GL_FUNC_ADD: GLenum = 0x8006;
+  pub const GL_FUNC_REVERSE_SUBTRACT: GLenum = 0x800B;
+  pub const GL_FUNC_SUBTRACT: GLenum = 0x800A;
+  pub const GL_GENERATE_MIPMAP_HINT: GLenum = 0x8192;
+  pub const GL_GEQUAL: GLenum = 0x0206;
+  pub const GL_GREATER: GLenum = 0x0204;
+  pub const GL_GREEN: GLenum = 0x1904;
+  pub const GL_GREEN_BITS: GLenum = 0x0D53;
+  pub const GL_HALF_FLOAT: GLenum = 0x140B;
+  pub const GL_HIGH_FLOAT: GLenum = 0x8DF2;
+  pub const GL_HIGH_INT: GLenum = 0x8DF5;
+  pub const GL_IMPLEMENTATION_COLOR_READ_FORMAT: GLenum = 0x8B9B;
+  pub const GL_IMPLEMENTATION_COLOR_READ_TYPE: GLenum = 0x8B9A;
+  pub const GL_INCR: GLenum = 0x1E02;
+  pub const GL_INCR_WRAP: GLenum = 0x8507;
+  pub const GL_INFO_LOG_LENGTH: GLenum = 0x8B84;
+  pub const GL_INT: GLenum = 0x1404;
+  pub const GL_INTERLEAVED_ATTRIBS: GLenum = 0x8C8C;
+  pub const GL_INT_2_10_10_10_REV: GLenum = 0x8D9F;
+  pub const GL_INT_SAMPLER_2D: GLenum = 0x8DCA;
+  pub const GL_INT_SAMPLER_2D_ARRAY: GLenum = 0x8DCF;
+  pub const GL_INT_SAMPLER_3D: GLenum = 0x8DCB;
+  pub const GL_INT_SAMPLER_CUBE: GLenum = 0x8DCC;
+  pub const GL_INT_VEC2: GLenum = 0x8B53;
+  pub const GL_INT_VEC3: GLenum = 0x8B54;
+  pub const GL_INT_VEC4: GLenum = 0x8B55;
+  pub const GL_INVALID_ENUM: GLenum = 0x0500;
+  pub const GL_INVALID_FRAMEBUFFER_OPERATION: GLenum = 0x0506;
+  pub const GL_INVALID_INDEX: GLuint = 0xFFFFFFFF;
+  pub const GL_INVALID_OPERATION: GLenum = 0x0502;
+  pub const GL_INVALID_VALUE: GLenum = 0x0501;
+  pub const GL_INVERT: GLenum = 0x150A;
+  pub const GL_KEEP: GLenum = 0x1E00;
+  pub const GL_LEQUAL: GLenum = 0x0203;
+  pub const GL_LESS: GLenum = 0x0201;
+  pub const GL_LINEAR: GLenum = 0x2601;
+  pub const GL_LINEAR_MIPMAP_LINEAR: GLenum = 0x2703;
+  pub const GL_LINEAR_MIPMAP_NEAREST: GLenum = 0x2701;
+  pub const GL_LINES: GLenum = 0x0001;
+  pub const GL_LINE_LOOP: GLenum = 0x0002;
+  pub const GL_LINE_STRIP: GLenum = 0x0003;
+  pub const GL_LINE_WIDTH: GLenum = 0x0B21;
+  pub const GL_LINK_STATUS: GLenum = 0x8B82;
+  pub const GL_LOW_FLOAT: GLenum = 0x8DF0;
+  pub const GL_LOW_INT: GLenum = 0x8DF3;
+  pub const GL_LUMINANCE: GLenum = 0x1909;
+  pub const GL_LUMINANCE_ALPHA: GLenum = 0x190A;
+  pub const GL_MAJOR_VERSION: GLenum = 0x821B;
+  pub const GL_MAP_FLUSH_EXPLICIT_BIT: GLenum = 0x0010;
+  pub const GL_MAP_INVALIDATE_BUFFER_BIT: GLenum = 0x0008;
+  pub const GL_MAP_INVALIDATE_RANGE_BIT: GLenum = 0x0004;
+  pub const GL_MAP_READ_BIT: GLenum = 0x0001;
+  pub const GL_MAP_UNSYNCHRONIZED_BIT: GLenum = 0x0020;
+  pub const GL_MAP_WRITE_BIT: GLenum = 0x0002;
+  pub const GL_MAX: GLenum = 0x8008;
+  pub const GL_MAX_3D_TEXTURE_SIZE: GLenum = 0x8073;
+  pub const GL_MAX_ARRAY_TEXTURE_LAYERS: GLenum = 0x88FF;
+  pub const GL_MAX_COLOR_ATTACHMENTS: GLenum = 0x8CDF;
+  pub const GL_MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS: GLenum = 0x8A33;
+  pub const GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS: GLenum = 0x8B4D;
+  pub const GL_MAX_COMBINED_UNIFORM_BLOCKS: GLenum = 0x8A2E;
+  pub const GL_MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS: GLenum = 0x8A31;
+  pub const GL_MAX_CUBE_MAP_TEXTURE_SIZE: GLenum = 0x851C;
+  pub const GL_MAX_DRAW_BUFFERS: GLenum = 0x8824;
+  pub const GL_MAX_ELEMENTS_INDICES: GLenum = 0x80E9;
+  pub const GL_MAX_ELEMENTS_VERTICES: GLenum = 0x80E8;
+  pub const GL_MAX_ELEMENT_INDEX: GLenum = 0x8D6B;
+  pub const GL_MAX_FRAGMENT_INPUT_COMPONENTS: GLenum = 0x9125;
+  pub const GL_MAX_FRAGMENT_UNIFORM_BLOCKS: GLenum = 0x8A2D;
+  pub const GL_MAX_FRAGMENT_UNIFORM_COMPONENTS: GLenum = 0x8B49;
+  pub const GL_MAX_FRAGMENT_UNIFORM_VECTORS: GLenum = 0x8DFD;
+  pub const GL_MAX_PROGRAM_TEXEL_OFFSET: GLenum = 0x8905;
+  pub const GL_MAX_RENDERBUFFER_SIZE: GLenum = 0x84E8;
+  pub const GL_MAX_SAMPLES: GLenum = 0x8D57;
+  pub const GL_MAX_SERVER_WAIT_TIMEOUT: GLenum = 0x9111;
+  pub const GL_MAX_TEXTURE_IMAGE_UNITS: GLenum = 0x8872;
+  pub const GL_MAX_TEXTURE_LOD_BIAS: GLenum = 0x84FD;
+  pub const GL_MAX_TEXTURE_SIZE: GLenum = 0x0D33;
+  pub const GL_MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS: GLenum = 0x8C8A;
+  pub const GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS: GLenum = 0x8C8B;
+  pub const GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS: GLenum = 0x8C80;
+  pub const GL_MAX_UNIFORM_BLOCK_SIZE: GLenum = 0x8A30;
+  pub const GL_MAX_UNIFORM_BUFFER_BINDINGS: GLenum = 0x8A2F;
+  pub const GL_MAX_VARYING_COMPONENTS: GLenum = 0x8B4B;
+  pub const GL_MAX_VARYING_VECTORS: GLenum = 0x8DFC;
+  pub const GL_MAX_VERTEX_ATTRIBS: GLenum = 0x8869;
+  pub const GL_MAX_VERTEX_OUTPUT_COMPONENTS: GLenum = 0x9122;
+  pub const GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS: GLenum = 0x8B4C;
+  pub const GL_MAX_VERTEX_UNIFORM_BLOCKS: GLenum = 0x8A2B;
+  pub const GL_MAX_VERTEX_UNIFORM_COMPONENTS: GLenum = 0x8B4A;
+  pub const GL_MAX_VERTEX_UNIFORM_VECTORS: GLenum = 0x8DFB;
+  pub const GL_MAX_VIEWPORT_DIMS: GLenum = 0x0D3A;
+  pub const GL_MEDIUM_FLOAT: GLenum = 0x8DF1;
+  pub const GL_MEDIUM_INT: GLenum = 0x8DF4;
+  pub const GL_MIN: GLenum = 0x8007;
+  pub const GL_MINOR_VERSION: GLenum = 0x821C;
+  pub const GL_MIN_PROGRAM_TEXEL_OFFSET: GLenum = 0x8904;
+  pub const GL_MIRRORED_REPEAT: GLenum = 0x8370;
+  pub const GL_NEAREST: GLenum = 0x2600;
+  pub const GL_NEAREST_MIPMAP_LINEAR: GLenum = 0x2702;
+  pub const GL_NEAREST_MIPMAP_NEAREST: GLenum = 0x2700;
+  pub const GL_NEVER: GLenum = 0x0200;
+  pub const GL_NICEST: GLenum = 0x1102;
+  pub const GL_NONE: GLenum = 0;
+  pub const GL_NOTEQUAL: GLenum = 0x0205;
+  pub const GL_NO_ERROR: GLenum = 0;
+  pub const GL_NUM_COMPRESSED_TEXTURE_FORMATS: GLenum = 0x86A2;
+  pub const GL_NUM_EXTENSIONS: GLenum = 0x821D;
+  pub const GL_NUM_PROGRAM_BINARY_FORMATS: GLenum = 0x87FE;
+  pub const GL_NUM_SAMPLE_COUNTS: GLenum = 0x9380;
+  pub const GL_NUM_SHADER_BINARY_FORMATS: GLenum = 0x8DF9;
+  pub const GL_OBJECT_TYPE: GLenum = 0x9112;
+  pub const GL_ONE: GLenum = 1;
+  pub const GL_ONE_MINUS_CONSTANT_ALPHA: GLenum = 0x8004;
+  pub const GL_ONE_MINUS_CONSTANT_COLOR: GLenum = 0x8002;
+  pub const GL_ONE_MINUS_DST_ALPHA: GLenum = 0x0305;
+  pub const GL_ONE_MINUS_DST_COLOR: GLenum = 0x0307;
+  pub const GL_ONE_MINUS_SRC_ALPHA: GLenum = 0x0303;
+  pub const GL_ONE_MINUS_SRC_COLOR: GLenum = 0x0301;
+  pub const GL_OUT_OF_MEMORY: GLenum = 0x0505;
+  pub const GL_PACK_ALIGNMENT: GLenum = 0x0D05;
+  pub const GL_PACK_ROW_LENGTH: GLenum = 0x0D02;
+  pub const GL_PACK_SKIP_PIXELS: GLenum = 0x0D04;
+  pub const GL_PACK_SKIP_ROWS: GLenum = 0x0D03;
+  pub const GL_PIXEL_PACK_BUFFER: GLenum = 0x88EB;
+  pub const GL_PIXEL_PACK_BUFFER_BINDING: GLenum = 0x88ED;
+  pub const GL_PIXEL_UNPACK_BUFFER: GLenum = 0x88EC;
+  pub const GL_PIXEL_UNPACK_BUFFER_BINDING: GLenum = 0x88EF;
+  pub const GL_POINTS: GLenum = 0x0000;
+  pub const GL_POLYGON_OFFSET_FACTOR: GLenum = 0x8038;
+  pub const GL_POLYGON_OFFSET_FILL: GLenum = 0x8037;
+  pub const GL_POLYGON_OFFSET_UNITS: GLenum = 0x2A00;
+  pub const GL_PRIMITIVE_RESTART_FIXED_INDEX: GLenum = 0x8D69;
+  pub const GL_PROGRAM_BINARY_FORMATS: GLenum = 0x87FF;
+  pub const GL_PROGRAM_BINARY_LENGTH: GLenum = 0x8741;
+  pub const GL_PROGRAM_BINARY_RETRIEVABLE_HINT: GLenum = 0x8257;
+  pub const GL_QUERY_RESULT: GLenum = 0x8866;
+  pub const GL_QUERY_RESULT_AVAILABLE: GLenum = 0x8867;
+  pub const GL_R11F_G11F_B10F: GLenum = 0x8C3A;
+  pub const GL_R16F: GLenum = 0x822D;
+  pub const GL_R16I: GLenum = 0x8233;
+  pub const GL_R16UI: GLenum = 0x8234;
+  pub const GL_R32F: GLenum = 0x822E;
+  pub const GL_R32I: GLenum = 0x8235;
+  pub const GL_R32UI: GLenum = 0x8236;
+  pub const GL_R8: GLenum = 0x8229;
+  pub const GL_R8I: GLenum = 0x8231;
+  pub const GL_R8UI: GLenum = 0x8232;
+  pub const GL_R8_SNORM: GLenum = 0x8F94;
+  pub const GL_RASTERIZER_DISCARD: GLenum = 0x8C89;
+  pub const GL_READ_BUFFER: GLenum = 0x0C02;
+  pub const GL_READ_FRAMEBUFFER: GLenum = 0x8CA8;
+  pub const GL_READ_FRAMEBUFFER_BINDING: GLenum = 0x8CAA;
+  pub const GL_RED: GLenum = 0x1903;
+  pub const GL_RED_BITS: GLenum = 0x0D52;
+  pub const GL_RED_INTEGER: GLenum = 0x8D94;
+  pub const GL_RENDERBUFFER: GLenum = 0x8D41;
+  pub const GL_RENDERBUFFER_ALPHA_SIZE: GLenum = 0x8D53;
+  pub const GL_RENDERBUFFER_BINDING: GLenum = 0x8CA7;
+  pub const GL_RENDERBUFFER_BLUE_SIZE: GLenum = 0x8D52;
+  pub const GL_RENDERBUFFER_DEPTH_SIZE: GLenum = 0x8D54;
+  pub const GL_RENDERBUFFER_GREEN_SIZE: GLenum = 0x8D51;
+  pub const GL_RENDERBUFFER_HEIGHT: GLenum = 0x8D43;
+  pub const GL_RENDERBUFFER_INTERNAL_FORMAT: GLenum = 0x8D44;
+  pub const GL_RENDERBUFFER_RED_SIZE: GLenum = 0x8D50;
+  pub const GL_RENDERBUFFER_SAMPLES: GLenum = 0x8CAB;
+  pub const GL_RENDERBUFFER_STENCIL_SIZE: GLenum = 0x8D55;
+  pub const GL_RENDERBUFFER_WIDTH: GLenum = 0x8D42;
+  pub const GL_RENDERER: GLenum = 0x1F01;
+  pub const GL_REPEAT: GLenum = 0x2901;
+  pub const GL_REPLACE: GLenum = 0x1E01;
+  pub const GL_RG: GLenum = 0x8227;
+  pub const GL_RG16F: GLenum = 0x822F;
+  pub const GL_RG16I: GLenum = 0x8239;
+  pub const GL_RG16UI: GLenum = 0x823A;
+  pub const GL_RG32F: GLenum = 0x8230;
+  pub const GL_RG32I: GLenum = 0x823B;
+  pub const GL_RG32UI: GLenum = 0x823C;
+  pub const GL_RG8: GLenum = 0x822B;
+  pub const GL_RG8I: GLenum = 0x8237;
+  pub const GL_RG8UI: GLenum = 0x8238;
+  pub const GL_RG8_SNORM: GLenum = 0x8F95;
+  pub const GL_RGB: GLenum = 0x1907;
+  pub const GL_RGB10_A2: GLenum = 0x8059;
+  pub const GL_RGB10_A2UI: GLenum = 0x906F;
+  pub const GL_RGB16F: GLenum = 0x881B;
+  pub const GL_RGB16I: GLenum = 0x8D89;
+  pub const GL_RGB16UI: GLenum = 0x8D77;
+  pub const GL_RGB32F: GLenum = 0x8815;
+  pub const GL_RGB32I: GLenum = 0x8D83;
+  pub const GL_RGB32UI: GLenum = 0x8D71;
+  pub const GL_RGB565: GLenum = 0x8D62;
+  pub const GL_RGB5_A1: GLenum = 0x8057;
+  pub const GL_RGB8: GLenum = 0x8051;
+  pub const GL_RGB8I: GLenum = 0x8D8F;
+  pub const GL_RGB8UI: GLenum = 0x8D7D;
+  pub const GL_RGB8_SNORM: GLenum = 0x8F96;
+  pub const GL_RGB9_E5: GLenum = 0x8C3D;
+  pub const GL_RGBA: GLenum = 0x1908;
+  pub const GL_RGBA16F: GLenum = 0x881A;
+  pub const GL_RGBA16I: GLenum = 0x8D88;
+  pub const GL_RGBA16UI: GLenum = 0x8D76;
+  pub const GL_RGBA32F: GLenum = 0x8814;
+  pub const GL_RGBA32I: GLenum = 0x8D82;
+  pub const GL_RGBA32UI: GLenum = 0x8D70;
+  pub const GL_RGBA4: GLenum = 0x8056;
+  pub const GL_RGBA8: GLenum = 0x8058;
+  pub const GL_RGBA8I: GLenum = 0x8D8E;
+  pub const GL_RGBA8UI: GLenum = 0x8D7C;
+  pub const GL_RGBA8_SNORM: GLenum = 0x8F97;
+  pub const GL_RGBA_INTEGER: GLenum = 0x8D99;
+  pub const GL_RGB_INTEGER: GLenum = 0x8D98;
+  pub const GL_RG_INTEGER: GLenum = 0x8228;
+  pub const GL_SAMPLER_2D: GLenum = 0x8B5E;
+  pub const GL_SAMPLER_2D_ARRAY: GLenum = 0x8DC1;
+  pub const GL_SAMPLER_2D_ARRAY_SHADOW: GLenum = 0x8DC4;
+  pub const GL_SAMPLER_2D_SHADOW: GLenum = 0x8B62;
+  pub const GL_SAMPLER_3D: GLenum = 0x8B5F;
+  pub const GL_SAMPLER_BINDING: GLenum = 0x8919;
+  pub const GL_SAMPLER_CUBE: GLenum = 0x8B60;
+  pub const GL_SAMPLER_CUBE_SHADOW: GLenum = 0x8DC5;
+  pub const GL_SAMPLES: GLenum = 0x80A9;
+  pub const GL_SAMPLE_ALPHA_TO_COVERAGE: GLenum = 0x809E;
+  pub const GL_SAMPLE_BUFFERS: GLenum = 0x80A8;
+  pub const GL_SAMPLE_COVERAGE: GLenum = 0x80A0;
+  pub const GL_SAMPLE_COVERAGE_INVERT: GLenum = 0x80AB;
+  pub const GL_SAMPLE_COVERAGE_VALUE: GLenum = 0x80AA;
+  pub const GL_SCISSOR_BOX: GLenum = 0x0C10;
+  pub const GL_SCISSOR_TEST: GLenum = 0x0C11;
+  pub const GL_SEPARATE_ATTRIBS: GLenum = 0x8C8D;
+  pub const GL_SHADER_BINARY_FORMATS: GLenum = 0x8DF8;
+  pub const GL_SHADER_COMPILER: GLenum = 0x8DFA;
+  pub const GL_SHADER_SOURCE_LENGTH: GLenum = 0x8B88;
+  pub const GL_SHADER_TYPE: GLenum = 0x8B4F;
+  pub const GL_SHADING_LANGUAGE_VERSION: GLenum = 0x8B8C;
+  pub const GL_SHORT: GLenum = 0x1402;
+  pub const GL_SIGNALED: GLenum = 0x9119;
+  pub const GL_SIGNED_NORMALIZED: GLenum = 0x8F9C;
+  pub const GL_SRC_ALPHA: GLenum = 0x0302;
+  pub const GL_SRC_ALPHA_SATURATE: GLenum = 0x0308;
+  pub const GL_SRC_COLOR: GLenum = 0x0300;
+  pub const GL_SRGB: GLenum = 0x8C40;
+  pub const GL_SRGB8: GLenum = 0x8C41;
+  pub const GL_SRGB8_ALPHA8: GLenum = 0x8C43;
+  pub const GL_STATIC_COPY: GLenum = 0x88E6;
+  pub const GL_STATIC_DRAW: GLenum = 0x88E4;
+  pub const GL_STATIC_READ: GLenum = 0x88E5;
+  pub const GL_STENCIL: GLenum = 0x1802;
+  pub const GL_STENCIL_ATTACHMENT: GLenum = 0x8D20;
+  pub const GL_STENCIL_BACK_FAIL: GLenum = 0x8801;
+  pub const GL_STENCIL_BACK_FUNC: GLenum = 0x8800;
+  pub const GL_STENCIL_BACK_PASS_DEPTH_FAIL: GLenum = 0x8802;
+  pub const GL_STENCIL_BACK_PASS_DEPTH_PASS: GLenum = 0x8803;
+  pub const GL_STENCIL_BACK_REF: GLenum = 0x8CA3;
+  pub const GL_STENCIL_BACK_VALUE_MASK: GLenum = 0x8CA4;
+  pub const GL_STENCIL_BACK_WRITEMASK: GLenum = 0x8CA5;
+  pub const GL_STENCIL_BITS: GLenum = 0x0D57;
+  pub const GL_STENCIL_BUFFER_BIT: GLenum = 0x00000400;
+  pub const GL_STENCIL_CLEAR_VALUE: GLenum = 0x0B91;
+  pub const GL_STENCIL_FAIL: GLenum = 0x0B94;
+  pub const GL_STENCIL_FUNC: GLenum = 0x0B92;
+  pub const GL_STENCIL_INDEX8: GLenum = 0x8D48;
+  pub const GL_STENCIL_PASS_DEPTH_FAIL: GLenum = 0x0B95;
+  pub const GL_STENCIL_PASS_DEPTH_PASS: GLenum = 0x0B96;
+  pub const GL_STENCIL_REF: GLenum = 0x0B97;
+  pub const GL_STENCIL_TEST: GLenum = 0x0B90;
+  pub const GL_STENCIL_VALUE_MASK: GLenum = 0x0B93;
+  pub const GL_STENCIL_WRITEMASK: GLenum = 0x0B98;
+  pub const GL_STREAM_COPY: GLenum = 0x88E2;
+  pub const GL_STREAM_DRAW: GLenum = 0x88E0;
+  pub const GL_STREAM_READ: GLenum = 0x88E1;
+  pub const GL_SUBPIXEL_BITS: GLenum = 0x0D50;
+  pub const GL_SYNC_CONDITION: GLenum = 0x9113;
+  pub const GL_SYNC_FENCE: GLenum = 0x9116;
+  pub const GL_SYNC_FLAGS: GLenum = 0x9115;
+  pub const GL_SYNC_FLUSH_COMMANDS_BIT: GLenum = 0x00000001;
+  pub const GL_SYNC_GPU_COMMANDS_COMPLETE: GLenum = 0x9117;
+  pub const GL_SYNC_STATUS: GLenum = 0x9114;
+  pub const GL_TEXTURE: GLenum = 0x1702;
+  pub const GL_TEXTURE0: GLenum = 0x84C0;
+  pub const GL_TEXTURE1: GLenum = 0x84C1;
+  pub const GL_TEXTURE10: GLenum = 0x84CA;
+  pub const GL_TEXTURE11: GLenum = 0x84CB;
+  pub const GL_TEXTURE12: GLenum = 0x84CC;
+  pub const GL_TEXTURE13: GLenum = 0x84CD;
+  pub const GL_TEXTURE14: GLenum = 0x84CE;
+  pub const GL_TEXTURE15: GLenum = 0x84CF;
+  pub const GL_TEXTURE16: GLenum = 0x84D0;
+  pub const GL_TEXTURE17: GLenum = 0x84D1;
+  pub const GL_TEXTURE18: GLenum = 0x84D2;
+  pub const GL_TEXTURE19: GLenum = 0x84D3;
+  pub const GL_TEXTURE2: GLenum = 0x84C2;
+  pub const GL_TEXTURE20: GLenum = 0x84D4;
+  pub const GL_TEXTURE21: GLenum = 0x84D5;
+  pub const GL_TEXTURE22: GLenum = 0x84D6;
+  pub const GL_TEXTURE23: GLenum = 0x84D7;
+  pub const GL_TEXTURE24: GLenum = 0x84D8;
+  pub const GL_TEXTURE25: GLenum = 0x84D9;
+  pub const GL_TEXTURE26: GLenum = 0x84DA;
+  pub const GL_TEXTURE27: GLenum = 0x84DB;
+  pub const GL_TEXTURE28: GLenum = 0x84DC;
+  pub const GL_TEXTURE29: GLenum = 0x84DD;
+  pub const GL_TEXTURE3: GLenum = 0x84C3;
+  pub const GL_TEXTURE30: GLenum = 0x84DE;
+  pub const GL_TEXTURE31: GLenum = 0x84DF;
+  pub const GL_TEXTURE4: GLenum = 0x84C4;
+  pub const GL_TEXTURE5: GLenum = 0x84C5;
+  pub const GL_TEXTURE6: GLenum = 0x84C6;
+  pub const GL_TEXTURE7: GLenum = 0x84C7;
+  pub const GL_TEXTURE8: GLenum = 0x84C8;
+  pub const GL_TEXTURE9: GLenum = 0x84C9;
+  pub const GL_TEXTURE_2D: GLenum = 0x0DE1;
+  pub const GL_TEXTURE_2D_ARRAY: GLenum = 0x8C1A;
+  pub const GL_TEXTURE_3D: GLenum = 0x806F;
+  pub const GL_TEXTURE_BASE_LEVEL: GLenum = 0x813C;
+  pub const GL_TEXTURE_BINDING_2D: GLenum = 0x8069;
+  pub const GL_TEXTURE_BINDING_2D_ARRAY: GLenum = 0x8C1D;
+  pub const GL_TEXTURE_BINDING_3D: GLenum = 0x806A;
+  pub const GL_TEXTURE_BINDING_CUBE_MAP: GLenum = 0x8514;
+  pub const GL_TEXTURE_COMPARE_FUNC: GLenum = 0x884D;
+  pub const GL_TEXTURE_COMPARE_MODE: GLenum = 0x884C;
+  pub const GL_TEXTURE_CUBE_MAP: GLenum = 0x8513;
+  pub const GL_TEXTURE_CUBE_MAP_NEGATIVE_X: GLenum = 0x8516;
+  pub const GL_TEXTURE_CUBE_MAP_NEGATIVE_Y: GLenum = 0x8518;
+  pub const GL_TEXTURE_CUBE_MAP_NEGATIVE_Z: GLenum = 0x851A;
+  pub const GL_TEXTURE_CUBE_MAP_POSITIVE_X: GLenum = 0x8515;
+  pub const GL_TEXTURE_CUBE_MAP_POSITIVE_Y: GLenum = 0x8517;
+  pub const GL_TEXTURE_CUBE_MAP_POSITIVE_Z: GLenum = 0x8519;
+  pub const GL_TEXTURE_IMMUTABLE_FORMAT: GLenum = 0x912F;
+  pub const GL_TEXTURE_IMMUTABLE_LEVELS: GLenum = 0x82DF;
+  pub const GL_TEXTURE_MAG_FILTER: GLenum = 0x2800;
+  pub const GL_TEXTURE_MAX_LEVEL: GLenum = 0x813D;
+  pub const GL_TEXTURE_MAX_LOD: GLenum = 0x813B;
+  pub const GL_TEXTURE_MIN_FILTER: GLenum = 0x2801;
+  pub const GL_TEXTURE_MIN_LOD: GLenum = 0x813A;
+  pub const GL_TEXTURE_SWIZZLE_A: GLenum = 0x8E45;
+  pub const GL_TEXTURE_SWIZZLE_B: GLenum = 0x8E44;
+  pub const GL_TEXTURE_SWIZZLE_G: GLenum = 0x8E43;
+  pub const GL_TEXTURE_SWIZZLE_R: GLenum = 0x8E42;
+  pub const GL_TEXTURE_WRAP_R: GLenum = 0x8072;
+  pub const GL_TEXTURE_WRAP_S: GLenum = 0x2802;
+  pub const GL_TEXTURE_WRAP_T: GLenum = 0x2803;
+  pub const GL_TIMEOUT_EXPIRED: GLenum = 0x911B;
+  pub const GL_TIMEOUT_IGNORED: GLuint64 = 0xFFFFFFFFFFFFFFFF;
+  pub const GL_TRANSFORM_FEEDBACK: GLenum = 0x8E22;
+  pub const GL_TRANSFORM_FEEDBACK_ACTIVE: GLenum = 0x8E24;
+  pub const GL_TRANSFORM_FEEDBACK_BINDING: GLenum = 0x8E25;
+  pub const GL_TRANSFORM_FEEDBACK_BUFFER: GLenum = 0x8C8E;
+  pub const GL_TRANSFORM_FEEDBACK_BUFFER_BINDING: GLenum = 0x8C8F;
+  pub const GL_TRANSFORM_FEEDBACK_BUFFER_MODE: GLenum = 0x8C7F;
+  pub const GL_TRANSFORM_FEEDBACK_BUFFER_SIZE: GLenum = 0x8C85;
+  pub const GL_TRANSFORM_FEEDBACK_BUFFER_START: GLenum = 0x8C84;
+  pub const GL_TRANSFORM_FEEDBACK_PAUSED: GLenum = 0x8E23;
+  pub const GL_TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN: GLenum = 0x8C88;
+  pub const GL_TRANSFORM_FEEDBACK_VARYINGS: GLenum = 0x8C83;
+  pub const GL_TRANSFORM_FEEDBACK_VARYING_MAX_LENGTH: GLenum = 0x8C76;
+  pub const GL_TRIANGLES: GLenum = 0x0004;
+  pub const GL_TRIANGLE_FAN: GLenum = 0x0006;
+  pub const GL_TRIANGLE_STRIP: GLenum = 0x0005;
+  pub const GL_TRUE: GLboolean = 1;
+  pub const GL_UNIFORM_ARRAY_STRIDE: GLenum = 0x8A3C;
+  pub const GL_UNIFORM_BLOCK_ACTIVE_UNIFORMS: GLenum = 0x8A42;
+  pub const GL_UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES: GLenum = 0x8A43;
+  pub const GL_UNIFORM_BLOCK_BINDING: GLenum = 0x8A3F;
+  pub const GL_UNIFORM_BLOCK_DATA_SIZE: GLenum = 0x8A40;
+  pub const GL_UNIFORM_BLOCK_INDEX: GLenum = 0x8A3A;
+  pub const GL_UNIFORM_BLOCK_NAME_LENGTH: GLenum = 0x8A41;
+  pub const GL_UNIFORM_BLOCK_REFERENCED_BY_FRAGMENT_SHADER: GLenum = 0x8A46;
+  pub const GL_UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER: GLenum = 0x8A44;
+  pub const GL_UNIFORM_BUFFER: GLenum = 0x8A11;
+  pub const GL_UNIFORM_BUFFER_BINDING: GLenum = 0x8A28;
+  pub const GL_UNIFORM_BUFFER_OFFSET_ALIGNMENT: GLenum = 0x8A34;
+  pub const GL_UNIFORM_BUFFER_SIZE: GLenum = 0x8A2A;
+  pub const GL_UNIFORM_BUFFER_START: GLenum = 0x8A29;
+  pub const GL_UNIFORM_IS_ROW_MAJOR: GLenum = 0x8A3E;
+  pub const GL_UNIFORM_MATRIX_STRIDE: GLenum = 0x8A3D;
+  pub const GL_UNIFORM_NAME_LENGTH: GLenum = 0x8A39;
+  pub const GL_UNIFORM_OFFSET: GLenum = 0x8A3B;
+  pub const GL_UNIFORM_SIZE: GLenum = 0x8A38;
+  pub const GL_UNIFORM_TYPE: GLenum = 0x8A37;
+  pub const GL_UNPACK_ALIGNMENT: GLenum = 0x0CF5;
+  pub const GL_UNPACK_IMAGE_HEIGHT: GLenum = 0x806E;
+  pub const GL_UNPACK_ROW_LENGTH: GLenum = 0x0CF2;
+  pub const GL_UNPACK_SKIP_IMAGES: GLenum = 0x806D;
+  pub const GL_UNPACK_SKIP_PIXELS: GLenum = 0x0CF4;
+  pub const GL_UNPACK_SKIP_ROWS: GLenum = 0x0CF3;
+  pub const GL_UNSIGNALED: GLenum = 0x9118;
+  pub const GL_UNSIGNED_BYTE: GLenum = 0x1401;
+  pub const GL_UNSIGNED_INT: GLenum = 0x1405;
+  pub const GL_UNSIGNED_INT_10F_11F_11F_REV: GLenum = 0x8C3B;
+  pub const GL_UNSIGNED_INT_24_8: GLenum = 0x84FA;
+  pub const GL_UNSIGNED_INT_2_10_10_10_REV: GLenum = 0x8368;
+  pub const GL_UNSIGNED_INT_5_9_9_9_REV: GLenum = 0x8C3E;
+  pub const GL_UNSIGNED_INT_SAMPLER_2D: GLenum = 0x8DD2;
+  pub const GL_UNSIGNED_INT_SAMPLER_2D_ARRAY: GLenum = 0x8DD7;
+  pub const GL_UNSIGNED_INT_SAMPLER_3D: GLenum = 0x8DD3;
+  pub const GL_UNSIGNED_INT_SAMPLER_CUBE: GLenum = 0x8DD4;
+  pub const GL_UNSIGNED_INT_VEC2: GLenum = 0x8DC6;
+  pub const GL_UNSIGNED_INT_VEC3: GLenum = 0x8DC7;
+  pub const GL_UNSIGNED_INT_VEC4: GLenum = 0x8DC8;
+  pub const GL_UNSIGNED_NORMALIZED: GLenum = 0x8C17;
+  pub const GL_UNSIGNED_SHORT: GLenum = 0x1403;
+  pub const GL_UNSIGNED_SHORT_4_4_4_4: GLenum = 0x8033;
+  pub const GL_UNSIGNED_SHORT_5_5_5_1: GLenum = 0x8034;
+  pub const GL_UNSIGNED_SHORT_5_6_5: GLenum = 0x8363;
+  pub const GL_VALIDATE_STATUS: GLenum = 0x8B83;
+  pub const GL_VENDOR: GLenum = 0x1F00;
+  pub const GL_VERSION: GLenum = 0x1F02;
+  pub const GL_VERTEX_ARRAY_BINDING: GLenum = 0x85B5;
+  pub const GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING: GLenum = 0x889F;
+  pub const GL_VERTEX_ATTRIB_ARRAY_DIVISOR: GLenum = 0x88FE;
+  pub const GL_VERTEX_ATTRIB_ARRAY_ENABLED: GLenum = 0x8622;
+  pub const GL_VERTEX_ATTRIB_ARRAY_INTEGER: GLenum = 0x88FD;
+  pub const GL_VERTEX_ATTRIB_ARRAY_NORMALIZED: GLenum = 0x886A;
+  pub const GL_VERTEX_ATTRIB_ARRAY_POINTER: GLenum = 0x8645;
+  pub const GL_VERTEX_ATTRIB_ARRAY_SIZE: GLenum = 0x8623;
+  pub const GL_VERTEX_ATTRIB_ARRAY_STRIDE: GLenum = 0x8624;
+  pub const GL_VERTEX_ATTRIB_ARRAY_TYPE: GLenum = 0x8625;
+  pub const GL_VERTEX_SHADER: GLenum = 0x8B31;
+  pub const GL_VIEWPORT: GLenum = 0x0BA2;
+  pub const GL_WAIT_FAILED: GLenum = 0x911D;
+  pub const GL_ZERO: GLenum = 0;
 }
 pub use functions::*;
 pub mod functions {
@@ -1031,20 +1031,20 @@ pub mod functions {
   ///
   /// Fallbacks: ActiveTextureARB
   #[inline]
-  pub unsafe fn ActiveTexture(texture: GLenum) {
-    trace!("ActiveTexture");
+  pub unsafe fn glActiveTexture(texture: GLenum) {
+    trace!("glActiveTexture");
     let p: *mut c_void = {
       let temp_p = storage::ActiveTexture.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("ActiveTexture")
+        panic!("glActiveTexture is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLenum)>(p)(texture);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("ActiveTexture({:?}): {}", texture, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glActiveTexture({:?}): {}", texture, err);
       }
     }
     out
@@ -1053,12 +1053,12 @@ pub mod functions {
   ///
   /// Fallbacks: AttachObjectARB
   #[inline]
-  pub unsafe fn AttachShader(program: GLuint, shader: GLuint) {
-    trace!("AttachShader");
+  pub unsafe fn glAttachShader(program: GLuint, shader: GLuint) {
+    trace!("glAttachShader");
     let p: *mut c_void = {
       let temp_p = storage::AttachShader.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("AttachShader")
+        panic!("glAttachShader is not loaded");
       }
       temp_p
     };
@@ -1066,9 +1066,9 @@ pub mod functions {
       program, shader,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("AttachShader({:?}, {:?}): {}", program, shader, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glAttachShader({:?}, {:?}): {}", program, shader, err);
       }
     }
     out
@@ -1077,12 +1077,12 @@ pub mod functions {
   ///
   /// Fallbacks: BeginQueryARB
   #[inline]
-  pub unsafe fn BeginQuery(target: GLenum, id: GLuint) {
-    trace!("BeginQuery");
+  pub unsafe fn glBeginQuery(target: GLenum, id: GLuint) {
+    trace!("glBeginQuery");
     let p: *mut c_void = {
       let temp_p = storage::BeginQuery.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("BeginQuery")
+        panic!("glBeginQuery is not loaded");
       }
       temp_p
     };
@@ -1090,9 +1090,9 @@ pub mod functions {
       target, id,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("BeginQuery({:?}, {:?}): {}", target, id, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glBeginQuery({:?}, {:?}): {}", target, id, err);
       }
     }
     out
@@ -1101,21 +1101,21 @@ pub mod functions {
   ///
   /// Fallbacks: BeginTransformFeedbackEXT, BeginTransformFeedbackNV
   #[inline]
-  pub unsafe fn BeginTransformFeedback(primitiveMode: GLenum) {
-    trace!("BeginTransformFeedback");
+  pub unsafe fn glBeginTransformFeedback(primitiveMode: GLenum) {
+    trace!("glBeginTransformFeedback");
     let p: *mut c_void = {
       let temp_p = storage::BeginTransformFeedback.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("BeginTransformFeedback")
+        panic!("glBeginTransformFeedback is not loaded");
       }
       temp_p
     };
     let out =
       transmute::<*mut c_void, extern "system" fn(GLenum)>(p)(primitiveMode);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("BeginTransformFeedback({:?}): {}", primitiveMode, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glBeginTransformFeedback({:?}): {}", primitiveMode, err);
       }
     }
     out
@@ -1124,16 +1124,16 @@ pub mod functions {
   ///
   /// Fallbacks: BindAttribLocationARB
   #[inline]
-  pub unsafe fn BindAttribLocation(
+  pub unsafe fn glBindAttribLocation(
     program: GLuint,
     index: GLuint,
     name: *const GLchar,
   ) {
-    trace!("BindAttribLocation");
+    trace!("glBindAttribLocation");
     let p: *mut c_void = {
       let temp_p = storage::BindAttribLocation.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("BindAttribLocation")
+        panic!("glBindAttribLocation is not loaded");
       }
       temp_p
     };
@@ -1142,10 +1142,9 @@ pub mod functions {
       extern "system" fn(GLuint, GLuint, *const GLchar),
     >(p)(program, index, name);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "BindAttribLocation({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glBindAttribLocation({:?}, {:?}, {:?}): {}",
           program, index, name, err
         );
       }
@@ -1156,12 +1155,12 @@ pub mod functions {
   ///
   /// Fallbacks: BindBufferARB
   #[inline]
-  pub unsafe fn BindBuffer(target: GLenum, buffer: GLuint) {
-    trace!("BindBuffer");
+  pub unsafe fn glBindBuffer(target: GLenum, buffer: GLuint) {
+    trace!("glBindBuffer");
     let p: *mut c_void = {
       let temp_p = storage::BindBuffer.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("BindBuffer")
+        panic!("glBindBuffer is not loaded");
       }
       temp_p
     };
@@ -1169,9 +1168,9 @@ pub mod functions {
       target, buffer,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("BindBuffer({:?}, {:?}): {}", target, buffer, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glBindBuffer({:?}, {:?}): {}", target, buffer, err);
       }
     }
     out
@@ -1180,12 +1179,12 @@ pub mod functions {
   ///
   /// Fallbacks: BindBufferBaseEXT, BindBufferBaseNV
   #[inline]
-  pub unsafe fn BindBufferBase(target: GLenum, index: GLuint, buffer: GLuint) {
-    trace!("BindBufferBase");
+  pub unsafe fn glBindBufferBase(target: GLenum, index: GLuint, buffer: GLuint) {
+    trace!("glBindBufferBase");
     let p: *mut c_void = {
       let temp_p = storage::BindBufferBase.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("BindBufferBase")
+        panic!("glBindBufferBase is not loaded");
       }
       temp_p
     };
@@ -1194,10 +1193,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLuint, GLuint),
     >(p)(target, index, buffer);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "BindBufferBase({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glBindBufferBase({:?}, {:?}, {:?}): {}",
           target, index, buffer, err
         );
       }
@@ -1208,18 +1206,18 @@ pub mod functions {
   ///
   /// Fallbacks: BindBufferRangeEXT, BindBufferRangeNV
   #[inline]
-  pub unsafe fn BindBufferRange(
+  pub unsafe fn glBindBufferRange(
     target: GLenum,
     index: GLuint,
     buffer: GLuint,
     offset: GLintptr,
     size: GLsizeiptr,
   ) {
-    trace!("BindBufferRange");
+    trace!("glBindBufferRange");
     let p: *mut c_void = {
       let temp_p = storage::BindBufferRange.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("BindBufferRange")
+        panic!("glBindBufferRange is not loaded");
       }
       temp_p
     };
@@ -1228,10 +1226,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLuint, GLuint, GLintptr, GLsizeiptr),
     >(p)(target, index, buffer, offset, size);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "BindBufferRange({:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glBindBufferRange({:?}, {:?}, {:?}, {:?}, {:?}): {}",
           target, index, buffer, offset, size, err
         );
       }
@@ -1240,12 +1237,12 @@ pub mod functions {
   }
   /// See [glBindFramebuffer](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glBindFramebuffer.xhtml)
   #[inline]
-  pub unsafe fn BindFramebuffer(target: GLenum, framebuffer: GLuint) {
-    trace!("BindFramebuffer");
+  pub unsafe fn glBindFramebuffer(target: GLenum, framebuffer: GLuint) {
+    trace!("glBindFramebuffer");
     let p: *mut c_void = {
       let temp_p = storage::BindFramebuffer.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("BindFramebuffer")
+        panic!("glBindFramebuffer is not loaded");
       }
       temp_p
     };
@@ -1254,21 +1251,21 @@ pub mod functions {
       framebuffer,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("BindFramebuffer({:?}, {:?}): {}", target, framebuffer, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glBindFramebuffer({:?}, {:?}): {}", target, framebuffer, err);
       }
     }
     out
   }
   /// See [glBindRenderbuffer](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glBindRenderbuffer.xhtml)
   #[inline]
-  pub unsafe fn BindRenderbuffer(target: GLenum, renderbuffer: GLuint) {
-    trace!("BindRenderbuffer");
+  pub unsafe fn glBindRenderbuffer(target: GLenum, renderbuffer: GLuint) {
+    trace!("glBindRenderbuffer");
     let p: *mut c_void = {
       let temp_p = storage::BindRenderbuffer.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("BindRenderbuffer")
+        panic!("glBindRenderbuffer is not loaded");
       }
       temp_p
     };
@@ -1277,21 +1274,21 @@ pub mod functions {
       renderbuffer,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("BindRenderbuffer({:?}, {:?}): {}", target, renderbuffer, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glBindRenderbuffer({:?}, {:?}): {}", target, renderbuffer, err);
       }
     }
     out
   }
   /// See [glBindSampler](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glBindSampler.xhtml)
   #[inline]
-  pub unsafe fn BindSampler(unit: GLuint, sampler: GLuint) {
-    trace!("BindSampler");
+  pub unsafe fn glBindSampler(unit: GLuint, sampler: GLuint) {
+    trace!("glBindSampler");
     let p: *mut c_void = {
       let temp_p = storage::BindSampler.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("BindSampler")
+        panic!("glBindSampler is not loaded");
       }
       temp_p
     };
@@ -1299,9 +1296,9 @@ pub mod functions {
       unit, sampler,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("BindSampler({:?}, {:?}): {}", unit, sampler, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glBindSampler({:?}, {:?}): {}", unit, sampler, err);
       }
     }
     out
@@ -1310,12 +1307,12 @@ pub mod functions {
   ///
   /// Fallbacks: BindTextureEXT
   #[inline]
-  pub unsafe fn BindTexture(target: GLenum, texture: GLuint) {
-    trace!("BindTexture");
+  pub unsafe fn glBindTexture(target: GLenum, texture: GLuint) {
+    trace!("glBindTexture");
     let p: *mut c_void = {
       let temp_p = storage::BindTexture.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("BindTexture")
+        panic!("glBindTexture is not loaded");
       }
       temp_p
     };
@@ -1323,21 +1320,21 @@ pub mod functions {
       target, texture,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("BindTexture({:?}, {:?}): {}", target, texture, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glBindTexture({:?}, {:?}): {}", target, texture, err);
       }
     }
     out
   }
   /// See [glBindTransformFeedback](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glBindTransformFeedback.xhtml)
   #[inline]
-  pub unsafe fn BindTransformFeedback(target: GLenum, id: GLuint) {
-    trace!("BindTransformFeedback");
+  pub unsafe fn glBindTransformFeedback(target: GLenum, id: GLuint) {
+    trace!("glBindTransformFeedback");
     let p: *mut c_void = {
       let temp_p = storage::BindTransformFeedback.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("BindTransformFeedback")
+        panic!("glBindTransformFeedback is not loaded");
       }
       temp_p
     };
@@ -1345,9 +1342,9 @@ pub mod functions {
       target, id,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("BindTransformFeedback({:?}, {:?}): {}", target, id, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glBindTransformFeedback({:?}, {:?}): {}", target, id, err);
       }
     }
     out
@@ -1356,20 +1353,20 @@ pub mod functions {
   ///
   /// Fallbacks: BindVertexArrayOES
   #[inline]
-  pub unsafe fn BindVertexArray(array: GLuint) {
-    trace!("BindVertexArray");
+  pub unsafe fn glBindVertexArray(array: GLuint) {
+    trace!("glBindVertexArray");
     let p: *mut c_void = {
       let temp_p = storage::BindVertexArray.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("BindVertexArray")
+        panic!("glBindVertexArray is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLuint)>(p)(array);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("BindVertexArray({:?}): {}", array, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glBindVertexArray({:?}): {}", array, err);
       }
     }
     out
@@ -1378,17 +1375,17 @@ pub mod functions {
   ///
   /// Fallbacks: BlendColorEXT
   #[inline]
-  pub unsafe fn BlendColor(
+  pub unsafe fn glBlendColor(
     red: GLfloat,
     green: GLfloat,
     blue: GLfloat,
     alpha: GLfloat,
   ) {
-    trace!("BlendColor");
+    trace!("glBlendColor");
     let p: *mut c_void = {
       let temp_p = storage::BlendColor.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("BlendColor")
+        panic!("glBlendColor is not loaded");
       }
       temp_p
     };
@@ -1397,10 +1394,9 @@ pub mod functions {
       extern "system" fn(GLfloat, GLfloat, GLfloat, GLfloat),
     >(p)(red, green, blue, alpha);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "BlendColor({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glBlendColor({:?}, {:?}, {:?}, {:?}): {}",
           red, green, blue, alpha, err
         );
       }
@@ -1411,20 +1407,20 @@ pub mod functions {
   ///
   /// Fallbacks: BlendEquationEXT
   #[inline]
-  pub unsafe fn BlendEquation(mode: GLenum) {
-    trace!("BlendEquation");
+  pub unsafe fn glBlendEquation(mode: GLenum) {
+    trace!("glBlendEquation");
     let p: *mut c_void = {
       let temp_p = storage::BlendEquation.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("BlendEquation")
+        panic!("glBlendEquation is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLenum)>(p)(mode);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("BlendEquation({:?}): {}", mode, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glBlendEquation({:?}): {}", mode, err);
       }
     }
     out
@@ -1433,12 +1429,12 @@ pub mod functions {
   ///
   /// Fallbacks: BlendEquationSeparateEXT
   #[inline]
-  pub unsafe fn BlendEquationSeparate(modeRGB: GLenum, modeAlpha: GLenum) {
-    trace!("BlendEquationSeparate");
+  pub unsafe fn glBlendEquationSeparate(modeRGB: GLenum, modeAlpha: GLenum) {
+    trace!("glBlendEquationSeparate");
     let p: *mut c_void = {
       let temp_p = storage::BlendEquationSeparate.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("BlendEquationSeparate")
+        panic!("glBlendEquationSeparate is not loaded");
       }
       temp_p
     };
@@ -1446,10 +1442,9 @@ pub mod functions {
       modeRGB, modeAlpha,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "BlendEquationSeparate({:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glBlendEquationSeparate({:?}, {:?}): {}",
           modeRGB, modeAlpha, err
         );
       }
@@ -1458,12 +1453,12 @@ pub mod functions {
   }
   /// See [glBlendFunc](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glBlendFunc.xhtml)
   #[inline]
-  pub unsafe fn BlendFunc(sfactor: GLenum, dfactor: GLenum) {
-    trace!("BlendFunc");
+  pub unsafe fn glBlendFunc(sfactor: GLenum, dfactor: GLenum) {
+    trace!("glBlendFunc");
     let p: *mut c_void = {
       let temp_p = storage::BlendFunc.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("BlendFunc")
+        panic!("glBlendFunc is not loaded");
       }
       temp_p
     };
@@ -1471,9 +1466,9 @@ pub mod functions {
       sfactor, dfactor,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("BlendFunc({:?}, {:?}): {}", sfactor, dfactor, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glBlendFunc({:?}, {:?}): {}", sfactor, dfactor, err);
       }
     }
     out
@@ -1482,17 +1477,17 @@ pub mod functions {
   ///
   /// Fallbacks: BlendFuncSeparateEXT, BlendFuncSeparateINGR
   #[inline]
-  pub unsafe fn BlendFuncSeparate(
+  pub unsafe fn glBlendFuncSeparate(
     sfactorRGB: GLenum,
     dfactorRGB: GLenum,
     sfactorAlpha: GLenum,
     dfactorAlpha: GLenum,
   ) {
-    trace!("BlendFuncSeparate");
+    trace!("glBlendFuncSeparate");
     let p: *mut c_void = {
       let temp_p = storage::BlendFuncSeparate.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("BlendFuncSeparate")
+        panic!("glBlendFuncSeparate is not loaded");
       }
       temp_p
     };
@@ -1501,10 +1496,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLenum, GLenum, GLenum),
     >(p)(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "BlendFuncSeparate({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glBlendFuncSeparate({:?}, {:?}, {:?}, {:?}): {}",
           sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha, err
         );
       }
@@ -1515,7 +1509,7 @@ pub mod functions {
   ///
   /// Fallbacks: BlitFramebufferEXT, BlitFramebufferNV
   #[inline]
-  pub unsafe fn BlitFramebuffer(
+  pub unsafe fn glBlitFramebuffer(
     srcX0: GLint,
     srcY0: GLint,
     srcX1: GLint,
@@ -1527,11 +1521,11 @@ pub mod functions {
     mask: GLbitfield,
     filter: GLenum,
   ) {
-    trace!("BlitFramebuffer");
+    trace!("glBlitFramebuffer");
     let p: *mut c_void = {
       let temp_p = storage::BlitFramebuffer.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("BlitFramebuffer")
+        panic!("glBlitFramebuffer is not loaded");
       }
       temp_p
     };
@@ -1553,9 +1547,9 @@ pub mod functions {
       srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("BlitFramebuffer({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glBlitFramebuffer({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter, err);
       }
     }
     out
@@ -1564,17 +1558,17 @@ pub mod functions {
   ///
   /// Fallbacks: BufferDataARB
   #[inline]
-  pub unsafe fn BufferData(
+  pub unsafe fn glBufferData(
     target: GLenum,
     size: GLsizeiptr,
     data: *const c_void,
     usage: GLenum,
   ) {
-    trace!("BufferData");
+    trace!("glBufferData");
     let p: *mut c_void = {
       let temp_p = storage::BufferData.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("BufferData")
+        panic!("glBufferData is not loaded");
       }
       temp_p
     };
@@ -1583,10 +1577,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLsizeiptr, *const c_void, GLenum),
     >(p)(target, size, data, usage);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "BufferData({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glBufferData({:?}, {:?}, {:?}, {:?}): {}",
           target, size, data, usage, err
         );
       }
@@ -1597,17 +1590,17 @@ pub mod functions {
   ///
   /// Fallbacks: BufferSubDataARB
   #[inline]
-  pub unsafe fn BufferSubData(
+  pub unsafe fn glBufferSubData(
     target: GLenum,
     offset: GLintptr,
     size: GLsizeiptr,
     data: *const c_void,
   ) {
-    trace!("BufferSubData");
+    trace!("glBufferSubData");
     let p: *mut c_void = {
       let temp_p = storage::BufferSubData.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("BufferSubData")
+        panic!("glBufferSubData is not loaded");
       }
       temp_p
     };
@@ -1616,10 +1609,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLintptr, GLsizeiptr, *const c_void),
     >(p)(target, offset, size, data);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "BufferSubData({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glBufferSubData({:?}, {:?}, {:?}, {:?}): {}",
           target, offset, size, data, err
         );
       }
@@ -1630,58 +1622,58 @@ pub mod functions {
   ///
   /// Fallbacks: CheckFramebufferStatusEXT
   #[inline]
-  pub unsafe fn CheckFramebufferStatus(target: GLenum) -> GLenum {
-    trace!("CheckFramebufferStatus");
+  pub unsafe fn glCheckFramebufferStatus(target: GLenum) -> GLenum {
+    trace!("glCheckFramebufferStatus");
     let p: *mut c_void = {
       let temp_p = storage::CheckFramebufferStatus.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("CheckFramebufferStatus")
+        panic!("glCheckFramebufferStatus is not loaded");
       }
       temp_p
     };
     let out =
       transmute::<*mut c_void, extern "system" fn(GLenum) -> GLenum>(p)(target);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("CheckFramebufferStatus({:?}): {}", target, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glCheckFramebufferStatus({:?}): {}", target, err);
       }
     }
     out
   }
   /// See [glClear](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glClear.xhtml)
   #[inline]
-  pub unsafe fn Clear(mask: GLbitfield) {
-    trace!("Clear");
+  pub unsafe fn glClear(mask: GLbitfield) {
+    trace!("glClear");
     let p: *mut c_void = {
       let temp_p = storage::Clear.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Clear")
+        panic!("glClear is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLbitfield)>(p)(mask);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("Clear({:?}): {}", mask, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glClear({:?}): {}", mask, err);
       }
     }
     out
   }
   /// See [glClearBufferfi](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glClearBufferfi.xhtml)
   #[inline]
-  pub unsafe fn ClearBufferfi(
+  pub unsafe fn glClearBufferfi(
     buffer: GLenum,
     drawbuffer: GLint,
     depth: GLfloat,
     stencil: GLint,
   ) {
-    trace!("ClearBufferfi");
+    trace!("glClearBufferfi");
     let p: *mut c_void = {
       let temp_p = storage::ClearBufferfi.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("ClearBufferfi")
+        panic!("glClearBufferfi is not loaded");
       }
       temp_p
     };
@@ -1690,28 +1682,27 @@ pub mod functions {
       extern "system" fn(GLenum, GLint, GLfloat, GLint),
     >(p)(buffer, drawbuffer, depth, stencil);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "ClearBufferfi({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glClearBufferfi({:?}, {:?}, {:?}, {:?}): {}",
           buffer, drawbuffer, depth, stencil, err
         );
       }
     }
     out
   }
-  /// See [glClearBufferfv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glClearBufferfv.xhtml)
+  /// See [glClearBuffer](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glClearBuffer.xhtml)
   #[inline]
-  pub unsafe fn ClearBufferfv(
+  pub unsafe fn glClearBufferfv(
     buffer: GLenum,
     drawbuffer: GLint,
     value: *const GLfloat,
   ) {
-    trace!("ClearBufferfv");
+    trace!("glClearBufferfv");
     let p: *mut c_void = {
       let temp_p = storage::ClearBufferfv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("ClearBufferfv")
+        panic!("glClearBufferfv is not loaded");
       }
       temp_p
     };
@@ -1720,28 +1711,27 @@ pub mod functions {
       extern "system" fn(GLenum, GLint, *const GLfloat),
     >(p)(buffer, drawbuffer, value);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "ClearBufferfv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glClearBufferfv({:?}, {:?}, {:?}): {}",
           buffer, drawbuffer, value, err
         );
       }
     }
     out
   }
-  /// See [glClearBufferiv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glClearBufferiv.xhtml)
+  /// See [glClearBuffer](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glClearBuffer.xhtml)
   #[inline]
-  pub unsafe fn ClearBufferiv(
+  pub unsafe fn glClearBufferiv(
     buffer: GLenum,
     drawbuffer: GLint,
     value: *const GLint,
   ) {
-    trace!("ClearBufferiv");
+    trace!("glClearBufferiv");
     let p: *mut c_void = {
       let temp_p = storage::ClearBufferiv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("ClearBufferiv")
+        panic!("glClearBufferiv is not loaded");
       }
       temp_p
     };
@@ -1750,28 +1740,27 @@ pub mod functions {
       extern "system" fn(GLenum, GLint, *const GLint),
     >(p)(buffer, drawbuffer, value);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "ClearBufferiv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glClearBufferiv({:?}, {:?}, {:?}): {}",
           buffer, drawbuffer, value, err
         );
       }
     }
     out
   }
-  /// See [glClearBufferuiv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glClearBufferuiv.xhtml)
+  /// See [glClearBuffer](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glClearBuffer.xhtml)
   #[inline]
-  pub unsafe fn ClearBufferuiv(
+  pub unsafe fn glClearBufferuiv(
     buffer: GLenum,
     drawbuffer: GLint,
     value: *const GLuint,
   ) {
-    trace!("ClearBufferuiv");
+    trace!("glClearBufferuiv");
     let p: *mut c_void = {
       let temp_p = storage::ClearBufferuiv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("ClearBufferuiv")
+        panic!("glClearBufferuiv is not loaded");
       }
       temp_p
     };
@@ -1780,10 +1769,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLint, *const GLuint),
     >(p)(buffer, drawbuffer, value);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "ClearBufferuiv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glClearBufferuiv({:?}, {:?}, {:?}): {}",
           buffer, drawbuffer, value, err
         );
       }
@@ -1792,17 +1780,17 @@ pub mod functions {
   }
   /// See [glClearColor](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glClearColor.xhtml)
   #[inline]
-  pub unsafe fn ClearColor(
+  pub unsafe fn glClearColor(
     red: GLfloat,
     green: GLfloat,
     blue: GLfloat,
     alpha: GLfloat,
   ) {
-    trace!("ClearColor");
+    trace!("glClearColor");
     let p: *mut c_void = {
       let temp_p = storage::ClearColor.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("ClearColor")
+        panic!("glClearColor is not loaded");
       }
       temp_p
     };
@@ -1811,10 +1799,9 @@ pub mod functions {
       extern "system" fn(GLfloat, GLfloat, GLfloat, GLfloat),
     >(p)(red, green, blue, alpha);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "ClearColor({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glClearColor({:?}, {:?}, {:?}, {:?}): {}",
           red, green, blue, alpha, err
         );
       }
@@ -1825,40 +1812,40 @@ pub mod functions {
   ///
   /// Fallbacks: ClearDepthfOES
   #[inline]
-  pub unsafe fn ClearDepthf(d: GLfloat) {
-    trace!("ClearDepthf");
+  pub unsafe fn glClearDepthf(d: GLfloat) {
+    trace!("glClearDepthf");
     let p: *mut c_void = {
       let temp_p = storage::ClearDepthf.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("ClearDepthf")
+        panic!("glClearDepthf is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLfloat)>(p)(d);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("ClearDepthf({:?}): {}", d, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glClearDepthf({:?}): {}", d, err);
       }
     }
     out
   }
   /// See [glClearStencil](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glClearStencil.xhtml)
   #[inline]
-  pub unsafe fn ClearStencil(s: GLint) {
-    trace!("ClearStencil");
+  pub unsafe fn glClearStencil(s: GLint) {
+    trace!("glClearStencil");
     let p: *mut c_void = {
       let temp_p = storage::ClearStencil.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("ClearStencil")
+        panic!("glClearStencil is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLint)>(p)(s);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("ClearStencil({:?}): {}", s, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glClearStencil({:?}): {}", s, err);
       }
     }
     out
@@ -1867,16 +1854,16 @@ pub mod functions {
   ///
   /// Fallbacks: ClientWaitSyncAPPLE
   #[inline]
-  pub unsafe fn ClientWaitSync(
+  pub unsafe fn glClientWaitSync(
     sync: GLsync,
     flags: GLbitfield,
     timeout: GLuint64,
   ) -> GLenum {
-    trace!("ClientWaitSync");
+    trace!("glClientWaitSync");
     let p: *mut c_void = {
       let temp_p = storage::ClientWaitSync.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("ClientWaitSync")
+        panic!("glClientWaitSync is not loaded");
       }
       temp_p
     };
@@ -1885,10 +1872,9 @@ pub mod functions {
       extern "system" fn(GLsync, GLbitfield, GLuint64) -> GLenum,
     >(p)(sync, flags, timeout);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "ClientWaitSync({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glClientWaitSync({:?}, {:?}, {:?}): {}",
           sync, flags, timeout, err
         );
       }
@@ -1897,17 +1883,17 @@ pub mod functions {
   }
   /// See [glColorMask](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glColorMask.xhtml)
   #[inline]
-  pub unsafe fn ColorMask(
+  pub unsafe fn glColorMask(
     red: GLboolean,
     green: GLboolean,
     blue: GLboolean,
     alpha: GLboolean,
   ) {
-    trace!("ColorMask");
+    trace!("glColorMask");
     let p: *mut c_void = {
       let temp_p = storage::ColorMask.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("ColorMask")
+        panic!("glColorMask is not loaded");
       }
       temp_p
     };
@@ -1916,10 +1902,9 @@ pub mod functions {
       extern "system" fn(GLboolean, GLboolean, GLboolean, GLboolean),
     >(p)(red, green, blue, alpha);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "ColorMask({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glColorMask({:?}, {:?}, {:?}, {:?}): {}",
           red, green, blue, alpha, err
         );
       }
@@ -1930,20 +1915,20 @@ pub mod functions {
   ///
   /// Fallbacks: CompileShaderARB
   #[inline]
-  pub unsafe fn CompileShader(shader: GLuint) {
-    trace!("CompileShader");
+  pub unsafe fn glCompileShader(shader: GLuint) {
+    trace!("glCompileShader");
     let p: *mut c_void = {
       let temp_p = storage::CompileShader.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("CompileShader")
+        panic!("glCompileShader is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLuint)>(p)(shader);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("CompileShader({:?}): {}", shader, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glCompileShader({:?}): {}", shader, err);
       }
     }
     out
@@ -1952,7 +1937,7 @@ pub mod functions {
   ///
   /// Fallbacks: CompressedTexImage2DARB
   #[inline]
-  pub unsafe fn CompressedTexImage2D(
+  pub unsafe fn glCompressedTexImage2D(
     target: GLenum,
     level: GLint,
     internalformat: GLenum,
@@ -1962,11 +1947,11 @@ pub mod functions {
     imageSize: GLsizei,
     data: *const c_void,
   ) {
-    trace!("CompressedTexImage2D");
+    trace!("glCompressedTexImage2D");
     let p: *mut c_void = {
       let temp_p = storage::CompressedTexImage2D.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("CompressedTexImage2D")
+        panic!("glCompressedTexImage2D is not loaded");
       }
       temp_p
     };
@@ -1993,9 +1978,9 @@ pub mod functions {
       data,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("CompressedTexImage2D({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", target, level, internalformat, width, height, border, imageSize, data, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glCompressedTexImage2D({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", target, level, internalformat, width, height, border, imageSize, data, err);
       }
     }
     out
@@ -2004,7 +1989,7 @@ pub mod functions {
   ///
   /// Fallbacks: CompressedTexImage3DARB
   #[inline]
-  pub unsafe fn CompressedTexImage3D(
+  pub unsafe fn glCompressedTexImage3D(
     target: GLenum,
     level: GLint,
     internalformat: GLenum,
@@ -2015,11 +2000,11 @@ pub mod functions {
     imageSize: GLsizei,
     data: *const c_void,
   ) {
-    trace!("CompressedTexImage3D");
+    trace!("glCompressedTexImage3D");
     let p: *mut c_void = {
       let temp_p = storage::CompressedTexImage3D.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("CompressedTexImage3D")
+        panic!("glCompressedTexImage3D is not loaded");
       }
       temp_p
     };
@@ -2048,9 +2033,9 @@ pub mod functions {
       data,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("CompressedTexImage3D({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", target, level, internalformat, width, height, depth, border, imageSize, data, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glCompressedTexImage3D({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", target, level, internalformat, width, height, depth, border, imageSize, data, err);
       }
     }
     out
@@ -2059,7 +2044,7 @@ pub mod functions {
   ///
   /// Fallbacks: CompressedTexSubImage2DARB
   #[inline]
-  pub unsafe fn CompressedTexSubImage2D(
+  pub unsafe fn glCompressedTexSubImage2D(
     target: GLenum,
     level: GLint,
     xoffset: GLint,
@@ -2070,11 +2055,11 @@ pub mod functions {
     imageSize: GLsizei,
     data: *const c_void,
   ) {
-    trace!("CompressedTexSubImage2D");
+    trace!("glCompressedTexSubImage2D");
     let p: *mut c_void = {
       let temp_p = storage::CompressedTexSubImage2D.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("CompressedTexSubImage2D")
+        panic!("glCompressedTexSubImage2D is not loaded");
       }
       temp_p
     };
@@ -2095,9 +2080,9 @@ pub mod functions {
       target, level, xoffset, yoffset, width, height, format, imageSize, data,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("CompressedTexSubImage2D({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", target, level, xoffset, yoffset, width, height, format, imageSize, data, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glCompressedTexSubImage2D({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", target, level, xoffset, yoffset, width, height, format, imageSize, data, err);
       }
     }
     out
@@ -2106,7 +2091,7 @@ pub mod functions {
   ///
   /// Fallbacks: CompressedTexSubImage3DARB
   #[inline]
-  pub unsafe fn CompressedTexSubImage3D(
+  pub unsafe fn glCompressedTexSubImage3D(
     target: GLenum,
     level: GLint,
     xoffset: GLint,
@@ -2119,11 +2104,11 @@ pub mod functions {
     imageSize: GLsizei,
     data: *const c_void,
   ) {
-    trace!("CompressedTexSubImage3D");
+    trace!("glCompressedTexSubImage3D");
     let p: *mut c_void = {
       let temp_p = storage::CompressedTexSubImage3D.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("CompressedTexSubImage3D")
+        panic!("glCompressedTexSubImage3D is not loaded");
       }
       temp_p
     };
@@ -2147,9 +2132,9 @@ pub mod functions {
       imageSize, data,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("CompressedTexSubImage3D({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glCompressedTexSubImage3D({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data, err);
       }
     }
     out
@@ -2158,18 +2143,18 @@ pub mod functions {
   ///
   /// Fallbacks: CopyBufferSubDataNV
   #[inline]
-  pub unsafe fn CopyBufferSubData(
+  pub unsafe fn glCopyBufferSubData(
     readTarget: GLenum,
     writeTarget: GLenum,
     readOffset: GLintptr,
     writeOffset: GLintptr,
     size: GLsizeiptr,
   ) {
-    trace!("CopyBufferSubData");
+    trace!("glCopyBufferSubData");
     let p: *mut c_void = {
       let temp_p = storage::CopyBufferSubData.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("CopyBufferSubData")
+        panic!("glCopyBufferSubData is not loaded");
       }
       temp_p
     };
@@ -2178,10 +2163,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLenum, GLintptr, GLintptr, GLsizeiptr),
     >(p)(readTarget, writeTarget, readOffset, writeOffset, size);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "CopyBufferSubData({:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glCopyBufferSubData({:?}, {:?}, {:?}, {:?}, {:?}): {}",
           readTarget, writeTarget, readOffset, writeOffset, size, err
         );
       }
@@ -2192,7 +2176,7 @@ pub mod functions {
   ///
   /// Fallbacks: CopyTexImage2DEXT
   #[inline]
-  pub unsafe fn CopyTexImage2D(
+  pub unsafe fn glCopyTexImage2D(
     target: GLenum,
     level: GLint,
     internalformat: GLenum,
@@ -2202,11 +2186,11 @@ pub mod functions {
     height: GLsizei,
     border: GLint,
   ) {
-    trace!("CopyTexImage2D");
+    trace!("glCopyTexImage2D");
     let p: *mut c_void = {
       let temp_p = storage::CopyTexImage2D.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("CopyTexImage2D")
+        panic!("glCopyTexImage2D is not loaded");
       }
       temp_p
     };
@@ -2225,10 +2209,9 @@ pub mod functions {
         ),
       >(p)(target, level, internalformat, x, y, width, height, border);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "CopyTexImage2D({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glCopyTexImage2D({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}",
           target, level, internalformat, x, y, width, height, border, err
         );
       }
@@ -2239,7 +2222,7 @@ pub mod functions {
   ///
   /// Fallbacks: CopyTexSubImage2DEXT
   #[inline]
-  pub unsafe fn CopyTexSubImage2D(
+  pub unsafe fn glCopyTexSubImage2D(
     target: GLenum,
     level: GLint,
     xoffset: GLint,
@@ -2249,11 +2232,11 @@ pub mod functions {
     width: GLsizei,
     height: GLsizei,
   ) {
-    trace!("CopyTexSubImage2D");
+    trace!("glCopyTexSubImage2D");
     let p: *mut c_void = {
       let temp_p = storage::CopyTexSubImage2D.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("CopyTexSubImage2D")
+        panic!("glCopyTexSubImage2D is not loaded");
       }
       temp_p
     };
@@ -2271,9 +2254,9 @@ pub mod functions {
       ),
     >(p)(target, level, xoffset, yoffset, x, y, width, height);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("CopyTexSubImage2D({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", target, level, xoffset, yoffset, x, y, width, height, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glCopyTexSubImage2D({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", target, level, xoffset, yoffset, x, y, width, height, err);
       }
     }
     out
@@ -2282,7 +2265,7 @@ pub mod functions {
   ///
   /// Fallbacks: CopyTexSubImage3DEXT
   #[inline]
-  pub unsafe fn CopyTexSubImage3D(
+  pub unsafe fn glCopyTexSubImage3D(
     target: GLenum,
     level: GLint,
     xoffset: GLint,
@@ -2293,11 +2276,11 @@ pub mod functions {
     width: GLsizei,
     height: GLsizei,
   ) {
-    trace!("CopyTexSubImage3D");
+    trace!("glCopyTexSubImage3D");
     let p: *mut c_void = {
       let temp_p = storage::CopyTexSubImage3D.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("CopyTexSubImage3D")
+        panic!("glCopyTexSubImage3D is not loaded");
       }
       temp_p
     };
@@ -2317,9 +2300,9 @@ pub mod functions {
         ),
       >(p)(target, level, xoffset, yoffset, zoffset, x, y, width, height);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("CopyTexSubImage3D({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", target, level, xoffset, yoffset, zoffset, x, y, width, height, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glCopyTexSubImage3D({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", target, level, xoffset, yoffset, zoffset, x, y, width, height, err);
       }
     }
     out
@@ -2328,20 +2311,20 @@ pub mod functions {
   ///
   /// Fallbacks: CreateProgramObjectARB
   #[inline]
-  pub unsafe fn CreateProgram() -> GLuint {
-    trace!("CreateProgram");
+  pub unsafe fn glCreateProgram() -> GLuint {
+    trace!("glCreateProgram");
     let p: *mut c_void = {
       let temp_p = storage::CreateProgram.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("CreateProgram")
+        panic!("glCreateProgram is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn() -> GLuint>(p)();
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("CreateProgram(): {}", err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glCreateProgram(): {}", err);
       }
     }
     out
@@ -2350,41 +2333,41 @@ pub mod functions {
   ///
   /// Fallbacks: CreateShaderObjectARB
   #[inline]
-  pub unsafe fn CreateShader(type_: GLenum) -> GLuint {
-    trace!("CreateShader");
+  pub unsafe fn glCreateShader(type_: GLenum) -> GLuint {
+    trace!("glCreateShader");
     let p: *mut c_void = {
       let temp_p = storage::CreateShader.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("CreateShader")
+        panic!("glCreateShader is not loaded");
       }
       temp_p
     };
     let out =
       transmute::<*mut c_void, extern "system" fn(GLenum) -> GLuint>(p)(type_);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("CreateShader({:?}): {}", type_, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glCreateShader({:?}): {}", type_, err);
       }
     }
     out
   }
   /// See [glCullFace](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glCullFace.xhtml)
   #[inline]
-  pub unsafe fn CullFace(mode: GLenum) {
-    trace!("CullFace");
+  pub unsafe fn glCullFace(mode: GLenum) {
+    trace!("glCullFace");
     let p: *mut c_void = {
       let temp_p = storage::CullFace.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("CullFace")
+        panic!("glCullFace is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLenum)>(p)(mode);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("CullFace({:?}): {}", mode, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glCullFace({:?}): {}", mode, err);
       }
     }
     out
@@ -2393,12 +2376,12 @@ pub mod functions {
   ///
   /// Fallbacks: DeleteBuffersARB
   #[inline]
-  pub unsafe fn DeleteBuffers(n: GLsizei, buffers: *const GLuint) {
-    trace!("DeleteBuffers");
+  pub unsafe fn glDeleteBuffers(n: GLsizei, buffers: *const GLuint) {
+    trace!("glDeleteBuffers");
     let p: *mut c_void = {
       let temp_p = storage::DeleteBuffers.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("DeleteBuffers")
+        panic!("glDeleteBuffers is not loaded");
       }
       temp_p
     };
@@ -2407,9 +2390,9 @@ pub mod functions {
       extern "system" fn(GLsizei, *const GLuint),
     >(p)(n, buffers);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("DeleteBuffers({:?}, {:?}): {}", n, buffers, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glDeleteBuffers({:?}, {:?}): {}", n, buffers, err);
       }
     }
     out
@@ -2418,12 +2401,12 @@ pub mod functions {
   ///
   /// Fallbacks: DeleteFramebuffersEXT
   #[inline]
-  pub unsafe fn DeleteFramebuffers(n: GLsizei, framebuffers: *const GLuint) {
-    trace!("DeleteFramebuffers");
+  pub unsafe fn glDeleteFramebuffers(n: GLsizei, framebuffers: *const GLuint) {
+    trace!("glDeleteFramebuffers");
     let p: *mut c_void = {
       let temp_p = storage::DeleteFramebuffers.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("DeleteFramebuffers")
+        panic!("glDeleteFramebuffers is not loaded");
       }
       temp_p
     };
@@ -2432,29 +2415,29 @@ pub mod functions {
       extern "system" fn(GLsizei, *const GLuint),
     >(p)(n, framebuffers);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("DeleteFramebuffers({:?}, {:?}): {}", n, framebuffers, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glDeleteFramebuffers({:?}, {:?}): {}", n, framebuffers, err);
       }
     }
     out
   }
   /// See [glDeleteProgram](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glDeleteProgram.xhtml)
   #[inline]
-  pub unsafe fn DeleteProgram(program: GLuint) {
-    trace!("DeleteProgram");
+  pub unsafe fn glDeleteProgram(program: GLuint) {
+    trace!("glDeleteProgram");
     let p: *mut c_void = {
       let temp_p = storage::DeleteProgram.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("DeleteProgram")
+        panic!("glDeleteProgram is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLuint)>(p)(program);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("DeleteProgram({:?}): {}", program, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glDeleteProgram({:?}): {}", program, err);
       }
     }
     out
@@ -2463,12 +2446,12 @@ pub mod functions {
   ///
   /// Fallbacks: DeleteQueriesARB
   #[inline]
-  pub unsafe fn DeleteQueries(n: GLsizei, ids: *const GLuint) {
-    trace!("DeleteQueries");
+  pub unsafe fn glDeleteQueries(n: GLsizei, ids: *const GLuint) {
+    trace!("glDeleteQueries");
     let p: *mut c_void = {
       let temp_p = storage::DeleteQueries.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("DeleteQueries")
+        panic!("glDeleteQueries is not loaded");
       }
       temp_p
     };
@@ -2477,9 +2460,9 @@ pub mod functions {
       extern "system" fn(GLsizei, *const GLuint),
     >(p)(n, ids);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("DeleteQueries({:?}, {:?}): {}", n, ids, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glDeleteQueries({:?}, {:?}): {}", n, ids, err);
       }
     }
     out
@@ -2488,12 +2471,12 @@ pub mod functions {
   ///
   /// Fallbacks: DeleteRenderbuffersEXT
   #[inline]
-  pub unsafe fn DeleteRenderbuffers(n: GLsizei, renderbuffers: *const GLuint) {
-    trace!("DeleteRenderbuffers");
+  pub unsafe fn glDeleteRenderbuffers(n: GLsizei, renderbuffers: *const GLuint) {
+    trace!("glDeleteRenderbuffers");
     let p: *mut c_void = {
       let temp_p = storage::DeleteRenderbuffers.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("DeleteRenderbuffers")
+        panic!("glDeleteRenderbuffers is not loaded");
       }
       temp_p
     };
@@ -2502,21 +2485,21 @@ pub mod functions {
       extern "system" fn(GLsizei, *const GLuint),
     >(p)(n, renderbuffers);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("DeleteRenderbuffers({:?}, {:?}): {}", n, renderbuffers, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glDeleteRenderbuffers({:?}, {:?}): {}", n, renderbuffers, err);
       }
     }
     out
   }
   /// See [glDeleteSamplers](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glDeleteSamplers.xhtml)
   #[inline]
-  pub unsafe fn DeleteSamplers(count: GLsizei, samplers: *const GLuint) {
-    trace!("DeleteSamplers");
+  pub unsafe fn glDeleteSamplers(count: GLsizei, samplers: *const GLuint) {
+    trace!("glDeleteSamplers");
     let p: *mut c_void = {
       let temp_p = storage::DeleteSamplers.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("DeleteSamplers")
+        panic!("glDeleteSamplers is not loaded");
       }
       temp_p
     };
@@ -2525,29 +2508,29 @@ pub mod functions {
       extern "system" fn(GLsizei, *const GLuint),
     >(p)(count, samplers);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("DeleteSamplers({:?}, {:?}): {}", count, samplers, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glDeleteSamplers({:?}, {:?}): {}", count, samplers, err);
       }
     }
     out
   }
   /// See [glDeleteShader](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glDeleteShader.xhtml)
   #[inline]
-  pub unsafe fn DeleteShader(shader: GLuint) {
-    trace!("DeleteShader");
+  pub unsafe fn glDeleteShader(shader: GLuint) {
+    trace!("glDeleteShader");
     let p: *mut c_void = {
       let temp_p = storage::DeleteShader.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("DeleteShader")
+        panic!("glDeleteShader is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLuint)>(p)(shader);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("DeleteShader({:?}): {}", shader, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glDeleteShader({:?}): {}", shader, err);
       }
     }
     out
@@ -2556,32 +2539,32 @@ pub mod functions {
   ///
   /// Fallbacks: DeleteSyncAPPLE
   #[inline]
-  pub unsafe fn DeleteSync(sync: GLsync) {
-    trace!("DeleteSync");
+  pub unsafe fn glDeleteSync(sync: GLsync) {
+    trace!("glDeleteSync");
     let p: *mut c_void = {
       let temp_p = storage::DeleteSync.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("DeleteSync")
+        panic!("glDeleteSync is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLsync)>(p)(sync);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("DeleteSync({:?}): {}", sync, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glDeleteSync({:?}): {}", sync, err);
       }
     }
     out
   }
   /// See [glDeleteTextures](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glDeleteTextures.xhtml)
   #[inline]
-  pub unsafe fn DeleteTextures(n: GLsizei, textures: *const GLuint) {
-    trace!("DeleteTextures");
+  pub unsafe fn glDeleteTextures(n: GLsizei, textures: *const GLuint) {
+    trace!("glDeleteTextures");
     let p: *mut c_void = {
       let temp_p = storage::DeleteTextures.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("DeleteTextures")
+        panic!("glDeleteTextures is not loaded");
       }
       temp_p
     };
@@ -2590,9 +2573,9 @@ pub mod functions {
       extern "system" fn(GLsizei, *const GLuint),
     >(p)(n, textures);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("DeleteTextures({:?}, {:?}): {}", n, textures, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glDeleteTextures({:?}, {:?}): {}", n, textures, err);
       }
     }
     out
@@ -2601,12 +2584,12 @@ pub mod functions {
   ///
   /// Fallbacks: DeleteTransformFeedbacksNV
   #[inline]
-  pub unsafe fn DeleteTransformFeedbacks(n: GLsizei, ids: *const GLuint) {
-    trace!("DeleteTransformFeedbacks");
+  pub unsafe fn glDeleteTransformFeedbacks(n: GLsizei, ids: *const GLuint) {
+    trace!("glDeleteTransformFeedbacks");
     let p: *mut c_void = {
       let temp_p = storage::DeleteTransformFeedbacks.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("DeleteTransformFeedbacks")
+        panic!("glDeleteTransformFeedbacks is not loaded");
       }
       temp_p
     };
@@ -2615,9 +2598,9 @@ pub mod functions {
       extern "system" fn(GLsizei, *const GLuint),
     >(p)(n, ids);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("DeleteTransformFeedbacks({:?}, {:?}): {}", n, ids, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glDeleteTransformFeedbacks({:?}, {:?}): {}", n, ids, err);
       }
     }
     out
@@ -2626,12 +2609,12 @@ pub mod functions {
   ///
   /// Fallbacks: DeleteVertexArraysAPPLE, DeleteVertexArraysOES
   #[inline]
-  pub unsafe fn DeleteVertexArrays(n: GLsizei, arrays: *const GLuint) {
-    trace!("DeleteVertexArrays");
+  pub unsafe fn glDeleteVertexArrays(n: GLsizei, arrays: *const GLuint) {
+    trace!("glDeleteVertexArrays");
     let p: *mut c_void = {
       let temp_p = storage::DeleteVertexArrays.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("DeleteVertexArrays")
+        panic!("glDeleteVertexArrays is not loaded");
       }
       temp_p
     };
@@ -2640,49 +2623,49 @@ pub mod functions {
       extern "system" fn(GLsizei, *const GLuint),
     >(p)(n, arrays);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("DeleteVertexArrays({:?}, {:?}): {}", n, arrays, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glDeleteVertexArrays({:?}, {:?}): {}", n, arrays, err);
       }
     }
     out
   }
   /// See [glDepthFunc](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glDepthFunc.xhtml)
   #[inline]
-  pub unsafe fn DepthFunc(func: GLenum) {
-    trace!("DepthFunc");
+  pub unsafe fn glDepthFunc(func: GLenum) {
+    trace!("glDepthFunc");
     let p: *mut c_void = {
       let temp_p = storage::DepthFunc.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("DepthFunc")
+        panic!("glDepthFunc is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLenum)>(p)(func);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("DepthFunc({:?}): {}", func, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glDepthFunc({:?}): {}", func, err);
       }
     }
     out
   }
   /// See [glDepthMask](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glDepthMask.xhtml)
   #[inline]
-  pub unsafe fn DepthMask(flag: GLboolean) {
-    trace!("DepthMask");
+  pub unsafe fn glDepthMask(flag: GLboolean) {
+    trace!("glDepthMask");
     let p: *mut c_void = {
       let temp_p = storage::DepthMask.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("DepthMask")
+        panic!("glDepthMask is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLboolean)>(p)(flag);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("DepthMask({:?}): {}", flag, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glDepthMask({:?}): {}", flag, err);
       }
     }
     out
@@ -2691,21 +2674,21 @@ pub mod functions {
   ///
   /// Fallbacks: DepthRangefOES
   #[inline]
-  pub unsafe fn DepthRangef(n: GLfloat, f: GLfloat) {
-    trace!("DepthRangef");
+  pub unsafe fn glDepthRangef(n: GLfloat, f: GLfloat) {
+    trace!("glDepthRangef");
     let p: *mut c_void = {
       let temp_p = storage::DepthRangef.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("DepthRangef")
+        panic!("glDepthRangef is not loaded");
       }
       temp_p
     };
     let out =
       transmute::<*mut c_void, extern "system" fn(GLfloat, GLfloat)>(p)(n, f);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("DepthRangef({:?}, {:?}): {}", n, f, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glDepthRangef({:?}, {:?}): {}", n, f, err);
       }
     }
     out
@@ -2714,12 +2697,12 @@ pub mod functions {
   ///
   /// Fallbacks: DetachObjectARB
   #[inline]
-  pub unsafe fn DetachShader(program: GLuint, shader: GLuint) {
-    trace!("DetachShader");
+  pub unsafe fn glDetachShader(program: GLuint, shader: GLuint) {
+    trace!("glDetachShader");
     let p: *mut c_void = {
       let temp_p = storage::DetachShader.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("DetachShader")
+        panic!("glDetachShader is not loaded");
       }
       temp_p
     };
@@ -2727,29 +2710,29 @@ pub mod functions {
       program, shader,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("DetachShader({:?}, {:?}): {}", program, shader, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glDetachShader({:?}, {:?}): {}", program, shader, err);
       }
     }
     out
   }
   /// See [glDisable](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glDisable.xhtml)
   #[inline]
-  pub unsafe fn Disable(cap: GLenum) {
-    trace!("Disable");
+  pub unsafe fn glDisable(cap: GLenum) {
+    trace!("glDisable");
     let p: *mut c_void = {
       let temp_p = storage::Disable.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Disable")
+        panic!("glDisable is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLenum)>(p)(cap);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("Disable({:?}): {}", cap, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glDisable({:?}): {}", cap, err);
       }
     }
     out
@@ -2758,20 +2741,20 @@ pub mod functions {
   ///
   /// Fallbacks: DisableVertexAttribArrayARB
   #[inline]
-  pub unsafe fn DisableVertexAttribArray(index: GLuint) {
-    trace!("DisableVertexAttribArray");
+  pub unsafe fn glDisableVertexAttribArray(index: GLuint) {
+    trace!("glDisableVertexAttribArray");
     let p: *mut c_void = {
       let temp_p = storage::DisableVertexAttribArray.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("DisableVertexAttribArray")
+        panic!("glDisableVertexAttribArray is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLuint)>(p)(index);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("DisableVertexAttribArray({:?}): {}", index, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glDisableVertexAttribArray({:?}): {}", index, err);
       }
     }
     out
@@ -2780,12 +2763,12 @@ pub mod functions {
   ///
   /// Fallbacks: DrawArraysEXT
   #[inline]
-  pub unsafe fn DrawArrays(mode: GLenum, first: GLint, count: GLsizei) {
-    trace!("DrawArrays");
+  pub unsafe fn glDrawArrays(mode: GLenum, first: GLint, count: GLsizei) {
+    trace!("glDrawArrays");
     let p: *mut c_void = {
       let temp_p = storage::DrawArrays.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("DrawArrays")
+        panic!("glDrawArrays is not loaded");
       }
       temp_p
     };
@@ -2794,9 +2777,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLint, GLsizei),
     >(p)(mode, first, count);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("DrawArrays({:?}, {:?}, {:?}): {}", mode, first, count, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glDrawArrays({:?}, {:?}, {:?}): {}", mode, first, count, err);
       }
     }
     out
@@ -2806,17 +2789,17 @@ pub mod functions {
   /// Fallbacks: DrawArraysInstancedANGLE, DrawArraysInstancedARB,
   /// DrawArraysInstancedEXT, DrawArraysInstancedNV
   #[inline]
-  pub unsafe fn DrawArraysInstanced(
+  pub unsafe fn glDrawArraysInstanced(
     mode: GLenum,
     first: GLint,
     count: GLsizei,
     instancecount: GLsizei,
   ) {
-    trace!("DrawArraysInstanced");
+    trace!("glDrawArraysInstanced");
     let p: *mut c_void = {
       let temp_p = storage::DrawArraysInstanced.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("DrawArraysInstanced")
+        panic!("glDrawArraysInstanced is not loaded");
       }
       temp_p
     };
@@ -2825,10 +2808,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLint, GLsizei, GLsizei),
     >(p)(mode, first, count, instancecount);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "DrawArraysInstanced({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glDrawArraysInstanced({:?}, {:?}, {:?}, {:?}): {}",
           mode, first, count, instancecount, err
         );
       }
@@ -2839,12 +2821,12 @@ pub mod functions {
   ///
   /// Fallbacks: DrawBuffersARB, DrawBuffersATI, DrawBuffersEXT
   #[inline]
-  pub unsafe fn DrawBuffers(n: GLsizei, bufs: *const GLenum) {
-    trace!("DrawBuffers");
+  pub unsafe fn glDrawBuffers(n: GLsizei, bufs: *const GLenum) {
+    trace!("glDrawBuffers");
     let p: *mut c_void = {
       let temp_p = storage::DrawBuffers.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("DrawBuffers")
+        panic!("glDrawBuffers is not loaded");
       }
       temp_p
     };
@@ -2853,26 +2835,26 @@ pub mod functions {
       extern "system" fn(GLsizei, *const GLenum),
     >(p)(n, bufs);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("DrawBuffers({:?}, {:?}): {}", n, bufs, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glDrawBuffers({:?}, {:?}): {}", n, bufs, err);
       }
     }
     out
   }
   /// See [glDrawElements](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glDrawElements.xhtml)
   #[inline]
-  pub unsafe fn DrawElements(
+  pub unsafe fn glDrawElements(
     mode: GLenum,
     count: GLsizei,
     type_: GLenum,
     indices: *const c_void,
   ) {
-    trace!("DrawElements");
+    trace!("glDrawElements");
     let p: *mut c_void = {
       let temp_p = storage::DrawElements.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("DrawElements")
+        panic!("glDrawElements is not loaded");
       }
       temp_p
     };
@@ -2881,10 +2863,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLsizei, GLenum, *const c_void),
     >(p)(mode, count, type_, indices);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "DrawElements({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glDrawElements({:?}, {:?}, {:?}, {:?}): {}",
           mode, count, type_, indices, err
         );
       }
@@ -2896,18 +2877,18 @@ pub mod functions {
   /// Fallbacks: DrawElementsInstancedANGLE, DrawElementsInstancedARB,
   /// DrawElementsInstancedEXT, DrawElementsInstancedNV
   #[inline]
-  pub unsafe fn DrawElementsInstanced(
+  pub unsafe fn glDrawElementsInstanced(
     mode: GLenum,
     count: GLsizei,
     type_: GLenum,
     indices: *const c_void,
     instancecount: GLsizei,
   ) {
-    trace!("DrawElementsInstanced");
+    trace!("glDrawElementsInstanced");
     let p: *mut c_void = {
       let temp_p = storage::DrawElementsInstanced.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("DrawElementsInstanced")
+        panic!("glDrawElementsInstanced is not loaded");
       }
       temp_p
     };
@@ -2916,10 +2897,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLsizei, GLenum, *const c_void, GLsizei),
     >(p)(mode, count, type_, indices, instancecount);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "DrawElementsInstanced({:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glDrawElementsInstanced({:?}, {:?}, {:?}, {:?}, {:?}): {}",
           mode, count, type_, indices, instancecount, err
         );
       }
@@ -2930,7 +2910,7 @@ pub mod functions {
   ///
   /// Fallbacks: DrawRangeElementsEXT
   #[inline]
-  pub unsafe fn DrawRangeElements(
+  pub unsafe fn glDrawRangeElements(
     mode: GLenum,
     start: GLuint,
     end: GLuint,
@@ -2938,11 +2918,11 @@ pub mod functions {
     type_: GLenum,
     indices: *const c_void,
   ) {
-    trace!("DrawRangeElements");
+    trace!("glDrawRangeElements");
     let p: *mut c_void = {
       let temp_p = storage::DrawRangeElements.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("DrawRangeElements")
+        panic!("glDrawRangeElements is not loaded");
       }
       temp_p
     };
@@ -2958,10 +2938,9 @@ pub mod functions {
       ),
     >(p)(mode, start, end, count, type_, indices);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "DrawRangeElements({:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glDrawRangeElements({:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}",
           mode, start, end, count, type_, indices, err
         );
       }
@@ -2970,20 +2949,20 @@ pub mod functions {
   }
   /// See [glEnable](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glEnable.xhtml)
   #[inline]
-  pub unsafe fn Enable(cap: GLenum) {
-    trace!("Enable");
+  pub unsafe fn glEnable(cap: GLenum) {
+    trace!("glEnable");
     let p: *mut c_void = {
       let temp_p = storage::Enable.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Enable")
+        panic!("glEnable is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLenum)>(p)(cap);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("Enable({:?}): {}", cap, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glEnable({:?}): {}", cap, err);
       }
     }
     out
@@ -2992,20 +2971,20 @@ pub mod functions {
   ///
   /// Fallbacks: EnableVertexAttribArrayARB
   #[inline]
-  pub unsafe fn EnableVertexAttribArray(index: GLuint) {
-    trace!("EnableVertexAttribArray");
+  pub unsafe fn glEnableVertexAttribArray(index: GLuint) {
+    trace!("glEnableVertexAttribArray");
     let p: *mut c_void = {
       let temp_p = storage::EnableVertexAttribArray.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("EnableVertexAttribArray")
+        panic!("glEnableVertexAttribArray is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLuint)>(p)(index);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("EnableVertexAttribArray({:?}): {}", index, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glEnableVertexAttribArray({:?}): {}", index, err);
       }
     }
     out
@@ -3014,20 +2993,20 @@ pub mod functions {
   ///
   /// Fallbacks: EndQueryARB
   #[inline]
-  pub unsafe fn EndQuery(target: GLenum) {
-    trace!("EndQuery");
+  pub unsafe fn glEndQuery(target: GLenum) {
+    trace!("glEndQuery");
     let p: *mut c_void = {
       let temp_p = storage::EndQuery.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("EndQuery")
+        panic!("glEndQuery is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLenum)>(p)(target);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("EndQuery({:?}): {}", target, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glEndQuery({:?}): {}", target, err);
       }
     }
     out
@@ -3036,20 +3015,20 @@ pub mod functions {
   ///
   /// Fallbacks: EndTransformFeedbackEXT, EndTransformFeedbackNV
   #[inline]
-  pub unsafe fn EndTransformFeedback() {
-    trace!("EndTransformFeedback");
+  pub unsafe fn glEndTransformFeedback() {
+    trace!("glEndTransformFeedback");
     let p: *mut c_void = {
       let temp_p = storage::EndTransformFeedback.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("EndTransformFeedback")
+        panic!("glEndTransformFeedback is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn()>(p)();
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("EndTransformFeedback(): {}", err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glEndTransformFeedback(): {}", err);
       }
     }
     out
@@ -3058,12 +3037,12 @@ pub mod functions {
   ///
   /// Fallbacks: FenceSyncAPPLE
   #[inline]
-  pub unsafe fn FenceSync(condition: GLenum, flags: GLbitfield) -> GLsync {
-    trace!("FenceSync");
+  pub unsafe fn glFenceSync(condition: GLenum, flags: GLbitfield) -> GLsync {
+    trace!("glFenceSync");
     let p: *mut c_void = {
       let temp_p = storage::FenceSync.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("FenceSync")
+        panic!("glFenceSync is not loaded");
       }
       temp_p
     };
@@ -3072,49 +3051,49 @@ pub mod functions {
       extern "system" fn(GLenum, GLbitfield) -> GLsync,
     >(p)(condition, flags);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("FenceSync({:?}, {:?}): {}", condition, flags, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glFenceSync({:?}, {:?}): {}", condition, flags, err);
       }
     }
     out
   }
   /// See [glFinish](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glFinish.xhtml)
   #[inline]
-  pub unsafe fn Finish() {
-    trace!("Finish");
+  pub unsafe fn glFinish() {
+    trace!("glFinish");
     let p: *mut c_void = {
       let temp_p = storage::Finish.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Finish")
+        panic!("glFinish is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn()>(p)();
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("Finish(): {}", err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glFinish(): {}", err);
       }
     }
     out
   }
   /// See [glFlush](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glFlush.xhtml)
   #[inline]
-  pub unsafe fn Flush() {
-    trace!("Flush");
+  pub unsafe fn glFlush() {
+    trace!("glFlush");
     let p: *mut c_void = {
       let temp_p = storage::Flush.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Flush")
+        panic!("glFlush is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn()>(p)();
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("Flush(): {}", err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glFlush(): {}", err);
       }
     }
     out
@@ -3123,16 +3102,16 @@ pub mod functions {
   ///
   /// Fallbacks: FlushMappedBufferRangeAPPLE, FlushMappedBufferRangeEXT
   #[inline]
-  pub unsafe fn FlushMappedBufferRange(
+  pub unsafe fn glFlushMappedBufferRange(
     target: GLenum,
     offset: GLintptr,
     length: GLsizeiptr,
   ) {
-    trace!("FlushMappedBufferRange");
+    trace!("glFlushMappedBufferRange");
     let p: *mut c_void = {
       let temp_p = storage::FlushMappedBufferRange.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("FlushMappedBufferRange")
+        panic!("glFlushMappedBufferRange is not loaded");
       }
       temp_p
     };
@@ -3141,10 +3120,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLintptr, GLsizeiptr),
     >(p)(target, offset, length);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "FlushMappedBufferRange({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glFlushMappedBufferRange({:?}, {:?}, {:?}): {}",
           target, offset, length, err
         );
       }
@@ -3155,17 +3133,17 @@ pub mod functions {
   ///
   /// Fallbacks: FramebufferRenderbufferEXT
   #[inline]
-  pub unsafe fn FramebufferRenderbuffer(
+  pub unsafe fn glFramebufferRenderbuffer(
     target: GLenum,
     attachment: GLenum,
     renderbuffertarget: GLenum,
     renderbuffer: GLuint,
   ) {
-    trace!("FramebufferRenderbuffer");
+    trace!("glFramebufferRenderbuffer");
     let p: *mut c_void = {
       let temp_p = storage::FramebufferRenderbuffer.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("FramebufferRenderbuffer")
+        panic!("glFramebufferRenderbuffer is not loaded");
       }
       temp_p
     };
@@ -3174,10 +3152,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLenum, GLenum, GLuint),
     >(p)(target, attachment, renderbuffertarget, renderbuffer);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "FramebufferRenderbuffer({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glFramebufferRenderbuffer({:?}, {:?}, {:?}, {:?}): {}",
           target, attachment, renderbuffertarget, renderbuffer, err
         );
       }
@@ -3188,18 +3165,18 @@ pub mod functions {
   ///
   /// Fallbacks: FramebufferTexture2DEXT
   #[inline]
-  pub unsafe fn FramebufferTexture2D(
+  pub unsafe fn glFramebufferTexture2D(
     target: GLenum,
     attachment: GLenum,
     textarget: GLenum,
     texture: GLuint,
     level: GLint,
   ) {
-    trace!("FramebufferTexture2D");
+    trace!("glFramebufferTexture2D");
     let p: *mut c_void = {
       let temp_p = storage::FramebufferTexture2D.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("FramebufferTexture2D")
+        panic!("glFramebufferTexture2D is not loaded");
       }
       temp_p
     };
@@ -3208,10 +3185,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLenum, GLenum, GLuint, GLint),
     >(p)(target, attachment, textarget, texture, level);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "FramebufferTexture2D({:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glFramebufferTexture2D({:?}, {:?}, {:?}, {:?}, {:?}): {}",
           target, attachment, textarget, texture, level, err
         );
       }
@@ -3222,18 +3198,18 @@ pub mod functions {
   ///
   /// Fallbacks: FramebufferTextureLayerARB, FramebufferTextureLayerEXT
   #[inline]
-  pub unsafe fn FramebufferTextureLayer(
+  pub unsafe fn glFramebufferTextureLayer(
     target: GLenum,
     attachment: GLenum,
     texture: GLuint,
     level: GLint,
     layer: GLint,
   ) {
-    trace!("FramebufferTextureLayer");
+    trace!("glFramebufferTextureLayer");
     let p: *mut c_void = {
       let temp_p = storage::FramebufferTextureLayer.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("FramebufferTextureLayer")
+        panic!("glFramebufferTextureLayer is not loaded");
       }
       temp_p
     };
@@ -3242,10 +3218,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLenum, GLuint, GLint, GLint),
     >(p)(target, attachment, texture, level, layer);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "FramebufferTextureLayer({:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glFramebufferTextureLayer({:?}, {:?}, {:?}, {:?}, {:?}): {}",
           target, attachment, texture, level, layer, err
         );
       }
@@ -3254,20 +3229,20 @@ pub mod functions {
   }
   /// See [glFrontFace](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glFrontFace.xhtml)
   #[inline]
-  pub unsafe fn FrontFace(mode: GLenum) {
-    trace!("FrontFace");
+  pub unsafe fn glFrontFace(mode: GLenum) {
+    trace!("glFrontFace");
     let p: *mut c_void = {
       let temp_p = storage::FrontFace.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("FrontFace")
+        panic!("glFrontFace is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLenum)>(p)(mode);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("FrontFace({:?}): {}", mode, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glFrontFace({:?}): {}", mode, err);
       }
     }
     out
@@ -3276,12 +3251,12 @@ pub mod functions {
   ///
   /// Fallbacks: GenBuffersARB
   #[inline]
-  pub unsafe fn GenBuffers(n: GLsizei, buffers: *mut GLuint) {
-    trace!("GenBuffers");
+  pub unsafe fn glGenBuffers(n: GLsizei, buffers: *mut GLuint) {
+    trace!("glGenBuffers");
     let p: *mut c_void = {
       let temp_p = storage::GenBuffers.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GenBuffers")
+        panic!("glGenBuffers is not loaded");
       }
       temp_p
     };
@@ -3289,9 +3264,9 @@ pub mod functions {
       p,
     )(n, buffers);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("GenBuffers({:?}, {:?}): {}", n, buffers, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGenBuffers({:?}, {:?}): {}", n, buffers, err);
       }
     }
     out
@@ -3300,12 +3275,12 @@ pub mod functions {
   ///
   /// Fallbacks: GenFramebuffersEXT
   #[inline]
-  pub unsafe fn GenFramebuffers(n: GLsizei, framebuffers: *mut GLuint) {
-    trace!("GenFramebuffers");
+  pub unsafe fn glGenFramebuffers(n: GLsizei, framebuffers: *mut GLuint) {
+    trace!("glGenFramebuffers");
     let p: *mut c_void = {
       let temp_p = storage::GenFramebuffers.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GenFramebuffers")
+        panic!("glGenFramebuffers is not loaded");
       }
       temp_p
     };
@@ -3313,9 +3288,9 @@ pub mod functions {
       p,
     )(n, framebuffers);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("GenFramebuffers({:?}, {:?}): {}", n, framebuffers, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGenFramebuffers({:?}, {:?}): {}", n, framebuffers, err);
       }
     }
     out
@@ -3324,12 +3299,12 @@ pub mod functions {
   ///
   /// Fallbacks: GenQueriesARB
   #[inline]
-  pub unsafe fn GenQueries(n: GLsizei, ids: *mut GLuint) {
-    trace!("GenQueries");
+  pub unsafe fn glGenQueries(n: GLsizei, ids: *mut GLuint) {
+    trace!("glGenQueries");
     let p: *mut c_void = {
       let temp_p = storage::GenQueries.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GenQueries")
+        panic!("glGenQueries is not loaded");
       }
       temp_p
     };
@@ -3337,9 +3312,9 @@ pub mod functions {
       p,
     )(n, ids);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("GenQueries({:?}, {:?}): {}", n, ids, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGenQueries({:?}, {:?}): {}", n, ids, err);
       }
     }
     out
@@ -3348,12 +3323,12 @@ pub mod functions {
   ///
   /// Fallbacks: GenRenderbuffersEXT
   #[inline]
-  pub unsafe fn GenRenderbuffers(n: GLsizei, renderbuffers: *mut GLuint) {
-    trace!("GenRenderbuffers");
+  pub unsafe fn glGenRenderbuffers(n: GLsizei, renderbuffers: *mut GLuint) {
+    trace!("glGenRenderbuffers");
     let p: *mut c_void = {
       let temp_p = storage::GenRenderbuffers.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GenRenderbuffers")
+        panic!("glGenRenderbuffers is not loaded");
       }
       temp_p
     };
@@ -3361,21 +3336,21 @@ pub mod functions {
       p,
     )(n, renderbuffers);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("GenRenderbuffers({:?}, {:?}): {}", n, renderbuffers, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGenRenderbuffers({:?}, {:?}): {}", n, renderbuffers, err);
       }
     }
     out
   }
   /// See [glGenSamplers](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGenSamplers.xhtml)
   #[inline]
-  pub unsafe fn GenSamplers(count: GLsizei, samplers: *mut GLuint) {
-    trace!("GenSamplers");
+  pub unsafe fn glGenSamplers(count: GLsizei, samplers: *mut GLuint) {
+    trace!("glGenSamplers");
     let p: *mut c_void = {
       let temp_p = storage::GenSamplers.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GenSamplers")
+        panic!("glGenSamplers is not loaded");
       }
       temp_p
     };
@@ -3383,21 +3358,21 @@ pub mod functions {
       p,
     )(count, samplers);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("GenSamplers({:?}, {:?}): {}", count, samplers, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGenSamplers({:?}, {:?}): {}", count, samplers, err);
       }
     }
     out
   }
   /// See [glGenTextures](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGenTextures.xhtml)
   #[inline]
-  pub unsafe fn GenTextures(n: GLsizei, textures: *mut GLuint) {
-    trace!("GenTextures");
+  pub unsafe fn glGenTextures(n: GLsizei, textures: *mut GLuint) {
+    trace!("glGenTextures");
     let p: *mut c_void = {
       let temp_p = storage::GenTextures.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GenTextures")
+        panic!("glGenTextures is not loaded");
       }
       temp_p
     };
@@ -3405,9 +3380,9 @@ pub mod functions {
       p,
     )(n, textures);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("GenTextures({:?}, {:?}): {}", n, textures, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGenTextures({:?}, {:?}): {}", n, textures, err);
       }
     }
     out
@@ -3416,12 +3391,12 @@ pub mod functions {
   ///
   /// Fallbacks: GenTransformFeedbacksNV
   #[inline]
-  pub unsafe fn GenTransformFeedbacks(n: GLsizei, ids: *mut GLuint) {
-    trace!("GenTransformFeedbacks");
+  pub unsafe fn glGenTransformFeedbacks(n: GLsizei, ids: *mut GLuint) {
+    trace!("glGenTransformFeedbacks");
     let p: *mut c_void = {
       let temp_p = storage::GenTransformFeedbacks.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GenTransformFeedbacks")
+        panic!("glGenTransformFeedbacks is not loaded");
       }
       temp_p
     };
@@ -3429,9 +3404,9 @@ pub mod functions {
       p,
     )(n, ids);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("GenTransformFeedbacks({:?}, {:?}): {}", n, ids, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGenTransformFeedbacks({:?}, {:?}): {}", n, ids, err);
       }
     }
     out
@@ -3440,12 +3415,12 @@ pub mod functions {
   ///
   /// Fallbacks: GenVertexArraysAPPLE, GenVertexArraysOES
   #[inline]
-  pub unsafe fn GenVertexArrays(n: GLsizei, arrays: *mut GLuint) {
-    trace!("GenVertexArrays");
+  pub unsafe fn glGenVertexArrays(n: GLsizei, arrays: *mut GLuint) {
+    trace!("glGenVertexArrays");
     let p: *mut c_void = {
       let temp_p = storage::GenVertexArrays.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GenVertexArrays")
+        panic!("glGenVertexArrays is not loaded");
       }
       temp_p
     };
@@ -3453,9 +3428,9 @@ pub mod functions {
       p,
     )(n, arrays);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("GenVertexArrays({:?}, {:?}): {}", n, arrays, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGenVertexArrays({:?}, {:?}): {}", n, arrays, err);
       }
     }
     out
@@ -3464,20 +3439,20 @@ pub mod functions {
   ///
   /// Fallbacks: GenerateMipmapEXT
   #[inline]
-  pub unsafe fn GenerateMipmap(target: GLenum) {
-    trace!("GenerateMipmap");
+  pub unsafe fn glGenerateMipmap(target: GLenum) {
+    trace!("glGenerateMipmap");
     let p: *mut c_void = {
       let temp_p = storage::GenerateMipmap.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GenerateMipmap")
+        panic!("glGenerateMipmap is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLenum)>(p)(target);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("GenerateMipmap({:?}): {}", target, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGenerateMipmap({:?}): {}", target, err);
       }
     }
     out
@@ -3486,7 +3461,7 @@ pub mod functions {
   ///
   /// Fallbacks: GetActiveAttribARB
   #[inline]
-  pub unsafe fn GetActiveAttrib(
+  pub unsafe fn glGetActiveAttrib(
     program: GLuint,
     index: GLuint,
     bufSize: GLsizei,
@@ -3495,11 +3470,11 @@ pub mod functions {
     type_: *mut GLenum,
     name: *mut GLchar,
   ) {
-    trace!("GetActiveAttrib");
+    trace!("glGetActiveAttrib");
     let p: *mut c_void = {
       let temp_p = storage::GetActiveAttrib.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetActiveAttrib")
+        panic!("glGetActiveAttrib is not loaded");
       }
       temp_p
     };
@@ -3516,10 +3491,9 @@ pub mod functions {
       ),
     >(p)(program, index, bufSize, length, size, type_, name);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetActiveAttrib({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetActiveAttrib({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}",
           program, index, bufSize, length, size, type_, name, err
         );
       }
@@ -3530,7 +3504,7 @@ pub mod functions {
   ///
   /// Fallbacks: GetActiveUniformARB
   #[inline]
-  pub unsafe fn GetActiveUniform(
+  pub unsafe fn glGetActiveUniform(
     program: GLuint,
     index: GLuint,
     bufSize: GLsizei,
@@ -3539,11 +3513,11 @@ pub mod functions {
     type_: *mut GLenum,
     name: *mut GLchar,
   ) {
-    trace!("GetActiveUniform");
+    trace!("glGetActiveUniform");
     let p: *mut c_void = {
       let temp_p = storage::GetActiveUniform.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetActiveUniform")
+        panic!("glGetActiveUniform is not loaded");
       }
       temp_p
     };
@@ -3560,10 +3534,9 @@ pub mod functions {
       ),
     >(p)(program, index, bufSize, length, size, type_, name);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetActiveUniform({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetActiveUniform({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}",
           program, index, bufSize, length, size, type_, name, err
         );
       }
@@ -3572,18 +3545,18 @@ pub mod functions {
   }
   /// See [glGetActiveUniformBlockName](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetActiveUniformBlockName.xhtml)
   #[inline]
-  pub unsafe fn GetActiveUniformBlockName(
+  pub unsafe fn glGetActiveUniformBlockName(
     program: GLuint,
     uniformBlockIndex: GLuint,
     bufSize: GLsizei,
     length: *mut GLsizei,
     uniformBlockName: *mut GLchar,
   ) {
-    trace!("GetActiveUniformBlockName");
+    trace!("glGetActiveUniformBlockName");
     let p: *mut c_void = {
       let temp_p = storage::GetActiveUniformBlockName.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetActiveUniformBlockName")
+        panic!("glGetActiveUniformBlockName is not loaded");
       }
       temp_p
     };
@@ -3593,10 +3566,9 @@ pub mod functions {
         extern "system" fn(GLuint, GLuint, GLsizei, *mut GLsizei, *mut GLchar),
       >(p)(program, uniformBlockIndex, bufSize, length, uniformBlockName);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetActiveUniformBlockName({:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetActiveUniformBlockName({:?}, {:?}, {:?}, {:?}, {:?}): {}",
           program, uniformBlockIndex, bufSize, length, uniformBlockName, err
         );
       }
@@ -3605,17 +3577,17 @@ pub mod functions {
   }
   /// See [glGetActiveUniformBlockiv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetActiveUniformBlockiv.xhtml)
   #[inline]
-  pub unsafe fn GetActiveUniformBlockiv(
+  pub unsafe fn glGetActiveUniformBlockiv(
     program: GLuint,
     uniformBlockIndex: GLuint,
     pname: GLenum,
     params: *mut GLint,
   ) {
-    trace!("GetActiveUniformBlockiv");
+    trace!("glGetActiveUniformBlockiv");
     let p: *mut c_void = {
       let temp_p = storage::GetActiveUniformBlockiv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetActiveUniformBlockiv")
+        panic!("glGetActiveUniformBlockiv is not loaded");
       }
       temp_p
     };
@@ -3624,10 +3596,9 @@ pub mod functions {
       extern "system" fn(GLuint, GLuint, GLenum, *mut GLint),
     >(p)(program, uniformBlockIndex, pname, params);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetActiveUniformBlockiv({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetActiveUniformBlockiv({:?}, {:?}, {:?}, {:?}): {}",
           program, uniformBlockIndex, pname, params, err
         );
       }
@@ -3636,18 +3607,18 @@ pub mod functions {
   }
   /// See [glGetActiveUniformsiv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetActiveUniformsiv.xhtml)
   #[inline]
-  pub unsafe fn GetActiveUniformsiv(
+  pub unsafe fn glGetActiveUniformsiv(
     program: GLuint,
     uniformCount: GLsizei,
     uniformIndices: *const GLuint,
     pname: GLenum,
     params: *mut GLint,
   ) {
-    trace!("GetActiveUniformsiv");
+    trace!("glGetActiveUniformsiv");
     let p: *mut c_void = {
       let temp_p = storage::GetActiveUniformsiv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetActiveUniformsiv")
+        panic!("glGetActiveUniformsiv is not loaded");
       }
       temp_p
     };
@@ -3656,10 +3627,9 @@ pub mod functions {
       extern "system" fn(GLuint, GLsizei, *const GLuint, GLenum, *mut GLint),
     >(p)(program, uniformCount, uniformIndices, pname, params);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetActiveUniformsiv({:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetActiveUniformsiv({:?}, {:?}, {:?}, {:?}, {:?}): {}",
           program, uniformCount, uniformIndices, pname, params, err
         );
       }
@@ -3668,17 +3638,17 @@ pub mod functions {
   }
   /// See [glGetAttachedShaders](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetAttachedShaders.xhtml)
   #[inline]
-  pub unsafe fn GetAttachedShaders(
+  pub unsafe fn glGetAttachedShaders(
     program: GLuint,
     maxCount: GLsizei,
     count: *mut GLsizei,
     shaders: *mut GLuint,
   ) {
-    trace!("GetAttachedShaders");
+    trace!("glGetAttachedShaders");
     let p: *mut c_void = {
       let temp_p = storage::GetAttachedShaders.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetAttachedShaders")
+        panic!("glGetAttachedShaders is not loaded");
       }
       temp_p
     };
@@ -3687,10 +3657,9 @@ pub mod functions {
       extern "system" fn(GLuint, GLsizei, *mut GLsizei, *mut GLuint),
     >(p)(program, maxCount, count, shaders);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetAttachedShaders({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetAttachedShaders({:?}, {:?}, {:?}, {:?}): {}",
           program, maxCount, count, shaders, err
         );
       }
@@ -3701,15 +3670,15 @@ pub mod functions {
   ///
   /// Fallbacks: GetAttribLocationARB
   #[inline]
-  pub unsafe fn GetAttribLocation(
+  pub unsafe fn glGetAttribLocation(
     program: GLuint,
     name: *const GLchar,
   ) -> GLint {
-    trace!("GetAttribLocation");
+    trace!("glGetAttribLocation");
     let p: *mut c_void = {
       let temp_p = storage::GetAttribLocation.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetAttribLocation")
+        panic!("glGetAttribLocation is not loaded");
       }
       temp_p
     };
@@ -3718,21 +3687,21 @@ pub mod functions {
       extern "system" fn(GLuint, *const GLchar) -> GLint,
     >(p)(program, name);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("GetAttribLocation({:?}, {:?}): {}", program, name, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetAttribLocation({:?}, {:?}): {}", program, name, err);
       }
     }
     out
   }
-  /// See [glGetBooleanv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetBooleanv.xhtml)
+  /// See [glGet](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGet.xhtml)
   #[inline]
-  pub unsafe fn GetBooleanv(pname: GLenum, data: *mut GLboolean) {
-    trace!("GetBooleanv");
+  pub unsafe fn glGetBooleanv(pname: GLenum, data: *mut GLboolean) {
+    trace!("glGetBooleanv");
     let p: *mut c_void = {
       let temp_p = storage::GetBooleanv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetBooleanv")
+        panic!("glGetBooleanv is not loaded");
       }
       temp_p
     };
@@ -3741,25 +3710,25 @@ pub mod functions {
       extern "system" fn(GLenum, *mut GLboolean),
     >(p)(pname, data);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("GetBooleanv({:?}, {:?}): {}", pname, data, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetBooleanv({:?}, {:?}): {}", pname, data, err);
       }
     }
     out
   }
-  /// See [glGetBufferParameteri64v](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetBufferParameteri64v.xhtml)
+  /// See [glGetBufferParameteri64v](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetBufferParameter.xhtml)
   #[inline]
-  pub unsafe fn GetBufferParameteri64v(
+  pub unsafe fn glGetBufferParameteri64v(
     target: GLenum,
     pname: GLenum,
     params: *mut GLint64,
   ) {
-    trace!("GetBufferParameteri64v");
+    trace!("glGetBufferParameteri64v");
     let p: *mut c_void = {
       let temp_p = storage::GetBufferParameteri64v.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetBufferParameteri64v")
+        panic!("glGetBufferParameteri64v is not loaded");
       }
       temp_p
     };
@@ -3768,30 +3737,29 @@ pub mod functions {
       extern "system" fn(GLenum, GLenum, *mut GLint64),
     >(p)(target, pname, params);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetBufferParameteri64v({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetBufferParameteri64v({:?}, {:?}, {:?}): {}",
           target, pname, params, err
         );
       }
     }
     out
   }
-  /// See [glGetBufferParameteriv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetBufferParameteriv.xhtml)
+  /// See [glGetBufferParameter](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetBufferParameter.xhtml)
   ///
   /// Fallbacks: GetBufferParameterivARB
   #[inline]
-  pub unsafe fn GetBufferParameteriv(
+  pub unsafe fn glGetBufferParameteriv(
     target: GLenum,
     pname: GLenum,
     params: *mut GLint,
   ) {
-    trace!("GetBufferParameteriv");
+    trace!("glGetBufferParameteriv");
     let p: *mut c_void = {
       let temp_p = storage::GetBufferParameteriv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetBufferParameteriv")
+        panic!("glGetBufferParameteriv is not loaded");
       }
       temp_p
     };
@@ -3800,10 +3768,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLenum, *mut GLint),
     >(p)(target, pname, params);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetBufferParameteriv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetBufferParameteriv({:?}, {:?}, {:?}): {}",
           target, pname, params, err
         );
       }
@@ -3814,16 +3781,16 @@ pub mod functions {
   ///
   /// Fallbacks: GetBufferPointervARB, GetBufferPointervOES
   #[inline]
-  pub unsafe fn GetBufferPointerv(
+  pub unsafe fn glGetBufferPointerv(
     target: GLenum,
     pname: GLenum,
     params: *const *mut c_void,
   ) {
-    trace!("GetBufferPointerv");
+    trace!("glGetBufferPointerv");
     let p: *mut c_void = {
       let temp_p = storage::GetBufferPointerv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetBufferPointerv")
+        panic!("glGetBufferPointerv is not loaded");
       }
       temp_p
     };
@@ -3832,10 +3799,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLenum, *const *mut c_void),
     >(p)(target, pname, params);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetBufferPointerv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetBufferPointerv({:?}, {:?}, {:?}): {}",
           target, pname, params, err
         );
       }
@@ -3844,26 +3810,26 @@ pub mod functions {
   }
   /// See [glGetError](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetError.xhtml)
   #[inline]
-  pub unsafe fn GetError() -> GLenum {
-    trace!("GetError");
+  pub unsafe fn glGetError() -> GLenum {
+    trace!("glGetError");
     let p: *mut c_void = {
       let temp_p = storage::GetError.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetError")
+        panic!("glGetError is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn() -> GLenum>(p)();
     out
   }
-  /// See [glGetFloatv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetFloatv.xhtml)
+  /// See [glGet](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGet.xhtml)
   #[inline]
-  pub unsafe fn GetFloatv(pname: GLenum, data: *mut GLfloat) {
-    trace!("GetFloatv");
+  pub unsafe fn glGetFloatv(pname: GLenum, data: *mut GLfloat) {
+    trace!("glGetFloatv");
     let p: *mut c_void = {
       let temp_p = storage::GetFloatv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetFloatv")
+        panic!("glGetFloatv is not loaded");
       }
       temp_p
     };
@@ -3871,9 +3837,9 @@ pub mod functions {
       p,
     )(pname, data);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("GetFloatv({:?}, {:?}): {}", pname, data, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetFloatv({:?}, {:?}): {}", pname, data, err);
       }
     }
     out
@@ -3882,15 +3848,15 @@ pub mod functions {
   ///
   /// Fallbacks: GetFragDataLocationEXT
   #[inline]
-  pub unsafe fn GetFragDataLocation(
+  pub unsafe fn glGetFragDataLocation(
     program: GLuint,
     name: *const GLchar,
   ) -> GLint {
-    trace!("GetFragDataLocation");
+    trace!("glGetFragDataLocation");
     let p: *mut c_void = {
       let temp_p = storage::GetFragDataLocation.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetFragDataLocation")
+        panic!("glGetFragDataLocation is not loaded");
       }
       temp_p
     };
@@ -3899,9 +3865,9 @@ pub mod functions {
       extern "system" fn(GLuint, *const GLchar) -> GLint,
     >(p)(program, name);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("GetFragDataLocation({:?}, {:?}): {}", program, name, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetFragDataLocation({:?}, {:?}): {}", program, name, err);
       }
     }
     out
@@ -3910,18 +3876,18 @@ pub mod functions {
   ///
   /// Fallbacks: GetFramebufferAttachmentParameterivEXT
   #[inline]
-  pub unsafe fn GetFramebufferAttachmentParameteriv(
+  pub unsafe fn glGetFramebufferAttachmentParameteriv(
     target: GLenum,
     attachment: GLenum,
     pname: GLenum,
     params: *mut GLint,
   ) {
-    trace!("GetFramebufferAttachmentParameteriv");
+    trace!("glGetFramebufferAttachmentParameteriv");
     let p: *mut c_void = {
       let temp_p =
         storage::GetFramebufferAttachmentParameteriv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetFramebufferAttachmentParameteriv")
+        panic!("glGetFramebufferAttachmentParameteriv is not loaded");
       }
       temp_p
     };
@@ -3930,28 +3896,27 @@ pub mod functions {
       extern "system" fn(GLenum, GLenum, GLenum, *mut GLint),
     >(p)(target, attachment, pname, params);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetFramebufferAttachmentParameteriv({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetFramebufferAttachmentParameteriv({:?}, {:?}, {:?}, {:?}): {}",
           target, attachment, pname, params, err
         );
       }
     }
     out
   }
-  /// See [glGetInteger64i_v](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetInteger64i_v.xhtml)
+  /// See [glGet](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGet.xhtml)
   #[inline]
-  pub unsafe fn GetInteger64i_v(
+  pub unsafe fn glGetInteger64i_v(
     target: GLenum,
     index: GLuint,
     data: *mut GLint64,
   ) {
-    trace!("GetInteger64i_v");
+    trace!("glGetInteger64i_v");
     let p: *mut c_void = {
       let temp_p = storage::GetInteger64i_v.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetInteger64i_v")
+        panic!("glGetInteger64i_v is not loaded");
       }
       temp_p
     };
@@ -3960,8 +3925,8 @@ pub mod functions {
       extern "system" fn(GLenum, GLuint, *mut GLint64),
     >(p)(target, index, data);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
+      let err = glGetError();
+      if err != GL_NO_ERROR {
         error!(
           "GetInteger64i_v({:?}, {:?}, {:?}): {}",
           target, index, data, err
@@ -3970,16 +3935,16 @@ pub mod functions {
     }
     out
   }
-  /// See [glGetInteger64v](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetInteger64v.xhtml)
+  /// See [glGet](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGet.xhtml)
   ///
   /// Fallbacks: GetInteger64vAPPLE
   #[inline]
-  pub unsafe fn GetInteger64v(pname: GLenum, data: *mut GLint64) {
-    trace!("GetInteger64v");
+  pub unsafe fn glGetInteger64v(pname: GLenum, data: *mut GLint64) {
+    trace!("glGetInteger64v");
     let p: *mut c_void = {
       let temp_p = storage::GetInteger64v.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetInteger64v")
+        panic!("glGetInteger64v is not loaded");
       }
       temp_p
     };
@@ -3987,23 +3952,23 @@ pub mod functions {
       p,
     )(pname, data);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("GetInteger64v({:?}, {:?}): {}", pname, data, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetInteger64v({:?}, {:?}): {}", pname, data, err);
       }
     }
     out
   }
-  /// See [glGetIntegeri_v](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetIntegeri_v.xhtml)
+  /// See [glGetInteger](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetInteger.xhtml)
   ///
   /// Fallbacks: GetIntegerIndexedvEXT
   #[inline]
-  pub unsafe fn GetIntegeri_v(target: GLenum, index: GLuint, data: *mut GLint) {
-    trace!("GetIntegeri_v");
+  pub unsafe fn glGetIntegeri_v(target: GLenum, index: GLuint, data: *mut GLint) {
+    trace!("glGetIntegeri_v");
     let p: *mut c_void = {
       let temp_p = storage::GetIntegeri_v.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetIntegeri_v")
+        panic!("glGetIntegeri_v is not loaded");
       }
       temp_p
     };
@@ -4012,21 +3977,21 @@ pub mod functions {
       extern "system" fn(GLenum, GLuint, *mut GLint),
     >(p)(target, index, data);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
+      let err = glGetError();
+      if err != GL_NO_ERROR {
         error!("GetIntegeri_v({:?}, {:?}, {:?}): {}", target, index, data, err);
       }
     }
     out
   }
-  /// See [glGetIntegerv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetIntegerv.xhtml)
+  /// See [glGet](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGet.xhtml)
   #[inline]
-  pub unsafe fn GetIntegerv(pname: GLenum, data: *mut GLint) {
-    trace!("GetIntegerv");
+  pub unsafe fn glGetIntegerv(pname: GLenum, data: *mut GLint) {
+    trace!("glGetIntegerv");
     let p: *mut c_void = {
       let temp_p = storage::GetIntegerv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetIntegerv")
+        panic!("glGetIntegerv is not loaded");
       }
       temp_p
     };
@@ -4034,27 +3999,27 @@ pub mod functions {
       p,
     )(pname, data);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("GetIntegerv({:?}, {:?}): {}", pname, data, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetIntegerv({:?}, {:?}): {}", pname, data, err);
       }
     }
     out
   }
   /// See [glGetInternalformativ](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetInternalformativ.xhtml)
   #[inline]
-  pub unsafe fn GetInternalformativ(
+  pub unsafe fn glGetInternalformativ(
     target: GLenum,
     internalformat: GLenum,
     pname: GLenum,
     bufSize: GLsizei,
     params: *mut GLint,
   ) {
-    trace!("GetInternalformativ");
+    trace!("glGetInternalformativ");
     let p: *mut c_void = {
       let temp_p = storage::GetInternalformativ.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetInternalformativ")
+        panic!("glGetInternalformativ is not loaded");
       }
       temp_p
     };
@@ -4063,10 +4028,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLenum, GLenum, GLsizei, *mut GLint),
     >(p)(target, internalformat, pname, bufSize, params);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetInternalformativ({:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetInternalformativ({:?}, {:?}, {:?}, {:?}, {:?}): {}",
           target, internalformat, pname, bufSize, params, err
         );
       }
@@ -4077,18 +4041,18 @@ pub mod functions {
   ///
   /// Fallbacks: GetProgramBinaryOES
   #[inline]
-  pub unsafe fn GetProgramBinary(
+  pub unsafe fn glGetProgramBinary(
     program: GLuint,
     bufSize: GLsizei,
     length: *mut GLsizei,
     binaryFormat: *mut GLenum,
     binary: *mut c_void,
   ) {
-    trace!("GetProgramBinary");
+    trace!("glGetProgramBinary");
     let p: *mut c_void = {
       let temp_p = storage::GetProgramBinary.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetProgramBinary")
+        panic!("glGetProgramBinary is not loaded");
       }
       temp_p
     };
@@ -4103,10 +4067,9 @@ pub mod functions {
       ),
     >(p)(program, bufSize, length, binaryFormat, binary);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetProgramBinary({:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetProgramBinary({:?}, {:?}, {:?}, {:?}, {:?}): {}",
           program, bufSize, length, binaryFormat, binary, err
         );
       }
@@ -4115,17 +4078,17 @@ pub mod functions {
   }
   /// See [glGetProgramInfoLog](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetProgramInfoLog.xhtml)
   #[inline]
-  pub unsafe fn GetProgramInfoLog(
+  pub unsafe fn glGetProgramInfoLog(
     program: GLuint,
     bufSize: GLsizei,
     length: *mut GLsizei,
     infoLog: *mut GLchar,
   ) {
-    trace!("GetProgramInfoLog");
+    trace!("glGetProgramInfoLog");
     let p: *mut c_void = {
       let temp_p = storage::GetProgramInfoLog.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetProgramInfoLog")
+        panic!("glGetProgramInfoLog is not loaded");
       }
       temp_p
     };
@@ -4134,10 +4097,9 @@ pub mod functions {
       extern "system" fn(GLuint, GLsizei, *mut GLsizei, *mut GLchar),
     >(p)(program, bufSize, length, infoLog);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetProgramInfoLog({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetProgramInfoLog({:?}, {:?}, {:?}, {:?}): {}",
           program, bufSize, length, infoLog, err
         );
       }
@@ -4146,16 +4108,16 @@ pub mod functions {
   }
   /// See [glGetProgramiv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetProgramiv.xhtml)
   #[inline]
-  pub unsafe fn GetProgramiv(
+  pub unsafe fn glGetProgramiv(
     program: GLuint,
     pname: GLenum,
     params: *mut GLint,
   ) {
-    trace!("GetProgramiv");
+    trace!("glGetProgramiv");
     let p: *mut c_void = {
       let temp_p = storage::GetProgramiv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetProgramiv")
+        panic!("glGetProgramiv is not loaded");
       }
       temp_p
     };
@@ -4164,10 +4126,9 @@ pub mod functions {
       extern "system" fn(GLuint, GLenum, *mut GLint),
     >(p)(program, pname, params);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetProgramiv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetProgramiv({:?}, {:?}, {:?}): {}",
           program, pname, params, err
         );
       }
@@ -4178,16 +4139,16 @@ pub mod functions {
   ///
   /// Fallbacks: GetQueryObjectuivARB
   #[inline]
-  pub unsafe fn GetQueryObjectuiv(
+  pub unsafe fn glGetQueryObjectuiv(
     id: GLuint,
     pname: GLenum,
     params: *mut GLuint,
   ) {
-    trace!("GetQueryObjectuiv");
+    trace!("glGetQueryObjectuiv");
     let p: *mut c_void = {
       let temp_p = storage::GetQueryObjectuiv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetQueryObjectuiv")
+        panic!("glGetQueryObjectuiv is not loaded");
       }
       temp_p
     };
@@ -4196,10 +4157,9 @@ pub mod functions {
       extern "system" fn(GLuint, GLenum, *mut GLuint),
     >(p)(id, pname, params);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetQueryObjectuiv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetQueryObjectuiv({:?}, {:?}, {:?}): {}",
           id, pname, params, err
         );
       }
@@ -4210,12 +4170,12 @@ pub mod functions {
   ///
   /// Fallbacks: GetQueryivARB
   #[inline]
-  pub unsafe fn GetQueryiv(target: GLenum, pname: GLenum, params: *mut GLint) {
-    trace!("GetQueryiv");
+  pub unsafe fn glGetQueryiv(target: GLenum, pname: GLenum, params: *mut GLint) {
+    trace!("glGetQueryiv");
     let p: *mut c_void = {
       let temp_p = storage::GetQueryiv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetQueryiv")
+        panic!("glGetQueryiv is not loaded");
       }
       temp_p
     };
@@ -4224,9 +4184,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLenum, *mut GLint),
     >(p)(target, pname, params);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("GetQueryiv({:?}, {:?}, {:?}): {}", target, pname, params, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetQueryiv({:?}, {:?}, {:?}): {}", target, pname, params, err);
       }
     }
     out
@@ -4235,16 +4195,16 @@ pub mod functions {
   ///
   /// Fallbacks: GetRenderbufferParameterivEXT
   #[inline]
-  pub unsafe fn GetRenderbufferParameteriv(
+  pub unsafe fn glGetRenderbufferParameteriv(
     target: GLenum,
     pname: GLenum,
     params: *mut GLint,
   ) {
-    trace!("GetRenderbufferParameteriv");
+    trace!("glGetRenderbufferParameteriv");
     let p: *mut c_void = {
       let temp_p = storage::GetRenderbufferParameteriv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetRenderbufferParameteriv")
+        panic!("glGetRenderbufferParameteriv is not loaded");
       }
       temp_p
     };
@@ -4253,28 +4213,27 @@ pub mod functions {
       extern "system" fn(GLenum, GLenum, *mut GLint),
     >(p)(target, pname, params);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetRenderbufferParameteriv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetRenderbufferParameteriv({:?}, {:?}, {:?}): {}",
           target, pname, params, err
         );
       }
     }
     out
   }
-  /// See [glGetSamplerParameterfv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetSamplerParameterfv.xhtml)
+  /// See [glGetSamplerParameter](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetSamplerParameter.xhtml)
   #[inline]
-  pub unsafe fn GetSamplerParameterfv(
+  pub unsafe fn glGetSamplerParameterfv(
     sampler: GLuint,
     pname: GLenum,
     params: *mut GLfloat,
   ) {
-    trace!("GetSamplerParameterfv");
+    trace!("glGetSamplerParameterfv");
     let p: *mut c_void = {
       let temp_p = storage::GetSamplerParameterfv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetSamplerParameterfv")
+        panic!("glGetSamplerParameterfv is not loaded");
       }
       temp_p
     };
@@ -4283,28 +4242,27 @@ pub mod functions {
       extern "system" fn(GLuint, GLenum, *mut GLfloat),
     >(p)(sampler, pname, params);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetSamplerParameterfv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetSamplerParameterfv({:?}, {:?}, {:?}): {}",
           sampler, pname, params, err
         );
       }
     }
     out
   }
-  /// See [glGetSamplerParameteriv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetSamplerParameteriv.xhtml)
+  /// See [glGetSamplerParameter](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetSamplerParameter.xhtml)
   #[inline]
-  pub unsafe fn GetSamplerParameteriv(
+  pub unsafe fn glGetSamplerParameteriv(
     sampler: GLuint,
     pname: GLenum,
     params: *mut GLint,
   ) {
-    trace!("GetSamplerParameteriv");
+    trace!("glGetSamplerParameteriv");
     let p: *mut c_void = {
       let temp_p = storage::GetSamplerParameteriv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetSamplerParameteriv")
+        panic!("glGetSamplerParameteriv is not loaded");
       }
       temp_p
     };
@@ -4313,10 +4271,9 @@ pub mod functions {
       extern "system" fn(GLuint, GLenum, *mut GLint),
     >(p)(sampler, pname, params);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetSamplerParameteriv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetSamplerParameteriv({:?}, {:?}, {:?}): {}",
           sampler, pname, params, err
         );
       }
@@ -4325,17 +4282,17 @@ pub mod functions {
   }
   /// See [glGetShaderInfoLog](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetShaderInfoLog.xhtml)
   #[inline]
-  pub unsafe fn GetShaderInfoLog(
+  pub unsafe fn glGetShaderInfoLog(
     shader: GLuint,
     bufSize: GLsizei,
     length: *mut GLsizei,
     infoLog: *mut GLchar,
   ) {
-    trace!("GetShaderInfoLog");
+    trace!("glGetShaderInfoLog");
     let p: *mut c_void = {
       let temp_p = storage::GetShaderInfoLog.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetShaderInfoLog")
+        panic!("glGetShaderInfoLog is not loaded");
       }
       temp_p
     };
@@ -4344,10 +4301,9 @@ pub mod functions {
       extern "system" fn(GLuint, GLsizei, *mut GLsizei, *mut GLchar),
     >(p)(shader, bufSize, length, infoLog);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetShaderInfoLog({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetShaderInfoLog({:?}, {:?}, {:?}, {:?}): {}",
           shader, bufSize, length, infoLog, err
         );
       }
@@ -4356,17 +4312,17 @@ pub mod functions {
   }
   /// See [glGetShaderPrecisionFormat](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetShaderPrecisionFormat.xhtml)
   #[inline]
-  pub unsafe fn GetShaderPrecisionFormat(
+  pub unsafe fn glGetShaderPrecisionFormat(
     shadertype: GLenum,
     precisiontype: GLenum,
     range: *mut GLint,
     precision: *mut GLint,
   ) {
-    trace!("GetShaderPrecisionFormat");
+    trace!("glGetShaderPrecisionFormat");
     let p: *mut c_void = {
       let temp_p = storage::GetShaderPrecisionFormat.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetShaderPrecisionFormat")
+        panic!("glGetShaderPrecisionFormat is not loaded");
       }
       temp_p
     };
@@ -4375,10 +4331,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLenum, *mut GLint, *mut GLint),
     >(p)(shadertype, precisiontype, range, precision);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetShaderPrecisionFormat({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetShaderPrecisionFormat({:?}, {:?}, {:?}, {:?}): {}",
           shadertype, precisiontype, range, precision, err
         );
       }
@@ -4389,17 +4344,17 @@ pub mod functions {
   ///
   /// Fallbacks: GetShaderSourceARB
   #[inline]
-  pub unsafe fn GetShaderSource(
+  pub unsafe fn glGetShaderSource(
     shader: GLuint,
     bufSize: GLsizei,
     length: *mut GLsizei,
     source: *mut GLchar,
   ) {
-    trace!("GetShaderSource");
+    trace!("glGetShaderSource");
     let p: *mut c_void = {
       let temp_p = storage::GetShaderSource.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetShaderSource")
+        panic!("glGetShaderSource is not loaded");
       }
       temp_p
     };
@@ -4408,10 +4363,9 @@ pub mod functions {
       extern "system" fn(GLuint, GLsizei, *mut GLsizei, *mut GLchar),
     >(p)(shader, bufSize, length, source);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetShaderSource({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetShaderSource({:?}, {:?}, {:?}, {:?}): {}",
           shader, bufSize, length, source, err
         );
       }
@@ -4420,12 +4374,12 @@ pub mod functions {
   }
   /// See [glGetShaderiv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetShaderiv.xhtml)
   #[inline]
-  pub unsafe fn GetShaderiv(shader: GLuint, pname: GLenum, params: *mut GLint) {
-    trace!("GetShaderiv");
+  pub unsafe fn glGetShaderiv(shader: GLuint, pname: GLenum, params: *mut GLint) {
+    trace!("glGetShaderiv");
     let p: *mut c_void = {
       let temp_p = storage::GetShaderiv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetShaderiv")
+        panic!("glGetShaderiv is not loaded");
       }
       temp_p
     };
@@ -4434,21 +4388,21 @@ pub mod functions {
       extern "system" fn(GLuint, GLenum, *mut GLint),
     >(p)(shader, pname, params);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("GetShaderiv({:?}, {:?}, {:?}): {}", shader, pname, params, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetShaderiv({:?}, {:?}, {:?}): {}", shader, pname, params, err);
       }
     }
     out
   }
   /// See [glGetString](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetString.xhtml)
   #[inline]
-  pub unsafe fn GetString(name: GLenum) -> *const GLubyte {
-    trace!("GetString");
+  pub unsafe fn glGetString(name: GLenum) -> *const GLubyte {
+    trace!("glGetString");
     let p: *mut c_void = {
       let temp_p = storage::GetString.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetString")
+        panic!("glGetString is not loaded");
       }
       temp_p
     };
@@ -4457,21 +4411,21 @@ pub mod functions {
       extern "system" fn(GLenum) -> *const GLubyte,
     >(p)(name);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("GetString({:?}): {}", name, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetString({:?}): {}", name, err);
       }
     }
     out
   }
   /// See [glGetStringi](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetStringi.xhtml)
   #[inline]
-  pub unsafe fn GetStringi(name: GLenum, index: GLuint) -> *const GLubyte {
-    trace!("GetStringi");
+  pub unsafe fn glGetStringi(name: GLenum, index: GLuint) -> *const GLubyte {
+    trace!("glGetStringi");
     let p: *mut c_void = {
       let temp_p = storage::GetStringi.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetStringi")
+        panic!("glGetStringi is not loaded");
       }
       temp_p
     };
@@ -4480,9 +4434,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLuint) -> *const GLubyte,
     >(p)(name, index);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("GetStringi({:?}, {:?}): {}", name, index, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetStringi({:?}, {:?}): {}", name, index, err);
       }
     }
     out
@@ -4491,18 +4445,18 @@ pub mod functions {
   ///
   /// Fallbacks: GetSyncivAPPLE
   #[inline]
-  pub unsafe fn GetSynciv(
+  pub unsafe fn glGetSynciv(
     sync: GLsync,
     pname: GLenum,
     bufSize: GLsizei,
     length: *mut GLsizei,
     values: *mut GLint,
   ) {
-    trace!("GetSynciv");
+    trace!("glGetSynciv");
     let p: *mut c_void = {
       let temp_p = storage::GetSynciv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetSynciv")
+        panic!("glGetSynciv is not loaded");
       }
       temp_p
     };
@@ -4511,28 +4465,27 @@ pub mod functions {
       extern "system" fn(GLsync, GLenum, GLsizei, *mut GLsizei, *mut GLint),
     >(p)(sync, pname, bufSize, length, values);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetSynciv({:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetSynciv({:?}, {:?}, {:?}, {:?}, {:?}): {}",
           sync, pname, bufSize, length, values, err
         );
       }
     }
     out
   }
-  /// See [glGetTexParameterfv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetTexParameterfv.xhtml)
+  /// See [glGetTexParameter](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetTexParameter.xhtml)
   #[inline]
-  pub unsafe fn GetTexParameterfv(
+  pub unsafe fn glGetTexParameterfv(
     target: GLenum,
     pname: GLenum,
     params: *mut GLfloat,
   ) {
-    trace!("GetTexParameterfv");
+    trace!("glGetTexParameterfv");
     let p: *mut c_void = {
       let temp_p = storage::GetTexParameterfv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetTexParameterfv")
+        panic!("glGetTexParameterfv is not loaded");
       }
       temp_p
     };
@@ -4541,28 +4494,27 @@ pub mod functions {
       extern "system" fn(GLenum, GLenum, *mut GLfloat),
     >(p)(target, pname, params);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetTexParameterfv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetTexParameterfv({:?}, {:?}, {:?}): {}",
           target, pname, params, err
         );
       }
     }
     out
   }
-  /// See [glGetTexParameteriv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetTexParameteriv.xhtml)
+  /// See [glGetTexParameter](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetTexParameter.xhtml)
   #[inline]
-  pub unsafe fn GetTexParameteriv(
+  pub unsafe fn glGetTexParameteriv(
     target: GLenum,
     pname: GLenum,
     params: *mut GLint,
   ) {
-    trace!("GetTexParameteriv");
+    trace!("glGetTexParameteriv");
     let p: *mut c_void = {
       let temp_p = storage::GetTexParameteriv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetTexParameteriv")
+        panic!("glGetTexParameteriv is not loaded");
       }
       temp_p
     };
@@ -4571,10 +4523,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLenum, *mut GLint),
     >(p)(target, pname, params);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetTexParameteriv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetTexParameteriv({:?}, {:?}, {:?}): {}",
           target, pname, params, err
         );
       }
@@ -4585,7 +4536,7 @@ pub mod functions {
   ///
   /// Fallbacks: GetTransformFeedbackVaryingEXT
   #[inline]
-  pub unsafe fn GetTransformFeedbackVarying(
+  pub unsafe fn glGetTransformFeedbackVarying(
     program: GLuint,
     index: GLuint,
     bufSize: GLsizei,
@@ -4594,11 +4545,11 @@ pub mod functions {
     type_: *mut GLenum,
     name: *mut GLchar,
   ) {
-    trace!("GetTransformFeedbackVarying");
+    trace!("glGetTransformFeedbackVarying");
     let p: *mut c_void = {
       let temp_p = storage::GetTransformFeedbackVarying.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetTransformFeedbackVarying")
+        panic!("glGetTransformFeedbackVarying is not loaded");
       }
       temp_p
     };
@@ -4615,24 +4566,24 @@ pub mod functions {
       ),
     >(p)(program, index, bufSize, length, size, type_, name);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("GetTransformFeedbackVarying({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", program, index, bufSize, length, size, type_, name, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetTransformFeedbackVarying({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", program, index, bufSize, length, size, type_, name, err);
       }
     }
     out
   }
   /// See [glGetUniformBlockIndex](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetUniformBlockIndex.xhtml)
   #[inline]
-  pub unsafe fn GetUniformBlockIndex(
+  pub unsafe fn glGetUniformBlockIndex(
     program: GLuint,
     uniformBlockName: *const GLchar,
   ) -> GLuint {
-    trace!("GetUniformBlockIndex");
+    trace!("glGetUniformBlockIndex");
     let p: *mut c_void = {
       let temp_p = storage::GetUniformBlockIndex.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetUniformBlockIndex")
+        panic!("glGetUniformBlockIndex is not loaded");
       }
       temp_p
     };
@@ -4641,10 +4592,9 @@ pub mod functions {
       extern "system" fn(GLuint, *const GLchar) -> GLuint,
     >(p)(program, uniformBlockName);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetUniformBlockIndex({:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetUniformBlockIndex({:?}, {:?}): {}",
           program, uniformBlockName, err
         );
       }
@@ -4653,17 +4603,17 @@ pub mod functions {
   }
   /// See [glGetUniformIndices](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetUniformIndices.xhtml)
   #[inline]
-  pub unsafe fn GetUniformIndices(
+  pub unsafe fn glGetUniformIndices(
     program: GLuint,
     uniformCount: GLsizei,
     uniformNames: *const *const GLchar,
     uniformIndices: *mut GLuint,
   ) {
-    trace!("GetUniformIndices");
+    trace!("glGetUniformIndices");
     let p: *mut c_void = {
       let temp_p = storage::GetUniformIndices.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetUniformIndices")
+        panic!("glGetUniformIndices is not loaded");
       }
       temp_p
     };
@@ -4672,10 +4622,9 @@ pub mod functions {
       extern "system" fn(GLuint, GLsizei, *const *const GLchar, *mut GLuint),
     >(p)(program, uniformCount, uniformNames, uniformIndices);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetUniformIndices({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetUniformIndices({:?}, {:?}, {:?}, {:?}): {}",
           program, uniformCount, uniformNames, uniformIndices, err
         );
       }
@@ -4686,15 +4635,15 @@ pub mod functions {
   ///
   /// Fallbacks: GetUniformLocationARB
   #[inline]
-  pub unsafe fn GetUniformLocation(
+  pub unsafe fn glGetUniformLocation(
     program: GLuint,
     name: *const GLchar,
   ) -> GLint {
-    trace!("GetUniformLocation");
+    trace!("glGetUniformLocation");
     let p: *mut c_void = {
       let temp_p = storage::GetUniformLocation.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetUniformLocation")
+        panic!("glGetUniformLocation is not loaded");
       }
       temp_p
     };
@@ -4703,27 +4652,27 @@ pub mod functions {
       extern "system" fn(GLuint, *const GLchar) -> GLint,
     >(p)(program, name);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("GetUniformLocation({:?}, {:?}): {}", program, name, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetUniformLocation({:?}, {:?}): {}", program, name, err);
       }
     }
     out
   }
-  /// See [glGetUniformfv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetUniformfv.xhtml)
+  /// See [glGetUniform](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetUniform.xhtml)
   ///
   /// Fallbacks: GetUniformfvARB
   #[inline]
-  pub unsafe fn GetUniformfv(
+  pub unsafe fn glGetUniformfv(
     program: GLuint,
     location: GLint,
     params: *mut GLfloat,
   ) {
-    trace!("GetUniformfv");
+    trace!("glGetUniformfv");
     let p: *mut c_void = {
       let temp_p = storage::GetUniformfv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetUniformfv")
+        panic!("glGetUniformfv is not loaded");
       }
       temp_p
     };
@@ -4732,30 +4681,29 @@ pub mod functions {
       extern "system" fn(GLuint, GLint, *mut GLfloat),
     >(p)(program, location, params);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetUniformfv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetUniformfv({:?}, {:?}, {:?}): {}",
           program, location, params, err
         );
       }
     }
     out
   }
-  /// See [glGetUniformiv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetUniformiv.xhtml)
+  /// See [glGetUniform](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetUniform.xhtml)
   ///
   /// Fallbacks: GetUniformivARB
   #[inline]
-  pub unsafe fn GetUniformiv(
+  pub unsafe fn glGetUniformiv(
     program: GLuint,
     location: GLint,
     params: *mut GLint,
   ) {
-    trace!("GetUniformiv");
+    trace!("glGetUniformiv");
     let p: *mut c_void = {
       let temp_p = storage::GetUniformiv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetUniformiv")
+        panic!("glGetUniformiv is not loaded");
       }
       temp_p
     };
@@ -4764,30 +4712,29 @@ pub mod functions {
       extern "system" fn(GLuint, GLint, *mut GLint),
     >(p)(program, location, params);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetUniformiv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetUniformiv({:?}, {:?}, {:?}): {}",
           program, location, params, err
         );
       }
     }
     out
   }
-  /// See [glGetUniformuiv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetUniformuiv.xhtml)
+  /// See [glGetUniform](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetUniform.xhtml)
   ///
   /// Fallbacks: GetUniformuivEXT
   #[inline]
-  pub unsafe fn GetUniformuiv(
+  pub unsafe fn glGetUniformuiv(
     program: GLuint,
     location: GLint,
     params: *mut GLuint,
   ) {
-    trace!("GetUniformuiv");
+    trace!("glGetUniformuiv");
     let p: *mut c_void = {
       let temp_p = storage::GetUniformuiv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetUniformuiv")
+        panic!("glGetUniformuiv is not loaded");
       }
       temp_p
     };
@@ -4796,30 +4743,29 @@ pub mod functions {
       extern "system" fn(GLuint, GLint, *mut GLuint),
     >(p)(program, location, params);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetUniformuiv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetUniformuiv({:?}, {:?}, {:?}): {}",
           program, location, params, err
         );
       }
     }
     out
   }
-  /// See [glGetVertexAttribIiv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetVertexAttribIiv.xhtml)
+  /// See [glGetVertexAttrib](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetVertexAttrib.xhtml)
   ///
   /// Fallbacks: GetVertexAttribIivEXT
   #[inline]
-  pub unsafe fn GetVertexAttribIiv(
+  pub unsafe fn glGetVertexAttribIiv(
     index: GLuint,
     pname: GLenum,
     params: *mut GLint,
   ) {
-    trace!("GetVertexAttribIiv");
+    trace!("glGetVertexAttribIiv");
     let p: *mut c_void = {
       let temp_p = storage::GetVertexAttribIiv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetVertexAttribIiv")
+        panic!("glGetVertexAttribIiv is not loaded");
       }
       temp_p
     };
@@ -4828,30 +4774,29 @@ pub mod functions {
       extern "system" fn(GLuint, GLenum, *mut GLint),
     >(p)(index, pname, params);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetVertexAttribIiv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetVertexAttribIiv({:?}, {:?}, {:?}): {}",
           index, pname, params, err
         );
       }
     }
     out
   }
-  /// See [glGetVertexAttribIuiv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetVertexAttribIuiv.xhtml)
+  /// See [glGetVertexAttrib](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetVertexAttrib.xhtml)
   ///
   /// Fallbacks: GetVertexAttribIuivEXT
   #[inline]
-  pub unsafe fn GetVertexAttribIuiv(
+  pub unsafe fn glGetVertexAttribIuiv(
     index: GLuint,
     pname: GLenum,
     params: *mut GLuint,
   ) {
-    trace!("GetVertexAttribIuiv");
+    trace!("glGetVertexAttribIuiv");
     let p: *mut c_void = {
       let temp_p = storage::GetVertexAttribIuiv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetVertexAttribIuiv")
+        panic!("glGetVertexAttribIuiv is not loaded");
       }
       temp_p
     };
@@ -4860,10 +4805,9 @@ pub mod functions {
       extern "system" fn(GLuint, GLenum, *mut GLuint),
     >(p)(index, pname, params);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetVertexAttribIuiv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetVertexAttribIuiv({:?}, {:?}, {:?}): {}",
           index, pname, params, err
         );
       }
@@ -4874,16 +4818,16 @@ pub mod functions {
   ///
   /// Fallbacks: GetVertexAttribPointervARB, GetVertexAttribPointervNV
   #[inline]
-  pub unsafe fn GetVertexAttribPointerv(
+  pub unsafe fn glGetVertexAttribPointerv(
     index: GLuint,
     pname: GLenum,
     pointer: *const *mut c_void,
   ) {
-    trace!("GetVertexAttribPointerv");
+    trace!("glGetVertexAttribPointerv");
     let p: *mut c_void = {
       let temp_p = storage::GetVertexAttribPointerv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetVertexAttribPointerv")
+        panic!("glGetVertexAttribPointerv is not loaded");
       }
       temp_p
     };
@@ -4892,30 +4836,29 @@ pub mod functions {
       extern "system" fn(GLuint, GLenum, *const *mut c_void),
     >(p)(index, pname, pointer);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetVertexAttribPointerv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetVertexAttribPointerv({:?}, {:?}, {:?}): {}",
           index, pname, pointer, err
         );
       }
     }
     out
   }
-  /// See [glGetVertexAttribfv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetVertexAttribfv.xhtml)
+  /// See [glGetVertexAttrib](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetVertexAttrib.xhtml)
   ///
   /// Fallbacks: GetVertexAttribfvARB, GetVertexAttribfvNV
   #[inline]
-  pub unsafe fn GetVertexAttribfv(
+  pub unsafe fn glGetVertexAttribfv(
     index: GLuint,
     pname: GLenum,
     params: *mut GLfloat,
   ) {
-    trace!("GetVertexAttribfv");
+    trace!("glGetVertexAttribfv");
     let p: *mut c_void = {
       let temp_p = storage::GetVertexAttribfv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetVertexAttribfv")
+        panic!("glGetVertexAttribfv is not loaded");
       }
       temp_p
     };
@@ -4924,30 +4867,29 @@ pub mod functions {
       extern "system" fn(GLuint, GLenum, *mut GLfloat),
     >(p)(index, pname, params);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetVertexAttribfv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetVertexAttribfv({:?}, {:?}, {:?}): {}",
           index, pname, params, err
         );
       }
     }
     out
   }
-  /// See [glGetVertexAttribiv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetVertexAttribiv.xhtml)
+  /// See [glGetVertexAttrib](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glGetVertexAttrib.xhtml)
   ///
   /// Fallbacks: GetVertexAttribivARB, GetVertexAttribivNV
   #[inline]
-  pub unsafe fn GetVertexAttribiv(
+  pub unsafe fn glGetVertexAttribiv(
     index: GLuint,
     pname: GLenum,
     params: *mut GLint,
   ) {
-    trace!("GetVertexAttribiv");
+    trace!("glGetVertexAttribiv");
     let p: *mut c_void = {
       let temp_p = storage::GetVertexAttribiv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("GetVertexAttribiv")
+        panic!("glGetVertexAttribiv is not loaded");
       }
       temp_p
     };
@@ -4956,10 +4898,9 @@ pub mod functions {
       extern "system" fn(GLuint, GLenum, *mut GLint),
     >(p)(index, pname, params);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "GetVertexAttribiv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glGetVertexAttribiv({:?}, {:?}, {:?}): {}",
           index, pname, params, err
         );
       }
@@ -4968,12 +4909,12 @@ pub mod functions {
   }
   /// See [glHint](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glHint.xhtml)
   #[inline]
-  pub unsafe fn Hint(target: GLenum, mode: GLenum) {
-    trace!("Hint");
+  pub unsafe fn glHint(target: GLenum, mode: GLenum) {
+    trace!("glHint");
     let p: *mut c_void = {
       let temp_p = storage::Hint.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Hint")
+        panic!("glHint is not loaded");
       }
       temp_p
     };
@@ -4981,25 +4922,25 @@ pub mod functions {
       target, mode,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("Hint({:?}, {:?}): {}", target, mode, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glHint({:?}, {:?}): {}", target, mode, err);
       }
     }
     out
   }
   /// See [glInvalidateFramebuffer](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glInvalidateFramebuffer.xhtml)
   #[inline]
-  pub unsafe fn InvalidateFramebuffer(
+  pub unsafe fn glInvalidateFramebuffer(
     target: GLenum,
     numAttachments: GLsizei,
     attachments: *const GLenum,
   ) {
-    trace!("InvalidateFramebuffer");
+    trace!("glInvalidateFramebuffer");
     let p: *mut c_void = {
       let temp_p = storage::InvalidateFramebuffer.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("InvalidateFramebuffer")
+        panic!("glInvalidateFramebuffer is not loaded");
       }
       temp_p
     };
@@ -5008,10 +4949,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLsizei, *const GLenum),
     >(p)(target, numAttachments, attachments);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "InvalidateFramebuffer({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glInvalidateFramebuffer({:?}, {:?}, {:?}): {}",
           target, numAttachments, attachments, err
         );
       }
@@ -5020,7 +4960,7 @@ pub mod functions {
   }
   /// See [glInvalidateSubFramebuffer](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glInvalidateSubFramebuffer.xhtml)
   #[inline]
-  pub unsafe fn InvalidateSubFramebuffer(
+  pub unsafe fn glInvalidateSubFramebuffer(
     target: GLenum,
     numAttachments: GLsizei,
     attachments: *const GLenum,
@@ -5029,11 +4969,11 @@ pub mod functions {
     width: GLsizei,
     height: GLsizei,
   ) {
-    trace!("InvalidateSubFramebuffer");
+    trace!("glInvalidateSubFramebuffer");
     let p: *mut c_void = {
       let temp_p = storage::InvalidateSubFramebuffer.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("InvalidateSubFramebuffer")
+        panic!("glInvalidateSubFramebuffer is not loaded");
       }
       temp_p
     };
@@ -5050,9 +4990,9 @@ pub mod functions {
       ),
     >(p)(target, numAttachments, attachments, x, y, width, height);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("InvalidateSubFramebuffer({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", target, numAttachments, attachments, x, y, width, height, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glInvalidateSubFramebuffer({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", target, numAttachments, attachments, x, y, width, height, err);
       }
     }
     out
@@ -5061,12 +5001,12 @@ pub mod functions {
   ///
   /// Fallbacks: IsBufferARB
   #[inline]
-  pub unsafe fn IsBuffer(buffer: GLuint) -> GLboolean {
-    trace!("IsBuffer");
+  pub unsafe fn glIsBuffer(buffer: GLuint) -> GLboolean {
+    trace!("glIsBuffer");
     let p: *mut c_void = {
       let temp_p = storage::IsBuffer.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("IsBuffer")
+        panic!("glIsBuffer is not loaded");
       }
       temp_p
     };
@@ -5074,30 +5014,30 @@ pub mod functions {
       p,
     )(buffer);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("IsBuffer({:?}): {}", buffer, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glIsBuffer({:?}): {}", buffer, err);
       }
     }
     out
   }
   /// See [glIsEnabled](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glIsEnabled.xhtml)
   #[inline]
-  pub unsafe fn IsEnabled(cap: GLenum) -> GLboolean {
-    trace!("IsEnabled");
+  pub unsafe fn glIsEnabled(cap: GLenum) -> GLboolean {
+    trace!("glIsEnabled");
     let p: *mut c_void = {
       let temp_p = storage::IsEnabled.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("IsEnabled")
+        panic!("glIsEnabled is not loaded");
       }
       temp_p
     };
     let out =
       transmute::<*mut c_void, extern "system" fn(GLenum) -> GLboolean>(p)(cap);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("IsEnabled({:?}): {}", cap, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glIsEnabled({:?}): {}", cap, err);
       }
     }
     out
@@ -5106,12 +5046,12 @@ pub mod functions {
   ///
   /// Fallbacks: IsFramebufferEXT
   #[inline]
-  pub unsafe fn IsFramebuffer(framebuffer: GLuint) -> GLboolean {
-    trace!("IsFramebuffer");
+  pub unsafe fn glIsFramebuffer(framebuffer: GLuint) -> GLboolean {
+    trace!("glIsFramebuffer");
     let p: *mut c_void = {
       let temp_p = storage::IsFramebuffer.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("IsFramebuffer")
+        panic!("glIsFramebuffer is not loaded");
       }
       temp_p
     };
@@ -5119,21 +5059,21 @@ pub mod functions {
       p,
     )(framebuffer);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("IsFramebuffer({:?}): {}", framebuffer, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glIsFramebuffer({:?}): {}", framebuffer, err);
       }
     }
     out
   }
   /// See [glIsProgram](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glIsProgram.xhtml)
   #[inline]
-  pub unsafe fn IsProgram(program: GLuint) -> GLboolean {
-    trace!("IsProgram");
+  pub unsafe fn glIsProgram(program: GLuint) -> GLboolean {
+    trace!("glIsProgram");
     let p: *mut c_void = {
       let temp_p = storage::IsProgram.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("IsProgram")
+        panic!("glIsProgram is not loaded");
       }
       temp_p
     };
@@ -5141,9 +5081,9 @@ pub mod functions {
       p,
     )(program);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("IsProgram({:?}): {}", program, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glIsProgram({:?}): {}", program, err);
       }
     }
     out
@@ -5152,21 +5092,21 @@ pub mod functions {
   ///
   /// Fallbacks: IsQueryARB
   #[inline]
-  pub unsafe fn IsQuery(id: GLuint) -> GLboolean {
-    trace!("IsQuery");
+  pub unsafe fn glIsQuery(id: GLuint) -> GLboolean {
+    trace!("glIsQuery");
     let p: *mut c_void = {
       let temp_p = storage::IsQuery.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("IsQuery")
+        panic!("glIsQuery is not loaded");
       }
       temp_p
     };
     let out =
       transmute::<*mut c_void, extern "system" fn(GLuint) -> GLboolean>(p)(id);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("IsQuery({:?}): {}", id, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glIsQuery({:?}): {}", id, err);
       }
     }
     out
@@ -5175,12 +5115,12 @@ pub mod functions {
   ///
   /// Fallbacks: IsRenderbufferEXT
   #[inline]
-  pub unsafe fn IsRenderbuffer(renderbuffer: GLuint) -> GLboolean {
-    trace!("IsRenderbuffer");
+  pub unsafe fn glIsRenderbuffer(renderbuffer: GLuint) -> GLboolean {
+    trace!("glIsRenderbuffer");
     let p: *mut c_void = {
       let temp_p = storage::IsRenderbuffer.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("IsRenderbuffer")
+        panic!("glIsRenderbuffer is not loaded");
       }
       temp_p
     };
@@ -5188,21 +5128,21 @@ pub mod functions {
       p,
     )(renderbuffer);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("IsRenderbuffer({:?}): {}", renderbuffer, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glIsRenderbuffer({:?}): {}", renderbuffer, err);
       }
     }
     out
   }
   /// See [glIsSampler](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glIsSampler.xhtml)
   #[inline]
-  pub unsafe fn IsSampler(sampler: GLuint) -> GLboolean {
-    trace!("IsSampler");
+  pub unsafe fn glIsSampler(sampler: GLuint) -> GLboolean {
+    trace!("glIsSampler");
     let p: *mut c_void = {
       let temp_p = storage::IsSampler.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("IsSampler")
+        panic!("glIsSampler is not loaded");
       }
       temp_p
     };
@@ -5210,21 +5150,21 @@ pub mod functions {
       p,
     )(sampler);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("IsSampler({:?}): {}", sampler, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glIsSampler({:?}): {}", sampler, err);
       }
     }
     out
   }
   /// See [glIsShader](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glIsShader.xhtml)
   #[inline]
-  pub unsafe fn IsShader(shader: GLuint) -> GLboolean {
-    trace!("IsShader");
+  pub unsafe fn glIsShader(shader: GLuint) -> GLboolean {
+    trace!("glIsShader");
     let p: *mut c_void = {
       let temp_p = storage::IsShader.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("IsShader")
+        panic!("glIsShader is not loaded");
       }
       temp_p
     };
@@ -5232,9 +5172,9 @@ pub mod functions {
       p,
     )(shader);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("IsShader({:?}): {}", shader, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glIsShader({:?}): {}", shader, err);
       }
     }
     out
@@ -5243,12 +5183,12 @@ pub mod functions {
   ///
   /// Fallbacks: IsSyncAPPLE
   #[inline]
-  pub unsafe fn IsSync(sync: GLsync) -> GLboolean {
-    trace!("IsSync");
+  pub unsafe fn glIsSync(sync: GLsync) -> GLboolean {
+    trace!("glIsSync");
     let p: *mut c_void = {
       let temp_p = storage::IsSync.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("IsSync")
+        panic!("glIsSync is not loaded");
       }
       temp_p
     };
@@ -5256,21 +5196,21 @@ pub mod functions {
       p,
     )(sync);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("IsSync({:?}): {}", sync, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glIsSync({:?}): {}", sync, err);
       }
     }
     out
   }
   /// See [glIsTexture](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glIsTexture.xhtml)
   #[inline]
-  pub unsafe fn IsTexture(texture: GLuint) -> GLboolean {
-    trace!("IsTexture");
+  pub unsafe fn glIsTexture(texture: GLuint) -> GLboolean {
+    trace!("glIsTexture");
     let p: *mut c_void = {
       let temp_p = storage::IsTexture.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("IsTexture")
+        panic!("glIsTexture is not loaded");
       }
       temp_p
     };
@@ -5278,9 +5218,9 @@ pub mod functions {
       p,
     )(texture);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("IsTexture({:?}): {}", texture, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glIsTexture({:?}): {}", texture, err);
       }
     }
     out
@@ -5289,21 +5229,21 @@ pub mod functions {
   ///
   /// Fallbacks: IsTransformFeedbackNV
   #[inline]
-  pub unsafe fn IsTransformFeedback(id: GLuint) -> GLboolean {
-    trace!("IsTransformFeedback");
+  pub unsafe fn glIsTransformFeedback(id: GLuint) -> GLboolean {
+    trace!("glIsTransformFeedback");
     let p: *mut c_void = {
       let temp_p = storage::IsTransformFeedback.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("IsTransformFeedback")
+        panic!("glIsTransformFeedback is not loaded");
       }
       temp_p
     };
     let out =
       transmute::<*mut c_void, extern "system" fn(GLuint) -> GLboolean>(p)(id);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("IsTransformFeedback({:?}): {}", id, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glIsTransformFeedback({:?}): {}", id, err);
       }
     }
     out
@@ -5312,12 +5252,12 @@ pub mod functions {
   ///
   /// Fallbacks: IsVertexArrayAPPLE, IsVertexArrayOES
   #[inline]
-  pub unsafe fn IsVertexArray(array: GLuint) -> GLboolean {
-    trace!("IsVertexArray");
+  pub unsafe fn glIsVertexArray(array: GLuint) -> GLboolean {
+    trace!("glIsVertexArray");
     let p: *mut c_void = {
       let temp_p = storage::IsVertexArray.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("IsVertexArray")
+        panic!("glIsVertexArray is not loaded");
       }
       temp_p
     };
@@ -5325,29 +5265,29 @@ pub mod functions {
       p,
     )(array);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("IsVertexArray({:?}): {}", array, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glIsVertexArray({:?}): {}", array, err);
       }
     }
     out
   }
   /// See [glLineWidth](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glLineWidth.xhtml)
   #[inline]
-  pub unsafe fn LineWidth(width: GLfloat) {
-    trace!("LineWidth");
+  pub unsafe fn glLineWidth(width: GLfloat) {
+    trace!("glLineWidth");
     let p: *mut c_void = {
       let temp_p = storage::LineWidth.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("LineWidth")
+        panic!("glLineWidth is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLfloat)>(p)(width);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("LineWidth({:?}): {}", width, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glLineWidth({:?}): {}", width, err);
       }
     }
     out
@@ -5356,20 +5296,20 @@ pub mod functions {
   ///
   /// Fallbacks: LinkProgramARB
   #[inline]
-  pub unsafe fn LinkProgram(program: GLuint) {
-    trace!("LinkProgram");
+  pub unsafe fn glLinkProgram(program: GLuint) {
+    trace!("glLinkProgram");
     let p: *mut c_void = {
       let temp_p = storage::LinkProgram.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("LinkProgram")
+        panic!("glLinkProgram is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLuint)>(p)(program);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("LinkProgram({:?}): {}", program, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glLinkProgram({:?}): {}", program, err);
       }
     }
     out
@@ -5378,17 +5318,17 @@ pub mod functions {
   ///
   /// Fallbacks: MapBufferRangeEXT
   #[inline]
-  pub unsafe fn MapBufferRange(
+  pub unsafe fn glMapBufferRange(
     target: GLenum,
     offset: GLintptr,
     length: GLsizeiptr,
     access: GLbitfield,
   ) -> *mut c_void {
-    trace!("MapBufferRange");
+    trace!("glMapBufferRange");
     let p: *mut c_void = {
       let temp_p = storage::MapBufferRange.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("MapBufferRange")
+        panic!("glMapBufferRange is not loaded");
       }
       temp_p
     };
@@ -5402,10 +5342,9 @@ pub mod functions {
       ) -> *mut c_void,
     >(p)(target, offset, length, access);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "MapBufferRange({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glMapBufferRange({:?}, {:?}, {:?}, {:?}): {}",
           target, offset, length, access, err
         );
       }
@@ -5416,32 +5355,32 @@ pub mod functions {
   ///
   /// Fallbacks: PauseTransformFeedbackNV
   #[inline]
-  pub unsafe fn PauseTransformFeedback() {
-    trace!("PauseTransformFeedback");
+  pub unsafe fn glPauseTransformFeedback() {
+    trace!("glPauseTransformFeedback");
     let p: *mut c_void = {
       let temp_p = storage::PauseTransformFeedback.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("PauseTransformFeedback")
+        panic!("glPauseTransformFeedback is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn()>(p)();
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("PauseTransformFeedback(): {}", err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glPauseTransformFeedback(): {}", err);
       }
     }
     out
   }
   /// See [glPixelStorei](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glPixelStorei.xhtml)
   #[inline]
-  pub unsafe fn PixelStorei(pname: GLenum, param: GLint) {
-    trace!("PixelStorei");
+  pub unsafe fn glPixelStorei(pname: GLenum, param: GLint) {
+    trace!("glPixelStorei");
     let p: *mut c_void = {
       let temp_p = storage::PixelStorei.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("PixelStorei")
+        panic!("glPixelStorei is not loaded");
       }
       temp_p
     };
@@ -5449,21 +5388,21 @@ pub mod functions {
       pname, param,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("PixelStorei({:?}, {:?}): {}", pname, param, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glPixelStorei({:?}, {:?}): {}", pname, param, err);
       }
     }
     out
   }
   /// See [glPolygonOffset](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glPolygonOffset.xhtml)
   #[inline]
-  pub unsafe fn PolygonOffset(factor: GLfloat, units: GLfloat) {
-    trace!("PolygonOffset");
+  pub unsafe fn glPolygonOffset(factor: GLfloat, units: GLfloat) {
+    trace!("glPolygonOffset");
     let p: *mut c_void = {
       let temp_p = storage::PolygonOffset.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("PolygonOffset")
+        panic!("glPolygonOffset is not loaded");
       }
       temp_p
     };
@@ -5471,9 +5410,9 @@ pub mod functions {
       factor, units,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("PolygonOffset({:?}, {:?}): {}", factor, units, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glPolygonOffset({:?}, {:?}): {}", factor, units, err);
       }
     }
     out
@@ -5482,17 +5421,17 @@ pub mod functions {
   ///
   /// Fallbacks: ProgramBinaryOES
   #[inline]
-  pub unsafe fn ProgramBinary(
+  pub unsafe fn glProgramBinary(
     program: GLuint,
     binaryFormat: GLenum,
     binary: *const c_void,
     length: GLsizei,
   ) {
-    trace!("ProgramBinary");
+    trace!("glProgramBinary");
     let p: *mut c_void = {
       let temp_p = storage::ProgramBinary.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("ProgramBinary")
+        panic!("glProgramBinary is not loaded");
       }
       temp_p
     };
@@ -5501,10 +5440,9 @@ pub mod functions {
       extern "system" fn(GLuint, GLenum, *const c_void, GLsizei),
     >(p)(program, binaryFormat, binary, length);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "ProgramBinary({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glProgramBinary({:?}, {:?}, {:?}, {:?}): {}",
           program, binaryFormat, binary, length, err
         );
       }
@@ -5515,16 +5453,16 @@ pub mod functions {
   ///
   /// Fallbacks: ProgramParameteriARB, ProgramParameteriEXT
   #[inline]
-  pub unsafe fn ProgramParameteri(
+  pub unsafe fn glProgramParameteri(
     program: GLuint,
     pname: GLenum,
     value: GLint,
   ) {
-    trace!("ProgramParameteri");
+    trace!("glProgramParameteri");
     let p: *mut c_void = {
       let temp_p = storage::ProgramParameteri.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("ProgramParameteri")
+        panic!("glProgramParameteri is not loaded");
       }
       temp_p
     };
@@ -5532,10 +5470,9 @@ pub mod functions {
       p,
     )(program, pname, value);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "ProgramParameteri({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glProgramParameteri({:?}, {:?}, {:?}): {}",
           program, pname, value, err
         );
       }
@@ -5544,27 +5481,27 @@ pub mod functions {
   }
   /// See [glReadBuffer](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glReadBuffer.xhtml)
   #[inline]
-  pub unsafe fn ReadBuffer(src: GLenum) {
-    trace!("ReadBuffer");
+  pub unsafe fn glReadBuffer(src: GLenum) {
+    trace!("glReadBuffer");
     let p: *mut c_void = {
       let temp_p = storage::ReadBuffer.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("ReadBuffer")
+        panic!("glReadBuffer is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLenum)>(p)(src);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("ReadBuffer({:?}): {}", src, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glReadBuffer({:?}): {}", src, err);
       }
     }
     out
   }
   /// See [glReadPixels](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glReadPixels.xhtml)
   #[inline]
-  pub unsafe fn ReadPixels(
+  pub unsafe fn glReadPixels(
     x: GLint,
     y: GLint,
     width: GLsizei,
@@ -5573,11 +5510,11 @@ pub mod functions {
     type_: GLenum,
     pixels: *mut c_void,
   ) {
-    trace!("ReadPixels");
+    trace!("glReadPixels");
     let p: *mut c_void = {
       let temp_p = storage::ReadPixels.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("ReadPixels")
+        panic!("glReadPixels is not loaded");
       }
       temp_p
     };
@@ -5594,10 +5531,9 @@ pub mod functions {
       ),
     >(p)(x, y, width, height, format, type_, pixels);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "ReadPixels({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glReadPixels({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}",
           x, y, width, height, format, type_, pixels, err
         );
       }
@@ -5606,20 +5542,20 @@ pub mod functions {
   }
   /// See [glReleaseShaderCompiler](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glReleaseShaderCompiler.xhtml)
   #[inline]
-  pub unsafe fn ReleaseShaderCompiler() {
-    trace!("ReleaseShaderCompiler");
+  pub unsafe fn glReleaseShaderCompiler() {
+    trace!("glReleaseShaderCompiler");
     let p: *mut c_void = {
       let temp_p = storage::ReleaseShaderCompiler.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("ReleaseShaderCompiler")
+        panic!("glReleaseShaderCompiler is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn()>(p)();
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("ReleaseShaderCompiler(): {}", err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glReleaseShaderCompiler(): {}", err);
       }
     }
     out
@@ -5628,17 +5564,17 @@ pub mod functions {
   ///
   /// Fallbacks: RenderbufferStorageEXT
   #[inline]
-  pub unsafe fn RenderbufferStorage(
+  pub unsafe fn glRenderbufferStorage(
     target: GLenum,
     internalformat: GLenum,
     width: GLsizei,
     height: GLsizei,
   ) {
-    trace!("RenderbufferStorage");
+    trace!("glRenderbufferStorage");
     let p: *mut c_void = {
       let temp_p = storage::RenderbufferStorage.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("RenderbufferStorage")
+        panic!("glRenderbufferStorage is not loaded");
       }
       temp_p
     };
@@ -5647,10 +5583,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLenum, GLsizei, GLsizei),
     >(p)(target, internalformat, width, height);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "RenderbufferStorage({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glRenderbufferStorage({:?}, {:?}, {:?}, {:?}): {}",
           target, internalformat, width, height, err
         );
       }
@@ -5662,19 +5597,19 @@ pub mod functions {
   /// Fallbacks: RenderbufferStorageMultisampleEXT,
   /// RenderbufferStorageMultisampleNV
   #[inline]
-  pub unsafe fn RenderbufferStorageMultisample(
+  pub unsafe fn glRenderbufferStorageMultisample(
     target: GLenum,
     samples: GLsizei,
     internalformat: GLenum,
     width: GLsizei,
     height: GLsizei,
   ) {
-    trace!("RenderbufferStorageMultisample");
+    trace!("glRenderbufferStorageMultisample");
     let p: *mut c_void = {
       let temp_p =
         storage::RenderbufferStorageMultisample.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("RenderbufferStorageMultisample")
+        panic!("glRenderbufferStorageMultisample is not loaded");
       }
       temp_p
     };
@@ -5683,10 +5618,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLsizei, GLenum, GLsizei, GLsizei),
     >(p)(target, samples, internalformat, width, height);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "RenderbufferStorageMultisample({:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glRenderbufferStorageMultisample({:?}, {:?}, {:?}, {:?}, {:?}): {}",
           target, samples, internalformat, width, height, err
         );
       }
@@ -5697,20 +5631,20 @@ pub mod functions {
   ///
   /// Fallbacks: ResumeTransformFeedbackNV
   #[inline]
-  pub unsafe fn ResumeTransformFeedback() {
-    trace!("ResumeTransformFeedback");
+  pub unsafe fn glResumeTransformFeedback() {
+    trace!("glResumeTransformFeedback");
     let p: *mut c_void = {
       let temp_p = storage::ResumeTransformFeedback.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("ResumeTransformFeedback")
+        panic!("glResumeTransformFeedback is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn()>(p)();
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("ResumeTransformFeedback(): {}", err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glResumeTransformFeedback(): {}", err);
       }
     }
     out
@@ -5719,12 +5653,12 @@ pub mod functions {
   ///
   /// Fallbacks: SampleCoverageARB
   #[inline]
-  pub unsafe fn SampleCoverage(value: GLfloat, invert: GLboolean) {
-    trace!("SampleCoverage");
+  pub unsafe fn glSampleCoverage(value: GLfloat, invert: GLboolean) {
+    trace!("glSampleCoverage");
     let p: *mut c_void = {
       let temp_p = storage::SampleCoverage.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("SampleCoverage")
+        panic!("glSampleCoverage is not loaded");
       }
       temp_p
     };
@@ -5732,25 +5666,25 @@ pub mod functions {
       p,
     )(value, invert);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("SampleCoverage({:?}, {:?}): {}", value, invert, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glSampleCoverage({:?}, {:?}): {}", value, invert, err);
       }
     }
     out
   }
   /// See [glSamplerParameterf](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glSamplerParameterf.xhtml)
   #[inline]
-  pub unsafe fn SamplerParameterf(
+  pub unsafe fn glSamplerParameterf(
     sampler: GLuint,
     pname: GLenum,
     param: GLfloat,
   ) {
-    trace!("SamplerParameterf");
+    trace!("glSamplerParameterf");
     let p: *mut c_void = {
       let temp_p = storage::SamplerParameterf.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("SamplerParameterf")
+        panic!("glSamplerParameterf is not loaded");
       }
       temp_p
     };
@@ -5759,28 +5693,27 @@ pub mod functions {
       extern "system" fn(GLuint, GLenum, GLfloat),
     >(p)(sampler, pname, param);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "SamplerParameterf({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glSamplerParameterf({:?}, {:?}, {:?}): {}",
           sampler, pname, param, err
         );
       }
     }
     out
   }
-  /// See [glSamplerParameterfv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glSamplerParameterfv.xhtml)
+  /// See [glSamplerParameter](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glSamplerParameter.xhtml)
   #[inline]
-  pub unsafe fn SamplerParameterfv(
+  pub unsafe fn glSamplerParameterfv(
     sampler: GLuint,
     pname: GLenum,
     param: *const GLfloat,
   ) {
-    trace!("SamplerParameterfv");
+    trace!("glSamplerParameterfv");
     let p: *mut c_void = {
       let temp_p = storage::SamplerParameterfv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("SamplerParameterfv")
+        panic!("glSamplerParameterfv is not loaded");
       }
       temp_p
     };
@@ -5789,10 +5722,9 @@ pub mod functions {
       extern "system" fn(GLuint, GLenum, *const GLfloat),
     >(p)(sampler, pname, param);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "SamplerParameterfv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glSamplerParameterfv({:?}, {:?}, {:?}): {}",
           sampler, pname, param, err
         );
       }
@@ -5801,16 +5733,16 @@ pub mod functions {
   }
   /// See [glSamplerParameteri](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glSamplerParameteri.xhtml)
   #[inline]
-  pub unsafe fn SamplerParameteri(
+  pub unsafe fn glSamplerParameteri(
     sampler: GLuint,
     pname: GLenum,
     param: GLint,
   ) {
-    trace!("SamplerParameteri");
+    trace!("glSamplerParameteri");
     let p: *mut c_void = {
       let temp_p = storage::SamplerParameteri.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("SamplerParameteri")
+        panic!("glSamplerParameteri is not loaded");
       }
       temp_p
     };
@@ -5818,28 +5750,27 @@ pub mod functions {
       p,
     )(sampler, pname, param);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "SamplerParameteri({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glSamplerParameteri({:?}, {:?}, {:?}): {}",
           sampler, pname, param, err
         );
       }
     }
     out
   }
-  /// See [glSamplerParameteriv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glSamplerParameteriv.xhtml)
+  /// See [glSamplerParameter](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glSamplerParameter.xhtml)
   #[inline]
-  pub unsafe fn SamplerParameteriv(
+  pub unsafe fn glSamplerParameteriv(
     sampler: GLuint,
     pname: GLenum,
     param: *const GLint,
   ) {
-    trace!("SamplerParameteriv");
+    trace!("glSamplerParameteriv");
     let p: *mut c_void = {
       let temp_p = storage::SamplerParameteriv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("SamplerParameteriv")
+        panic!("glSamplerParameteriv is not loaded");
       }
       temp_p
     };
@@ -5848,10 +5779,9 @@ pub mod functions {
       extern "system" fn(GLuint, GLenum, *const GLint),
     >(p)(sampler, pname, param);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "SamplerParameteriv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glSamplerParameteriv({:?}, {:?}, {:?}): {}",
           sampler, pname, param, err
         );
       }
@@ -5860,12 +5790,12 @@ pub mod functions {
   }
   /// See [glScissor](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glScissor.xhtml)
   #[inline]
-  pub unsafe fn Scissor(x: GLint, y: GLint, width: GLsizei, height: GLsizei) {
-    trace!("Scissor");
+  pub unsafe fn glScissor(x: GLint, y: GLint, width: GLsizei, height: GLsizei) {
+    trace!("glScissor");
     let p: *mut c_void = {
       let temp_p = storage::Scissor.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Scissor")
+        panic!("glScissor is not loaded");
       }
       temp_p
     };
@@ -5874,27 +5804,27 @@ pub mod functions {
       extern "system" fn(GLint, GLint, GLsizei, GLsizei),
     >(p)(x, y, width, height);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("Scissor({:?}, {:?}, {:?}, {:?}): {}", x, y, width, height, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glScissor({:?}, {:?}, {:?}, {:?}): {}", x, y, width, height, err);
       }
     }
     out
   }
   /// See [glShaderBinary](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glShaderBinary.xhtml)
   #[inline]
-  pub unsafe fn ShaderBinary(
+  pub unsafe fn glShaderBinary(
     count: GLsizei,
     shaders: *const GLuint,
     binaryformat: GLenum,
     binary: *const c_void,
     length: GLsizei,
   ) {
-    trace!("ShaderBinary");
+    trace!("glShaderBinary");
     let p: *mut c_void = {
       let temp_p = storage::ShaderBinary.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("ShaderBinary")
+        panic!("glShaderBinary is not loaded");
       }
       temp_p
     };
@@ -5909,10 +5839,9 @@ pub mod functions {
       ),
     >(p)(count, shaders, binaryformat, binary, length);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "ShaderBinary({:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glShaderBinary({:?}, {:?}, {:?}, {:?}, {:?}): {}",
           count, shaders, binaryformat, binary, length, err
         );
       }
@@ -5923,17 +5852,17 @@ pub mod functions {
   ///
   /// Fallbacks: ShaderSourceARB
   #[inline]
-  pub unsafe fn ShaderSource(
+  pub unsafe fn glShaderSource(
     shader: GLuint,
     count: GLsizei,
     string: *const *const GLchar,
     length: *const GLint,
   ) {
-    trace!("ShaderSource");
+    trace!("glShaderSource");
     let p: *mut c_void = {
       let temp_p = storage::ShaderSource.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("ShaderSource")
+        panic!("glShaderSource is not loaded");
       }
       temp_p
     };
@@ -5942,10 +5871,9 @@ pub mod functions {
       extern "system" fn(GLuint, GLsizei, *const *const GLchar, *const GLint),
     >(p)(shader, count, string, length);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "ShaderSource({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glShaderSource({:?}, {:?}, {:?}, {:?}): {}",
           shader, count, string, length, err
         );
       }
@@ -5954,12 +5882,12 @@ pub mod functions {
   }
   /// See [glStencilFunc](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glStencilFunc.xhtml)
   #[inline]
-  pub unsafe fn StencilFunc(func: GLenum, ref_: GLint, mask: GLuint) {
-    trace!("StencilFunc");
+  pub unsafe fn glStencilFunc(func: GLenum, ref_: GLint, mask: GLuint) {
+    trace!("glStencilFunc");
     let p: *mut c_void = {
       let temp_p = storage::StencilFunc.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("StencilFunc")
+        panic!("glStencilFunc is not loaded");
       }
       temp_p
     };
@@ -5967,26 +5895,26 @@ pub mod functions {
       p,
     )(func, ref_, mask);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("StencilFunc({:?}, {:?}, {:?}): {}", func, ref_, mask, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glStencilFunc({:?}, {:?}, {:?}): {}", func, ref_, mask, err);
       }
     }
     out
   }
   /// See [glStencilFuncSeparate](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glStencilFuncSeparate.xhtml)
   #[inline]
-  pub unsafe fn StencilFuncSeparate(
+  pub unsafe fn glStencilFuncSeparate(
     face: GLenum,
     func: GLenum,
     ref_: GLint,
     mask: GLuint,
   ) {
-    trace!("StencilFuncSeparate");
+    trace!("glStencilFuncSeparate");
     let p: *mut c_void = {
       let temp_p = storage::StencilFuncSeparate.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("StencilFuncSeparate")
+        panic!("glStencilFuncSeparate is not loaded");
       }
       temp_p
     };
@@ -5995,10 +5923,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLenum, GLint, GLuint),
     >(p)(face, func, ref_, mask);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "StencilFuncSeparate({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glStencilFuncSeparate({:?}, {:?}, {:?}, {:?}): {}",
           face, func, ref_, mask, err
         );
       }
@@ -6007,32 +5934,32 @@ pub mod functions {
   }
   /// See [glStencilMask](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glStencilMask.xhtml)
   #[inline]
-  pub unsafe fn StencilMask(mask: GLuint) {
-    trace!("StencilMask");
+  pub unsafe fn glStencilMask(mask: GLuint) {
+    trace!("glStencilMask");
     let p: *mut c_void = {
       let temp_p = storage::StencilMask.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("StencilMask")
+        panic!("glStencilMask is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLuint)>(p)(mask);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("StencilMask({:?}): {}", mask, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glStencilMask({:?}): {}", mask, err);
       }
     }
     out
   }
   /// See [glStencilMaskSeparate](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glStencilMaskSeparate.xhtml)
   #[inline]
-  pub unsafe fn StencilMaskSeparate(face: GLenum, mask: GLuint) {
-    trace!("StencilMaskSeparate");
+  pub unsafe fn glStencilMaskSeparate(face: GLenum, mask: GLuint) {
+    trace!("glStencilMaskSeparate");
     let p: *mut c_void = {
       let temp_p = storage::StencilMaskSeparate.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("StencilMaskSeparate")
+        panic!("glStencilMaskSeparate is not loaded");
       }
       temp_p
     };
@@ -6040,21 +5967,21 @@ pub mod functions {
       face, mask,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("StencilMaskSeparate({:?}, {:?}): {}", face, mask, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glStencilMaskSeparate({:?}, {:?}): {}", face, mask, err);
       }
     }
     out
   }
   /// See [glStencilOp](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glStencilOp.xhtml)
   #[inline]
-  pub unsafe fn StencilOp(fail: GLenum, zfail: GLenum, zpass: GLenum) {
-    trace!("StencilOp");
+  pub unsafe fn glStencilOp(fail: GLenum, zfail: GLenum, zpass: GLenum) {
+    trace!("glStencilOp");
     let p: *mut c_void = {
       let temp_p = storage::StencilOp.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("StencilOp")
+        panic!("glStencilOp is not loaded");
       }
       temp_p
     };
@@ -6063,9 +5990,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLenum, GLenum),
     >(p)(fail, zfail, zpass);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("StencilOp({:?}, {:?}, {:?}): {}", fail, zfail, zpass, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glStencilOp({:?}, {:?}, {:?}): {}", fail, zfail, zpass, err);
       }
     }
     out
@@ -6074,17 +6001,17 @@ pub mod functions {
   ///
   /// Fallbacks: StencilOpSeparateATI
   #[inline]
-  pub unsafe fn StencilOpSeparate(
+  pub unsafe fn glStencilOpSeparate(
     face: GLenum,
     sfail: GLenum,
     dpfail: GLenum,
     dppass: GLenum,
   ) {
-    trace!("StencilOpSeparate");
+    trace!("glStencilOpSeparate");
     let p: *mut c_void = {
       let temp_p = storage::StencilOpSeparate.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("StencilOpSeparate")
+        panic!("glStencilOpSeparate is not loaded");
       }
       temp_p
     };
@@ -6093,10 +6020,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLenum, GLenum, GLenum),
     >(p)(face, sfail, dpfail, dppass);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "StencilOpSeparate({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glStencilOpSeparate({:?}, {:?}, {:?}, {:?}): {}",
           face, sfail, dpfail, dppass, err
         );
       }
@@ -6105,7 +6031,7 @@ pub mod functions {
   }
   /// See [glTexImage2D](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glTexImage2D.xhtml)
   #[inline]
-  pub unsafe fn TexImage2D(
+  pub unsafe fn glTexImage2D(
     target: GLenum,
     level: GLint,
     internalformat: GLint,
@@ -6116,11 +6042,11 @@ pub mod functions {
     type_: GLenum,
     pixels: *const c_void,
   ) {
-    trace!("TexImage2D");
+    trace!("glTexImage2D");
     let p: *mut c_void = {
       let temp_p = storage::TexImage2D.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("TexImage2D")
+        panic!("glTexImage2D is not loaded");
       }
       temp_p
     };
@@ -6149,9 +6075,9 @@ pub mod functions {
       pixels,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("TexImage2D({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", target, level, internalformat, width, height, border, format, type_, pixels, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glTexImage2D({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", target, level, internalformat, width, height, border, format, type_, pixels, err);
       }
     }
     out
@@ -6160,7 +6086,7 @@ pub mod functions {
   ///
   /// Fallbacks: TexImage3DEXT
   #[inline]
-  pub unsafe fn TexImage3D(
+  pub unsafe fn glTexImage3D(
     target: GLenum,
     level: GLint,
     internalformat: GLint,
@@ -6172,11 +6098,11 @@ pub mod functions {
     type_: GLenum,
     pixels: *const c_void,
   ) {
-    trace!("TexImage3D");
+    trace!("glTexImage3D");
     let p: *mut c_void = {
       let temp_p = storage::TexImage3D.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("TexImage3D")
+        panic!("glTexImage3D is not loaded");
       }
       temp_p
     };
@@ -6207,21 +6133,21 @@ pub mod functions {
       pixels,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("TexImage3D({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", target, level, internalformat, width, height, depth, border, format, type_, pixels, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glTexImage3D({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", target, level, internalformat, width, height, depth, border, format, type_, pixels, err);
       }
     }
     out
   }
   /// See [glTexParameterf](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glTexParameterf.xhtml)
   #[inline]
-  pub unsafe fn TexParameterf(target: GLenum, pname: GLenum, param: GLfloat) {
-    trace!("TexParameterf");
+  pub unsafe fn glTexParameterf(target: GLenum, pname: GLenum, param: GLfloat) {
+    trace!("glTexParameterf");
     let p: *mut c_void = {
       let temp_p = storage::TexParameterf.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("TexParameterf")
+        panic!("glTexParameterf is not loaded");
       }
       temp_p
     };
@@ -6230,28 +6156,27 @@ pub mod functions {
       extern "system" fn(GLenum, GLenum, GLfloat),
     >(p)(target, pname, param);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "TexParameterf({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glTexParameterf({:?}, {:?}, {:?}): {}",
           target, pname, param, err
         );
       }
     }
     out
   }
-  /// See [glTexParameterfv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glTexParameterfv.xhtml)
+  /// See [glTexParameter](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glTexParameter.xhtml)
   #[inline]
-  pub unsafe fn TexParameterfv(
+  pub unsafe fn glTexParameterfv(
     target: GLenum,
     pname: GLenum,
     params: *const GLfloat,
   ) {
-    trace!("TexParameterfv");
+    trace!("glTexParameterfv");
     let p: *mut c_void = {
       let temp_p = storage::TexParameterfv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("TexParameterfv")
+        panic!("glTexParameterfv is not loaded");
       }
       temp_p
     };
@@ -6260,10 +6185,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLenum, *const GLfloat),
     >(p)(target, pname, params);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "TexParameterfv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glTexParameterfv({:?}, {:?}, {:?}): {}",
           target, pname, params, err
         );
       }
@@ -6272,12 +6196,12 @@ pub mod functions {
   }
   /// See [glTexParameteri](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glTexParameteri.xhtml)
   #[inline]
-  pub unsafe fn TexParameteri(target: GLenum, pname: GLenum, param: GLint) {
-    trace!("TexParameteri");
+  pub unsafe fn glTexParameteri(target: GLenum, pname: GLenum, param: GLint) {
+    trace!("glTexParameteri");
     let p: *mut c_void = {
       let temp_p = storage::TexParameteri.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("TexParameteri")
+        panic!("glTexParameteri is not loaded");
       }
       temp_p
     };
@@ -6285,28 +6209,27 @@ pub mod functions {
       p,
     )(target, pname, param);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "TexParameteri({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glTexParameteri({:?}, {:?}, {:?}): {}",
           target, pname, param, err
         );
       }
     }
     out
   }
-  /// See [glTexParameteriv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glTexParameteriv.xhtml)
+  /// See [glTexParameter](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glTexParameter.xhtml)
   #[inline]
-  pub unsafe fn TexParameteriv(
+  pub unsafe fn glTexParameteriv(
     target: GLenum,
     pname: GLenum,
     params: *const GLint,
   ) {
-    trace!("TexParameteriv");
+    trace!("glTexParameteriv");
     let p: *mut c_void = {
       let temp_p = storage::TexParameteriv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("TexParameteriv")
+        panic!("glTexParameteriv is not loaded");
       }
       temp_p
     };
@@ -6315,10 +6238,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLenum, *const GLint),
     >(p)(target, pname, params);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "TexParameteriv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glTexParameteriv({:?}, {:?}, {:?}): {}",
           target, pname, params, err
         );
       }
@@ -6329,18 +6251,18 @@ pub mod functions {
   ///
   /// Fallbacks: TexStorage2DEXT
   #[inline]
-  pub unsafe fn TexStorage2D(
+  pub unsafe fn glTexStorage2D(
     target: GLenum,
     levels: GLsizei,
     internalformat: GLenum,
     width: GLsizei,
     height: GLsizei,
   ) {
-    trace!("TexStorage2D");
+    trace!("glTexStorage2D");
     let p: *mut c_void = {
       let temp_p = storage::TexStorage2D.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("TexStorage2D")
+        panic!("glTexStorage2D is not loaded");
       }
       temp_p
     };
@@ -6349,10 +6271,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLsizei, GLenum, GLsizei, GLsizei),
     >(p)(target, levels, internalformat, width, height);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "TexStorage2D({:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glTexStorage2D({:?}, {:?}, {:?}, {:?}, {:?}): {}",
           target, levels, internalformat, width, height, err
         );
       }
@@ -6363,7 +6284,7 @@ pub mod functions {
   ///
   /// Fallbacks: TexStorage3DEXT
   #[inline]
-  pub unsafe fn TexStorage3D(
+  pub unsafe fn glTexStorage3D(
     target: GLenum,
     levels: GLsizei,
     internalformat: GLenum,
@@ -6371,11 +6292,11 @@ pub mod functions {
     height: GLsizei,
     depth: GLsizei,
   ) {
-    trace!("TexStorage3D");
+    trace!("glTexStorage3D");
     let p: *mut c_void = {
       let temp_p = storage::TexStorage3D.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("TexStorage3D")
+        panic!("glTexStorage3D is not loaded");
       }
       temp_p
     };
@@ -6384,10 +6305,9 @@ pub mod functions {
       extern "system" fn(GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei),
     >(p)(target, levels, internalformat, width, height, depth);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "TexStorage3D({:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glTexStorage3D({:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}",
           target, levels, internalformat, width, height, depth, err
         );
       }
@@ -6398,7 +6318,7 @@ pub mod functions {
   ///
   /// Fallbacks: TexSubImage2DEXT
   #[inline]
-  pub unsafe fn TexSubImage2D(
+  pub unsafe fn glTexSubImage2D(
     target: GLenum,
     level: GLint,
     xoffset: GLint,
@@ -6409,11 +6329,11 @@ pub mod functions {
     type_: GLenum,
     pixels: *const c_void,
   ) {
-    trace!("TexSubImage2D");
+    trace!("glTexSubImage2D");
     let p: *mut c_void = {
       let temp_p = storage::TexSubImage2D.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("TexSubImage2D")
+        panic!("glTexSubImage2D is not loaded");
       }
       temp_p
     };
@@ -6434,9 +6354,9 @@ pub mod functions {
       target, level, xoffset, yoffset, width, height, format, type_, pixels,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("TexSubImage2D({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", target, level, xoffset, yoffset, width, height, format, type_, pixels, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glTexSubImage2D({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", target, level, xoffset, yoffset, width, height, format, type_, pixels, err);
       }
     }
     out
@@ -6445,7 +6365,7 @@ pub mod functions {
   ///
   /// Fallbacks: TexSubImage3DEXT
   #[inline]
-  pub unsafe fn TexSubImage3D(
+  pub unsafe fn glTexSubImage3D(
     target: GLenum,
     level: GLint,
     xoffset: GLint,
@@ -6458,11 +6378,11 @@ pub mod functions {
     type_: GLenum,
     pixels: *const c_void,
   ) {
-    trace!("TexSubImage3D");
+    trace!("glTexSubImage3D");
     let p: *mut c_void = {
       let temp_p = storage::TexSubImage3D.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("TexSubImage3D")
+        panic!("glTexSubImage3D is not loaded");
       }
       temp_p
     };
@@ -6486,9 +6406,9 @@ pub mod functions {
       type_, pixels,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("TexSubImage3D({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", target, level, xoffset, yoffset, zoffset, width, height, depth, format, type_, pixels, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glTexSubImage3D({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}", target, level, xoffset, yoffset, zoffset, width, height, depth, format, type_, pixels, err);
       }
     }
     out
@@ -6497,17 +6417,17 @@ pub mod functions {
   ///
   /// Fallbacks: TransformFeedbackVaryingsEXT
   #[inline]
-  pub unsafe fn TransformFeedbackVaryings(
+  pub unsafe fn glTransformFeedbackVaryings(
     program: GLuint,
     count: GLsizei,
     varyings: *const *const GLchar,
     bufferMode: GLenum,
   ) {
-    trace!("TransformFeedbackVaryings");
+    trace!("glTransformFeedbackVaryings");
     let p: *mut c_void = {
       let temp_p = storage::TransformFeedbackVaryings.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("TransformFeedbackVaryings")
+        panic!("glTransformFeedbackVaryings is not loaded");
       }
       temp_p
     };
@@ -6516,10 +6436,9 @@ pub mod functions {
       extern "system" fn(GLuint, GLsizei, *const *const GLchar, GLenum),
     >(p)(program, count, varyings, bufferMode);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "TransformFeedbackVaryings({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glTransformFeedbackVaryings({:?}, {:?}, {:?}, {:?}): {}",
           program, count, varyings, bufferMode, err
         );
       }
@@ -6530,12 +6449,12 @@ pub mod functions {
   ///
   /// Fallbacks: Uniform1fARB
   #[inline]
-  pub unsafe fn Uniform1f(location: GLint, v0: GLfloat) {
-    trace!("Uniform1f");
+  pub unsafe fn glUniform1f(location: GLint, v0: GLfloat) {
+    trace!("glUniform1f");
     let p: *mut c_void = {
       let temp_p = storage::Uniform1f.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Uniform1f")
+        panic!("glUniform1f is not loaded");
       }
       temp_p
     };
@@ -6543,27 +6462,27 @@ pub mod functions {
       location, v0,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("Uniform1f({:?}, {:?}): {}", location, v0, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniform1f({:?}, {:?}): {}", location, v0, err);
       }
     }
     out
   }
-  /// See [glUniform1fv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform1fv.xhtml)
+  /// See [glUniform](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform.xhtml)
   ///
   /// Fallbacks: Uniform1fvARB
   #[inline]
-  pub unsafe fn Uniform1fv(
+  pub unsafe fn glUniform1fv(
     location: GLint,
     count: GLsizei,
     value: *const GLfloat,
   ) {
-    trace!("Uniform1fv");
+    trace!("glUniform1fv");
     let p: *mut c_void = {
       let temp_p = storage::Uniform1fv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Uniform1fv")
+        panic!("glUniform1fv is not loaded");
       }
       temp_p
     };
@@ -6572,9 +6491,9 @@ pub mod functions {
       extern "system" fn(GLint, GLsizei, *const GLfloat),
     >(p)(location, count, value);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("Uniform1fv({:?}, {:?}, {:?}): {}", location, count, value, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniform1fv({:?}, {:?}, {:?}): {}", location, count, value, err);
       }
     }
     out
@@ -6583,12 +6502,12 @@ pub mod functions {
   ///
   /// Fallbacks: Uniform1iARB
   #[inline]
-  pub unsafe fn Uniform1i(location: GLint, v0: GLint) {
-    trace!("Uniform1i");
+  pub unsafe fn glUniform1i(location: GLint, v0: GLint) {
+    trace!("glUniform1i");
     let p: *mut c_void = {
       let temp_p = storage::Uniform1i.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Uniform1i")
+        panic!("glUniform1i is not loaded");
       }
       temp_p
     };
@@ -6596,27 +6515,27 @@ pub mod functions {
       location, v0,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("Uniform1i({:?}, {:?}): {}", location, v0, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniform1i({:?}, {:?}): {}", location, v0, err);
       }
     }
     out
   }
-  /// See [glUniform1iv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform1iv.xhtml)
+  /// See [glUniform](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform.xhtml)
   ///
   /// Fallbacks: Uniform1ivARB
   #[inline]
-  pub unsafe fn Uniform1iv(
+  pub unsafe fn glUniform1iv(
     location: GLint,
     count: GLsizei,
     value: *const GLint,
   ) {
-    trace!("Uniform1iv");
+    trace!("glUniform1iv");
     let p: *mut c_void = {
       let temp_p = storage::Uniform1iv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Uniform1iv")
+        panic!("glUniform1iv is not loaded");
       }
       temp_p
     };
@@ -6625,9 +6544,9 @@ pub mod functions {
       extern "system" fn(GLint, GLsizei, *const GLint),
     >(p)(location, count, value);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("Uniform1iv({:?}, {:?}, {:?}): {}", location, count, value, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniform1iv({:?}, {:?}, {:?}): {}", location, count, value, err);
       }
     }
     out
@@ -6636,12 +6555,12 @@ pub mod functions {
   ///
   /// Fallbacks: Uniform1uiEXT
   #[inline]
-  pub unsafe fn Uniform1ui(location: GLint, v0: GLuint) {
-    trace!("Uniform1ui");
+  pub unsafe fn glUniform1ui(location: GLint, v0: GLuint) {
+    trace!("glUniform1ui");
     let p: *mut c_void = {
       let temp_p = storage::Uniform1ui.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Uniform1ui")
+        panic!("glUniform1ui is not loaded");
       }
       temp_p
     };
@@ -6649,27 +6568,27 @@ pub mod functions {
       location, v0,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("Uniform1ui({:?}, {:?}): {}", location, v0, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniform1ui({:?}, {:?}): {}", location, v0, err);
       }
     }
     out
   }
-  /// See [glUniform1uiv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform1uiv.xhtml)
+  /// See [glUniform](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform.xhtml)
   ///
   /// Fallbacks: Uniform1uivEXT
   #[inline]
-  pub unsafe fn Uniform1uiv(
+  pub unsafe fn glUniform1uiv(
     location: GLint,
     count: GLsizei,
     value: *const GLuint,
   ) {
-    trace!("Uniform1uiv");
+    trace!("glUniform1uiv");
     let p: *mut c_void = {
       let temp_p = storage::Uniform1uiv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Uniform1uiv")
+        panic!("glUniform1uiv is not loaded");
       }
       temp_p
     };
@@ -6678,10 +6597,9 @@ pub mod functions {
       extern "system" fn(GLint, GLsizei, *const GLuint),
     >(p)(location, count, value);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "Uniform1uiv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniform1uiv({:?}, {:?}, {:?}): {}",
           location, count, value, err
         );
       }
@@ -6692,12 +6610,12 @@ pub mod functions {
   ///
   /// Fallbacks: Uniform2fARB
   #[inline]
-  pub unsafe fn Uniform2f(location: GLint, v0: GLfloat, v1: GLfloat) {
-    trace!("Uniform2f");
+  pub unsafe fn glUniform2f(location: GLint, v0: GLfloat, v1: GLfloat) {
+    trace!("glUniform2f");
     let p: *mut c_void = {
       let temp_p = storage::Uniform2f.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Uniform2f")
+        panic!("glUniform2f is not loaded");
       }
       temp_p
     };
@@ -6706,27 +6624,27 @@ pub mod functions {
       extern "system" fn(GLint, GLfloat, GLfloat),
     >(p)(location, v0, v1);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("Uniform2f({:?}, {:?}, {:?}): {}", location, v0, v1, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniform2f({:?}, {:?}, {:?}): {}", location, v0, v1, err);
       }
     }
     out
   }
-  /// See [glUniform2fv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform2fv.xhtml)
+  /// See [glUniform](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform.xhtml)
   ///
   /// Fallbacks: Uniform2fvARB
   #[inline]
-  pub unsafe fn Uniform2fv(
+  pub unsafe fn glUniform2fv(
     location: GLint,
     count: GLsizei,
     value: *const GLfloat,
   ) {
-    trace!("Uniform2fv");
+    trace!("glUniform2fv");
     let p: *mut c_void = {
       let temp_p = storage::Uniform2fv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Uniform2fv")
+        panic!("glUniform2fv is not loaded");
       }
       temp_p
     };
@@ -6735,9 +6653,9 @@ pub mod functions {
       extern "system" fn(GLint, GLsizei, *const GLfloat),
     >(p)(location, count, value);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("Uniform2fv({:?}, {:?}, {:?}): {}", location, count, value, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniform2fv({:?}, {:?}, {:?}): {}", location, count, value, err);
       }
     }
     out
@@ -6746,12 +6664,12 @@ pub mod functions {
   ///
   /// Fallbacks: Uniform2iARB
   #[inline]
-  pub unsafe fn Uniform2i(location: GLint, v0: GLint, v1: GLint) {
-    trace!("Uniform2i");
+  pub unsafe fn glUniform2i(location: GLint, v0: GLint, v1: GLint) {
+    trace!("glUniform2i");
     let p: *mut c_void = {
       let temp_p = storage::Uniform2i.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Uniform2i")
+        panic!("glUniform2i is not loaded");
       }
       temp_p
     };
@@ -6759,27 +6677,27 @@ pub mod functions {
       p,
     )(location, v0, v1);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("Uniform2i({:?}, {:?}, {:?}): {}", location, v0, v1, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniform2i({:?}, {:?}, {:?}): {}", location, v0, v1, err);
       }
     }
     out
   }
-  /// See [glUniform2iv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform2iv.xhtml)
+  /// See [glUniform](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform.xhtml)
   ///
   /// Fallbacks: Uniform2ivARB
   #[inline]
-  pub unsafe fn Uniform2iv(
+  pub unsafe fn glUniform2iv(
     location: GLint,
     count: GLsizei,
     value: *const GLint,
   ) {
-    trace!("Uniform2iv");
+    trace!("glUniform2iv");
     let p: *mut c_void = {
       let temp_p = storage::Uniform2iv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Uniform2iv")
+        panic!("glUniform2iv is not loaded");
       }
       temp_p
     };
@@ -6788,9 +6706,9 @@ pub mod functions {
       extern "system" fn(GLint, GLsizei, *const GLint),
     >(p)(location, count, value);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("Uniform2iv({:?}, {:?}, {:?}): {}", location, count, value, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniform2iv({:?}, {:?}, {:?}): {}", location, count, value, err);
       }
     }
     out
@@ -6799,12 +6717,12 @@ pub mod functions {
   ///
   /// Fallbacks: Uniform2uiEXT
   #[inline]
-  pub unsafe fn Uniform2ui(location: GLint, v0: GLuint, v1: GLuint) {
-    trace!("Uniform2ui");
+  pub unsafe fn glUniform2ui(location: GLint, v0: GLuint, v1: GLuint) {
+    trace!("glUniform2ui");
     let p: *mut c_void = {
       let temp_p = storage::Uniform2ui.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Uniform2ui")
+        panic!("glUniform2ui is not loaded");
       }
       temp_p
     };
@@ -6812,27 +6730,27 @@ pub mod functions {
       p,
     )(location, v0, v1);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("Uniform2ui({:?}, {:?}, {:?}): {}", location, v0, v1, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniform2ui({:?}, {:?}, {:?}): {}", location, v0, v1, err);
       }
     }
     out
   }
-  /// See [glUniform2uiv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform2uiv.xhtml)
+  /// See [glUniform](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform.xhtml)
   ///
   /// Fallbacks: Uniform2uivEXT
   #[inline]
-  pub unsafe fn Uniform2uiv(
+  pub unsafe fn glUniform2uiv(
     location: GLint,
     count: GLsizei,
     value: *const GLuint,
   ) {
-    trace!("Uniform2uiv");
+    trace!("glUniform2uiv");
     let p: *mut c_void = {
       let temp_p = storage::Uniform2uiv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Uniform2uiv")
+        panic!("glUniform2uiv is not loaded");
       }
       temp_p
     };
@@ -6841,10 +6759,9 @@ pub mod functions {
       extern "system" fn(GLint, GLsizei, *const GLuint),
     >(p)(location, count, value);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "Uniform2uiv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniform2uiv({:?}, {:?}, {:?}): {}",
           location, count, value, err
         );
       }
@@ -6855,17 +6772,17 @@ pub mod functions {
   ///
   /// Fallbacks: Uniform3fARB
   #[inline]
-  pub unsafe fn Uniform3f(
+  pub unsafe fn glUniform3f(
     location: GLint,
     v0: GLfloat,
     v1: GLfloat,
     v2: GLfloat,
   ) {
-    trace!("Uniform3f");
+    trace!("glUniform3f");
     let p: *mut c_void = {
       let temp_p = storage::Uniform3f.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Uniform3f")
+        panic!("glUniform3f is not loaded");
       }
       temp_p
     };
@@ -6874,30 +6791,29 @@ pub mod functions {
       extern "system" fn(GLint, GLfloat, GLfloat, GLfloat),
     >(p)(location, v0, v1, v2);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "Uniform3f({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniform3f({:?}, {:?}, {:?}, {:?}): {}",
           location, v0, v1, v2, err
         );
       }
     }
     out
   }
-  /// See [glUniform3fv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform3fv.xhtml)
+  /// See [glUniform](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform.xhtml)
   ///
   /// Fallbacks: Uniform3fvARB
   #[inline]
-  pub unsafe fn Uniform3fv(
+  pub unsafe fn glUniform3fv(
     location: GLint,
     count: GLsizei,
     value: *const GLfloat,
   ) {
-    trace!("Uniform3fv");
+    trace!("glUniform3fv");
     let p: *mut c_void = {
       let temp_p = storage::Uniform3fv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Uniform3fv")
+        panic!("glUniform3fv is not loaded");
       }
       temp_p
     };
@@ -6906,9 +6822,9 @@ pub mod functions {
       extern "system" fn(GLint, GLsizei, *const GLfloat),
     >(p)(location, count, value);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("Uniform3fv({:?}, {:?}, {:?}): {}", location, count, value, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniform3fv({:?}, {:?}, {:?}): {}", location, count, value, err);
       }
     }
     out
@@ -6917,12 +6833,12 @@ pub mod functions {
   ///
   /// Fallbacks: Uniform3iARB
   #[inline]
-  pub unsafe fn Uniform3i(location: GLint, v0: GLint, v1: GLint, v2: GLint) {
-    trace!("Uniform3i");
+  pub unsafe fn glUniform3i(location: GLint, v0: GLint, v1: GLint, v2: GLint) {
+    trace!("glUniform3i");
     let p: *mut c_void = {
       let temp_p = storage::Uniform3i.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Uniform3i")
+        panic!("glUniform3i is not loaded");
       }
       temp_p
     };
@@ -6931,30 +6847,29 @@ pub mod functions {
       extern "system" fn(GLint, GLint, GLint, GLint),
     >(p)(location, v0, v1, v2);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "Uniform3i({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniform3i({:?}, {:?}, {:?}, {:?}): {}",
           location, v0, v1, v2, err
         );
       }
     }
     out
   }
-  /// See [glUniform3iv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform3iv.xhtml)
+  /// See [glUniform](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform.xhtml)
   ///
   /// Fallbacks: Uniform3ivARB
   #[inline]
-  pub unsafe fn Uniform3iv(
+  pub unsafe fn glUniform3iv(
     location: GLint,
     count: GLsizei,
     value: *const GLint,
   ) {
-    trace!("Uniform3iv");
+    trace!("glUniform3iv");
     let p: *mut c_void = {
       let temp_p = storage::Uniform3iv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Uniform3iv")
+        panic!("glUniform3iv is not loaded");
       }
       temp_p
     };
@@ -6963,9 +6878,9 @@ pub mod functions {
       extern "system" fn(GLint, GLsizei, *const GLint),
     >(p)(location, count, value);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("Uniform3iv({:?}, {:?}, {:?}): {}", location, count, value, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniform3iv({:?}, {:?}, {:?}): {}", location, count, value, err);
       }
     }
     out
@@ -6974,17 +6889,17 @@ pub mod functions {
   ///
   /// Fallbacks: Uniform3uiEXT
   #[inline]
-  pub unsafe fn Uniform3ui(
+  pub unsafe fn glUniform3ui(
     location: GLint,
     v0: GLuint,
     v1: GLuint,
     v2: GLuint,
   ) {
-    trace!("Uniform3ui");
+    trace!("glUniform3ui");
     let p: *mut c_void = {
       let temp_p = storage::Uniform3ui.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Uniform3ui")
+        panic!("glUniform3ui is not loaded");
       }
       temp_p
     };
@@ -6993,30 +6908,29 @@ pub mod functions {
       extern "system" fn(GLint, GLuint, GLuint, GLuint),
     >(p)(location, v0, v1, v2);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "Uniform3ui({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniform3ui({:?}, {:?}, {:?}, {:?}): {}",
           location, v0, v1, v2, err
         );
       }
     }
     out
   }
-  /// See [glUniform3uiv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform3uiv.xhtml)
+  /// See [glUniform](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform.xhtml)
   ///
   /// Fallbacks: Uniform3uivEXT
   #[inline]
-  pub unsafe fn Uniform3uiv(
+  pub unsafe fn glUniform3uiv(
     location: GLint,
     count: GLsizei,
     value: *const GLuint,
   ) {
-    trace!("Uniform3uiv");
+    trace!("glUniform3uiv");
     let p: *mut c_void = {
       let temp_p = storage::Uniform3uiv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Uniform3uiv")
+        panic!("glUniform3uiv is not loaded");
       }
       temp_p
     };
@@ -7025,10 +6939,9 @@ pub mod functions {
       extern "system" fn(GLint, GLsizei, *const GLuint),
     >(p)(location, count, value);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "Uniform3uiv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniform3uiv({:?}, {:?}, {:?}): {}",
           location, count, value, err
         );
       }
@@ -7039,18 +6952,18 @@ pub mod functions {
   ///
   /// Fallbacks: Uniform4fARB
   #[inline]
-  pub unsafe fn Uniform4f(
+  pub unsafe fn glUniform4f(
     location: GLint,
     v0: GLfloat,
     v1: GLfloat,
     v2: GLfloat,
     v3: GLfloat,
   ) {
-    trace!("Uniform4f");
+    trace!("glUniform4f");
     let p: *mut c_void = {
       let temp_p = storage::Uniform4f.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Uniform4f")
+        panic!("glUniform4f is not loaded");
       }
       temp_p
     };
@@ -7059,30 +6972,29 @@ pub mod functions {
       extern "system" fn(GLint, GLfloat, GLfloat, GLfloat, GLfloat),
     >(p)(location, v0, v1, v2, v3);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "Uniform4f({:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniform4f({:?}, {:?}, {:?}, {:?}, {:?}): {}",
           location, v0, v1, v2, v3, err
         );
       }
     }
     out
   }
-  /// See [glUniform4fv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform4fv.xhtml)
+  /// See [glUniform](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform.xhtml)
   ///
   /// Fallbacks: Uniform4fvARB
   #[inline]
-  pub unsafe fn Uniform4fv(
+  pub unsafe fn glUniform4fv(
     location: GLint,
     count: GLsizei,
     value: *const GLfloat,
   ) {
-    trace!("Uniform4fv");
+    trace!("glUniform4fv");
     let p: *mut c_void = {
       let temp_p = storage::Uniform4fv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Uniform4fv")
+        panic!("glUniform4fv is not loaded");
       }
       temp_p
     };
@@ -7091,9 +7003,9 @@ pub mod functions {
       extern "system" fn(GLint, GLsizei, *const GLfloat),
     >(p)(location, count, value);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("Uniform4fv({:?}, {:?}, {:?}): {}", location, count, value, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniform4fv({:?}, {:?}, {:?}): {}", location, count, value, err);
       }
     }
     out
@@ -7102,18 +7014,18 @@ pub mod functions {
   ///
   /// Fallbacks: Uniform4iARB
   #[inline]
-  pub unsafe fn Uniform4i(
+  pub unsafe fn glUniform4i(
     location: GLint,
     v0: GLint,
     v1: GLint,
     v2: GLint,
     v3: GLint,
   ) {
-    trace!("Uniform4i");
+    trace!("glUniform4i");
     let p: *mut c_void = {
       let temp_p = storage::Uniform4i.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Uniform4i")
+        panic!("glUniform4i is not loaded");
       }
       temp_p
     };
@@ -7122,30 +7034,29 @@ pub mod functions {
       extern "system" fn(GLint, GLint, GLint, GLint, GLint),
     >(p)(location, v0, v1, v2, v3);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "Uniform4i({:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniform4i({:?}, {:?}, {:?}, {:?}, {:?}): {}",
           location, v0, v1, v2, v3, err
         );
       }
     }
     out
   }
-  /// See [glUniform4iv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform4iv.xhtml)
+  /// See [glUniform](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform.xhtml)
   ///
   /// Fallbacks: Uniform4ivARB
   #[inline]
-  pub unsafe fn Uniform4iv(
+  pub unsafe fn glUniform4iv(
     location: GLint,
     count: GLsizei,
     value: *const GLint,
   ) {
-    trace!("Uniform4iv");
+    trace!("glUniform4iv");
     let p: *mut c_void = {
       let temp_p = storage::Uniform4iv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Uniform4iv")
+        panic!("glUniform4iv is not loaded");
       }
       temp_p
     };
@@ -7154,9 +7065,9 @@ pub mod functions {
       extern "system" fn(GLint, GLsizei, *const GLint),
     >(p)(location, count, value);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("Uniform4iv({:?}, {:?}, {:?}): {}", location, count, value, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniform4iv({:?}, {:?}, {:?}): {}", location, count, value, err);
       }
     }
     out
@@ -7165,18 +7076,18 @@ pub mod functions {
   ///
   /// Fallbacks: Uniform4uiEXT
   #[inline]
-  pub unsafe fn Uniform4ui(
+  pub unsafe fn glUniform4ui(
     location: GLint,
     v0: GLuint,
     v1: GLuint,
     v2: GLuint,
     v3: GLuint,
   ) {
-    trace!("Uniform4ui");
+    trace!("glUniform4ui");
     let p: *mut c_void = {
       let temp_p = storage::Uniform4ui.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Uniform4ui")
+        panic!("glUniform4ui is not loaded");
       }
       temp_p
     };
@@ -7185,30 +7096,29 @@ pub mod functions {
       extern "system" fn(GLint, GLuint, GLuint, GLuint, GLuint),
     >(p)(location, v0, v1, v2, v3);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "Uniform4ui({:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniform4ui({:?}, {:?}, {:?}, {:?}, {:?}): {}",
           location, v0, v1, v2, v3, err
         );
       }
     }
     out
   }
-  /// See [glUniform4uiv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform4uiv.xhtml)
+  /// See [glUniform](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform.xhtml)
   ///
   /// Fallbacks: Uniform4uivEXT
   #[inline]
-  pub unsafe fn Uniform4uiv(
+  pub unsafe fn glUniform4uiv(
     location: GLint,
     count: GLsizei,
     value: *const GLuint,
   ) {
-    trace!("Uniform4uiv");
+    trace!("glUniform4uiv");
     let p: *mut c_void = {
       let temp_p = storage::Uniform4uiv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Uniform4uiv")
+        panic!("glUniform4uiv is not loaded");
       }
       temp_p
     };
@@ -7217,10 +7127,9 @@ pub mod functions {
       extern "system" fn(GLint, GLsizei, *const GLuint),
     >(p)(location, count, value);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "Uniform4uiv({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniform4uiv({:?}, {:?}, {:?}): {}",
           location, count, value, err
         );
       }
@@ -7229,16 +7138,16 @@ pub mod functions {
   }
   /// See [glUniformBlockBinding](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniformBlockBinding.xhtml)
   #[inline]
-  pub unsafe fn UniformBlockBinding(
+  pub unsafe fn glUniformBlockBinding(
     program: GLuint,
     uniformBlockIndex: GLuint,
     uniformBlockBinding: GLuint,
   ) {
-    trace!("UniformBlockBinding");
+    trace!("glUniformBlockBinding");
     let p: *mut c_void = {
       let temp_p = storage::UniformBlockBinding.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("UniformBlockBinding")
+        panic!("glUniformBlockBinding is not loaded");
       }
       temp_p
     };
@@ -7247,31 +7156,30 @@ pub mod functions {
       extern "system" fn(GLuint, GLuint, GLuint),
     >(p)(program, uniformBlockIndex, uniformBlockBinding);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "UniformBlockBinding({:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniformBlockBinding({:?}, {:?}, {:?}): {}",
           program, uniformBlockIndex, uniformBlockBinding, err
         );
       }
     }
     out
   }
-  /// See [glUniformMatrix2fv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniformMatrix2fv.xhtml)
+  /// See [glUniformMatrix](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniformMatrix.xhtml)
   ///
   /// Fallbacks: UniformMatrix2fvARB
   #[inline]
-  pub unsafe fn UniformMatrix2fv(
+  pub unsafe fn glUniformMatrix2fv(
     location: GLint,
     count: GLsizei,
     transpose: GLboolean,
     value: *const GLfloat,
   ) {
-    trace!("UniformMatrix2fv");
+    trace!("glUniformMatrix2fv");
     let p: *mut c_void = {
       let temp_p = storage::UniformMatrix2fv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("UniformMatrix2fv")
+        panic!("glUniformMatrix2fv is not loaded");
       }
       temp_p
     };
@@ -7280,31 +7188,30 @@ pub mod functions {
       extern "system" fn(GLint, GLsizei, GLboolean, *const GLfloat),
     >(p)(location, count, transpose, value);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "UniformMatrix2fv({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniformMatrix2fv({:?}, {:?}, {:?}, {:?}): {}",
           location, count, transpose, value, err
         );
       }
     }
     out
   }
-  /// See [glUniformMatrix2x3fv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniformMatrix2x3fv.xhtml)
+  /// See [glUniform](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform.xhtml)
   ///
   /// Fallbacks: UniformMatrix2x3fvNV
   #[inline]
-  pub unsafe fn UniformMatrix2x3fv(
+  pub unsafe fn glUniformMatrix2x3fv(
     location: GLint,
     count: GLsizei,
     transpose: GLboolean,
     value: *const GLfloat,
   ) {
-    trace!("UniformMatrix2x3fv");
+    trace!("glUniformMatrix2x3fv");
     let p: *mut c_void = {
       let temp_p = storage::UniformMatrix2x3fv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("UniformMatrix2x3fv")
+        panic!("glUniformMatrix2x3fv is not loaded");
       }
       temp_p
     };
@@ -7313,31 +7220,30 @@ pub mod functions {
       extern "system" fn(GLint, GLsizei, GLboolean, *const GLfloat),
     >(p)(location, count, transpose, value);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "UniformMatrix2x3fv({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniformMatrix2x3fv({:?}, {:?}, {:?}, {:?}): {}",
           location, count, transpose, value, err
         );
       }
     }
     out
   }
-  /// See [glUniformMatrix2x4fv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniformMatrix2x4fv.xhtml)
+  /// See [glUniform](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform.xhtml)
   ///
   /// Fallbacks: UniformMatrix2x4fvNV
   #[inline]
-  pub unsafe fn UniformMatrix2x4fv(
+  pub unsafe fn glUniformMatrix2x4fv(
     location: GLint,
     count: GLsizei,
     transpose: GLboolean,
     value: *const GLfloat,
   ) {
-    trace!("UniformMatrix2x4fv");
+    trace!("glUniformMatrix2x4fv");
     let p: *mut c_void = {
       let temp_p = storage::UniformMatrix2x4fv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("UniformMatrix2x4fv")
+        panic!("glUniformMatrix2x4fv is not loaded");
       }
       temp_p
     };
@@ -7346,31 +7252,30 @@ pub mod functions {
       extern "system" fn(GLint, GLsizei, GLboolean, *const GLfloat),
     >(p)(location, count, transpose, value);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "UniformMatrix2x4fv({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniformMatrix2x4fv({:?}, {:?}, {:?}, {:?}): {}",
           location, count, transpose, value, err
         );
       }
     }
     out
   }
-  /// See [glUniformMatrix3fv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniformMatrix3fv.xhtml)
+  /// See [glUniform](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform.xhtml)
   ///
   /// Fallbacks: UniformMatrix3fvARB
   #[inline]
-  pub unsafe fn UniformMatrix3fv(
+  pub unsafe fn glUniformMatrix3fv(
     location: GLint,
     count: GLsizei,
     transpose: GLboolean,
     value: *const GLfloat,
   ) {
-    trace!("UniformMatrix3fv");
+    trace!("glUniformMatrix3fv");
     let p: *mut c_void = {
       let temp_p = storage::UniformMatrix3fv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("UniformMatrix3fv")
+        panic!("glUniformMatrix3fv is not loaded");
       }
       temp_p
     };
@@ -7379,31 +7284,30 @@ pub mod functions {
       extern "system" fn(GLint, GLsizei, GLboolean, *const GLfloat),
     >(p)(location, count, transpose, value);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "UniformMatrix3fv({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniformMatrix3fv({:?}, {:?}, {:?}, {:?}): {}",
           location, count, transpose, value, err
         );
       }
     }
     out
   }
-  /// See [glUniformMatrix3x2fv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniformMatrix3x2fv.xhtml)
+  /// See [glUniform](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform.xhtml)
   ///
   /// Fallbacks: UniformMatrix3x2fvNV
   #[inline]
-  pub unsafe fn UniformMatrix3x2fv(
+  pub unsafe fn glUniformMatrix3x2fv(
     location: GLint,
     count: GLsizei,
     transpose: GLboolean,
     value: *const GLfloat,
   ) {
-    trace!("UniformMatrix3x2fv");
+    trace!("glUniformMatrix3x2fv");
     let p: *mut c_void = {
       let temp_p = storage::UniformMatrix3x2fv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("UniformMatrix3x2fv")
+        panic!("glUniformMatrix3x2fv is not loaded");
       }
       temp_p
     };
@@ -7412,31 +7316,30 @@ pub mod functions {
       extern "system" fn(GLint, GLsizei, GLboolean, *const GLfloat),
     >(p)(location, count, transpose, value);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "UniformMatrix3x2fv({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniformMatrix3x2fv({:?}, {:?}, {:?}, {:?}): {}",
           location, count, transpose, value, err
         );
       }
     }
     out
   }
-  /// See [glUniformMatrix3x4fv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniformMatrix3x4fv.xhtml)
+  /// See [glUniform](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform.xhtml)
   ///
   /// Fallbacks: UniformMatrix3x4fvNV
   #[inline]
-  pub unsafe fn UniformMatrix3x4fv(
+  pub unsafe fn glUniformMatrix3x4fv(
     location: GLint,
     count: GLsizei,
     transpose: GLboolean,
     value: *const GLfloat,
   ) {
-    trace!("UniformMatrix3x4fv");
+    trace!("glUniformMatrix3x4fv");
     let p: *mut c_void = {
       let temp_p = storage::UniformMatrix3x4fv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("UniformMatrix3x4fv")
+        panic!("glUniformMatrix3x4fv is not loaded");
       }
       temp_p
     };
@@ -7445,31 +7348,30 @@ pub mod functions {
       extern "system" fn(GLint, GLsizei, GLboolean, *const GLfloat),
     >(p)(location, count, transpose, value);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "UniformMatrix3x4fv({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniformMatrix3x4fv({:?}, {:?}, {:?}, {:?}): {}",
           location, count, transpose, value, err
         );
       }
     }
     out
   }
-  /// See [glUniformMatrix4fv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniformMatrix4fv.xhtml)
+  /// See [glUniform](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform.xhtml)
   ///
   /// Fallbacks: UniformMatrix4fvARB
   #[inline]
-  pub unsafe fn UniformMatrix4fv(
+  pub unsafe fn glUniformMatrix4fv(
     location: GLint,
     count: GLsizei,
     transpose: GLboolean,
     value: *const GLfloat,
   ) {
-    trace!("UniformMatrix4fv");
+    trace!("glUniformMatrix4fv");
     let p: *mut c_void = {
       let temp_p = storage::UniformMatrix4fv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("UniformMatrix4fv")
+        panic!("glUniformMatrix4fv is not loaded");
       }
       temp_p
     };
@@ -7478,31 +7380,30 @@ pub mod functions {
       extern "system" fn(GLint, GLsizei, GLboolean, *const GLfloat),
     >(p)(location, count, transpose, value);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "UniformMatrix4fv({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniformMatrix4fv({:?}, {:?}, {:?}, {:?}): {}",
           location, count, transpose, value, err
         );
       }
     }
     out
   }
-  /// See [glUniformMatrix4x2fv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniformMatrix4x2fv.xhtml)
+  /// See [glUniform](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform.xhtml)
   ///
   /// Fallbacks: UniformMatrix4x2fvNV
   #[inline]
-  pub unsafe fn UniformMatrix4x2fv(
+  pub unsafe fn glUniformMatrix4x2fv(
     location: GLint,
     count: GLsizei,
     transpose: GLboolean,
     value: *const GLfloat,
   ) {
-    trace!("UniformMatrix4x2fv");
+    trace!("glUniformMatrix4x2fv");
     let p: *mut c_void = {
       let temp_p = storage::UniformMatrix4x2fv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("UniformMatrix4x2fv")
+        panic!("glUniformMatrix4x2fv is not loaded");
       }
       temp_p
     };
@@ -7511,31 +7412,30 @@ pub mod functions {
       extern "system" fn(GLint, GLsizei, GLboolean, *const GLfloat),
     >(p)(location, count, transpose, value);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "UniformMatrix4x2fv({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniformMatrix4x2fv({:?}, {:?}, {:?}, {:?}): {}",
           location, count, transpose, value, err
         );
       }
     }
     out
   }
-  /// See [glUniformMatrix4x3fv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniformMatrix4x3fv.xhtml)
+  /// See [glUniform](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glUniform.xhtml)
   ///
   /// Fallbacks: UniformMatrix4x3fvNV
   #[inline]
-  pub unsafe fn UniformMatrix4x3fv(
+  pub unsafe fn glUniformMatrix4x3fv(
     location: GLint,
     count: GLsizei,
     transpose: GLboolean,
     value: *const GLfloat,
   ) {
-    trace!("UniformMatrix4x3fv");
+    trace!("glUniformMatrix4x3fv");
     let p: *mut c_void = {
       let temp_p = storage::UniformMatrix4x3fv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("UniformMatrix4x3fv")
+        panic!("glUniformMatrix4x3fv is not loaded");
       }
       temp_p
     };
@@ -7544,10 +7444,9 @@ pub mod functions {
       extern "system" fn(GLint, GLsizei, GLboolean, *const GLfloat),
     >(p)(location, count, transpose, value);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "UniformMatrix4x3fv({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUniformMatrix4x3fv({:?}, {:?}, {:?}, {:?}): {}",
           location, count, transpose, value, err
         );
       }
@@ -7558,12 +7457,12 @@ pub mod functions {
   ///
   /// Fallbacks: UnmapBufferARB, UnmapBufferOES
   #[inline]
-  pub unsafe fn UnmapBuffer(target: GLenum) -> GLboolean {
-    trace!("UnmapBuffer");
+  pub unsafe fn glUnmapBuffer(target: GLenum) -> GLboolean {
+    trace!("glUnmapBuffer");
     let p: *mut c_void = {
       let temp_p = storage::UnmapBuffer.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("UnmapBuffer")
+        panic!("glUnmapBuffer is not loaded");
       }
       temp_p
     };
@@ -7571,9 +7470,9 @@ pub mod functions {
       p,
     )(target);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("UnmapBuffer({:?}): {}", target, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUnmapBuffer({:?}): {}", target, err);
       }
     }
     out
@@ -7582,20 +7481,20 @@ pub mod functions {
   ///
   /// Fallbacks: UseProgramObjectARB
   #[inline]
-  pub unsafe fn UseProgram(program: GLuint) {
-    trace!("UseProgram");
+  pub unsafe fn glUseProgram(program: GLuint) {
+    trace!("glUseProgram");
     let p: *mut c_void = {
       let temp_p = storage::UseProgram.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("UseProgram")
+        panic!("glUseProgram is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLuint)>(p)(program);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("UseProgram({:?}): {}", program, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glUseProgram({:?}): {}", program, err);
       }
     }
     out
@@ -7604,20 +7503,20 @@ pub mod functions {
   ///
   /// Fallbacks: ValidateProgramARB
   #[inline]
-  pub unsafe fn ValidateProgram(program: GLuint) {
-    trace!("ValidateProgram");
+  pub unsafe fn glValidateProgram(program: GLuint) {
+    trace!("glValidateProgram");
     let p: *mut c_void = {
       let temp_p = storage::ValidateProgram.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("ValidateProgram")
+        panic!("glValidateProgram is not loaded");
       }
       temp_p
     };
     let out = transmute::<*mut c_void, extern "system" fn(GLuint)>(p)(program);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("ValidateProgram({:?}): {}", program, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glValidateProgram({:?}): {}", program, err);
       }
     }
     out
@@ -7626,12 +7525,12 @@ pub mod functions {
   ///
   /// Fallbacks: VertexAttrib1fARB, VertexAttrib1fNV
   #[inline]
-  pub unsafe fn VertexAttrib1f(index: GLuint, x: GLfloat) {
-    trace!("VertexAttrib1f");
+  pub unsafe fn glVertexAttrib1f(index: GLuint, x: GLfloat) {
+    trace!("glVertexAttrib1f");
     let p: *mut c_void = {
       let temp_p = storage::VertexAttrib1f.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("VertexAttrib1f")
+        panic!("glVertexAttrib1f is not loaded");
       }
       temp_p
     };
@@ -7639,23 +7538,23 @@ pub mod functions {
       index, x,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("VertexAttrib1f({:?}, {:?}): {}", index, x, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glVertexAttrib1f({:?}, {:?}): {}", index, x, err);
       }
     }
     out
   }
-  /// See [glVertexAttrib1fv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glVertexAttrib1fv.xhtml)
+  /// See [glVertexAttrib](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glVertexAttrib.xhtml)
   ///
   /// Fallbacks: VertexAttrib1fvARB, VertexAttrib1fvNV
   #[inline]
-  pub unsafe fn VertexAttrib1fv(index: GLuint, v: *const GLfloat) {
-    trace!("VertexAttrib1fv");
+  pub unsafe fn glVertexAttrib1fv(index: GLuint, v: *const GLfloat) {
+    trace!("glVertexAttrib1fv");
     let p: *mut c_void = {
       let temp_p = storage::VertexAttrib1fv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("VertexAttrib1fv")
+        panic!("glVertexAttrib1fv is not loaded");
       }
       temp_p
     };
@@ -7664,9 +7563,9 @@ pub mod functions {
       extern "system" fn(GLuint, *const GLfloat),
     >(p)(index, v);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("VertexAttrib1fv({:?}, {:?}): {}", index, v, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glVertexAttrib1fv({:?}, {:?}): {}", index, v, err);
       }
     }
     out
@@ -7675,12 +7574,12 @@ pub mod functions {
   ///
   /// Fallbacks: VertexAttrib2fARB, VertexAttrib2fNV
   #[inline]
-  pub unsafe fn VertexAttrib2f(index: GLuint, x: GLfloat, y: GLfloat) {
-    trace!("VertexAttrib2f");
+  pub unsafe fn glVertexAttrib2f(index: GLuint, x: GLfloat, y: GLfloat) {
+    trace!("glVertexAttrib2f");
     let p: *mut c_void = {
       let temp_p = storage::VertexAttrib2f.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("VertexAttrib2f")
+        panic!("glVertexAttrib2f is not loaded");
       }
       temp_p
     };
@@ -7689,23 +7588,23 @@ pub mod functions {
       extern "system" fn(GLuint, GLfloat, GLfloat),
     >(p)(index, x, y);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("VertexAttrib2f({:?}, {:?}, {:?}): {}", index, x, y, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glVertexAttrib2f({:?}, {:?}, {:?}): {}", index, x, y, err);
       }
     }
     out
   }
-  /// See [glVertexAttrib2fv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glVertexAttrib2fv.xhtml)
+  /// See [glVertexAttrib](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glVertexAttrib.xhtml)
   ///
   /// Fallbacks: VertexAttrib2fvARB, VertexAttrib2fvNV
   #[inline]
-  pub unsafe fn VertexAttrib2fv(index: GLuint, v: *const GLfloat) {
-    trace!("VertexAttrib2fv");
+  pub unsafe fn glVertexAttrib2fv(index: GLuint, v: *const GLfloat) {
+    trace!("glVertexAttrib2fv");
     let p: *mut c_void = {
       let temp_p = storage::VertexAttrib2fv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("VertexAttrib2fv")
+        panic!("glVertexAttrib2fv is not loaded");
       }
       temp_p
     };
@@ -7714,9 +7613,9 @@ pub mod functions {
       extern "system" fn(GLuint, *const GLfloat),
     >(p)(index, v);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("VertexAttrib2fv({:?}, {:?}): {}", index, v, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glVertexAttrib2fv({:?}, {:?}): {}", index, v, err);
       }
     }
     out
@@ -7725,17 +7624,17 @@ pub mod functions {
   ///
   /// Fallbacks: VertexAttrib3fARB, VertexAttrib3fNV
   #[inline]
-  pub unsafe fn VertexAttrib3f(
+  pub unsafe fn glVertexAttrib3f(
     index: GLuint,
     x: GLfloat,
     y: GLfloat,
     z: GLfloat,
   ) {
-    trace!("VertexAttrib3f");
+    trace!("glVertexAttrib3f");
     let p: *mut c_void = {
       let temp_p = storage::VertexAttrib3f.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("VertexAttrib3f")
+        panic!("glVertexAttrib3f is not loaded");
       }
       temp_p
     };
@@ -7744,26 +7643,25 @@ pub mod functions {
       extern "system" fn(GLuint, GLfloat, GLfloat, GLfloat),
     >(p)(index, x, y, z);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "VertexAttrib3f({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glVertexAttrib3f({:?}, {:?}, {:?}, {:?}): {}",
           index, x, y, z, err
         );
       }
     }
     out
   }
-  /// See [glVertexAttrib3fv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glVertexAttrib3fv.xhtml)
+  /// See [glVertexAttrib](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glVertexAttrib.xhtml)
   ///
   /// Fallbacks: VertexAttrib3fvARB, VertexAttrib3fvNV
   #[inline]
-  pub unsafe fn VertexAttrib3fv(index: GLuint, v: *const GLfloat) {
-    trace!("VertexAttrib3fv");
+  pub unsafe fn glVertexAttrib3fv(index: GLuint, v: *const GLfloat) {
+    trace!("glVertexAttrib3fv");
     let p: *mut c_void = {
       let temp_p = storage::VertexAttrib3fv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("VertexAttrib3fv")
+        panic!("glVertexAttrib3fv is not loaded");
       }
       temp_p
     };
@@ -7772,9 +7670,9 @@ pub mod functions {
       extern "system" fn(GLuint, *const GLfloat),
     >(p)(index, v);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("VertexAttrib3fv({:?}, {:?}): {}", index, v, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glVertexAttrib3fv({:?}, {:?}): {}", index, v, err);
       }
     }
     out
@@ -7783,18 +7681,18 @@ pub mod functions {
   ///
   /// Fallbacks: VertexAttrib4fARB, VertexAttrib4fNV
   #[inline]
-  pub unsafe fn VertexAttrib4f(
+  pub unsafe fn glVertexAttrib4f(
     index: GLuint,
     x: GLfloat,
     y: GLfloat,
     z: GLfloat,
     w: GLfloat,
   ) {
-    trace!("VertexAttrib4f");
+    trace!("glVertexAttrib4f");
     let p: *mut c_void = {
       let temp_p = storage::VertexAttrib4f.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("VertexAttrib4f")
+        panic!("glVertexAttrib4f is not loaded");
       }
       temp_p
     };
@@ -7803,26 +7701,25 @@ pub mod functions {
       extern "system" fn(GLuint, GLfloat, GLfloat, GLfloat, GLfloat),
     >(p)(index, x, y, z, w);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "VertexAttrib4f({:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glVertexAttrib4f({:?}, {:?}, {:?}, {:?}, {:?}): {}",
           index, x, y, z, w, err
         );
       }
     }
     out
   }
-  /// See [glVertexAttrib4fv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glVertexAttrib4fv.xhtml)
+  /// See [glVertexAttrib](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glVertexAttrib.xhtml)
   ///
   /// Fallbacks: VertexAttrib4fvARB, VertexAttrib4fvNV
   #[inline]
-  pub unsafe fn VertexAttrib4fv(index: GLuint, v: *const GLfloat) {
-    trace!("VertexAttrib4fv");
+  pub unsafe fn glVertexAttrib4fv(index: GLuint, v: *const GLfloat) {
+    trace!("glVertexAttrib4fv");
     let p: *mut c_void = {
       let temp_p = storage::VertexAttrib4fv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("VertexAttrib4fv")
+        panic!("glVertexAttrib4fv is not loaded");
       }
       temp_p
     };
@@ -7831,9 +7728,9 @@ pub mod functions {
       extern "system" fn(GLuint, *const GLfloat),
     >(p)(index, v);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("VertexAttrib4fv({:?}, {:?}): {}", index, v, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glVertexAttrib4fv({:?}, {:?}): {}", index, v, err);
       }
     }
     out
@@ -7843,12 +7740,12 @@ pub mod functions {
   /// Fallbacks: VertexAttribDivisorANGLE, VertexAttribDivisorARB,
   /// VertexAttribDivisorEXT, VertexAttribDivisorNV
   #[inline]
-  pub unsafe fn VertexAttribDivisor(index: GLuint, divisor: GLuint) {
-    trace!("VertexAttribDivisor");
+  pub unsafe fn glVertexAttribDivisor(index: GLuint, divisor: GLuint) {
+    trace!("glVertexAttribDivisor");
     let p: *mut c_void = {
       let temp_p = storage::VertexAttribDivisor.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("VertexAttribDivisor")
+        panic!("glVertexAttribDivisor is not loaded");
       }
       temp_p
     };
@@ -7856,9 +7753,9 @@ pub mod functions {
       index, divisor,
     );
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("VertexAttribDivisor({:?}, {:?}): {}", index, divisor, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glVertexAttribDivisor({:?}, {:?}): {}", index, divisor, err);
       }
     }
     out
@@ -7867,18 +7764,18 @@ pub mod functions {
   ///
   /// Fallbacks: VertexAttribI4iEXT
   #[inline]
-  pub unsafe fn VertexAttribI4i(
+  pub unsafe fn glVertexAttribI4i(
     index: GLuint,
     x: GLint,
     y: GLint,
     z: GLint,
     w: GLint,
   ) {
-    trace!("VertexAttribI4i");
+    trace!("glVertexAttribI4i");
     let p: *mut c_void = {
       let temp_p = storage::VertexAttribI4i.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("VertexAttribI4i")
+        panic!("glVertexAttribI4i is not loaded");
       }
       temp_p
     };
@@ -7887,26 +7784,25 @@ pub mod functions {
       extern "system" fn(GLuint, GLint, GLint, GLint, GLint),
     >(p)(index, x, y, z, w);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "VertexAttribI4i({:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glVertexAttribI4i({:?}, {:?}, {:?}, {:?}, {:?}): {}",
           index, x, y, z, w, err
         );
       }
     }
     out
   }
-  /// See [glVertexAttribI4iv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glVertexAttribI4iv.xhtml)
+  /// See [glVertexAttrib](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glVertexAttrib.xhtml)
   ///
   /// Fallbacks: VertexAttribI4ivEXT
   #[inline]
-  pub unsafe fn VertexAttribI4iv(index: GLuint, v: *const GLint) {
-    trace!("VertexAttribI4iv");
+  pub unsafe fn glVertexAttribI4iv(index: GLuint, v: *const GLint) {
+    trace!("glVertexAttribI4iv");
     let p: *mut c_void = {
       let temp_p = storage::VertexAttribI4iv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("VertexAttribI4iv")
+        panic!("glVertexAttribI4iv is not loaded");
       }
       temp_p
     };
@@ -7914,9 +7810,9 @@ pub mod functions {
       p,
     )(index, v);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("VertexAttribI4iv({:?}, {:?}): {}", index, v, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glVertexAttribI4iv({:?}, {:?}): {}", index, v, err);
       }
     }
     out
@@ -7925,18 +7821,18 @@ pub mod functions {
   ///
   /// Fallbacks: VertexAttribI4uiEXT
   #[inline]
-  pub unsafe fn VertexAttribI4ui(
+  pub unsafe fn glVertexAttribI4ui(
     index: GLuint,
     x: GLuint,
     y: GLuint,
     z: GLuint,
     w: GLuint,
   ) {
-    trace!("VertexAttribI4ui");
+    trace!("glVertexAttribI4ui");
     let p: *mut c_void = {
       let temp_p = storage::VertexAttribI4ui.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("VertexAttribI4ui")
+        panic!("glVertexAttribI4ui is not loaded");
       }
       temp_p
     };
@@ -7945,26 +7841,25 @@ pub mod functions {
       extern "system" fn(GLuint, GLuint, GLuint, GLuint, GLuint),
     >(p)(index, x, y, z, w);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "VertexAttribI4ui({:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glVertexAttribI4ui({:?}, {:?}, {:?}, {:?}, {:?}): {}",
           index, x, y, z, w, err
         );
       }
     }
     out
   }
-  /// See [glVertexAttribI4uiv](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glVertexAttribI4uiv.xhtml)
+  /// See [glVertexAttrib](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glVertexAttrib.xhtml)
   ///
   /// Fallbacks: VertexAttribI4uivEXT
   #[inline]
-  pub unsafe fn VertexAttribI4uiv(index: GLuint, v: *const GLuint) {
-    trace!("VertexAttribI4uiv");
+  pub unsafe fn glVertexAttribI4uiv(index: GLuint, v: *const GLuint) {
+    trace!("glVertexAttribI4uiv");
     let p: *mut c_void = {
       let temp_p = storage::VertexAttribI4uiv.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("VertexAttribI4uiv")
+        panic!("glVertexAttribI4uiv is not loaded");
       }
       temp_p
     };
@@ -7972,9 +7867,9 @@ pub mod functions {
       p,
     )(index, v);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("VertexAttribI4uiv({:?}, {:?}): {}", index, v, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glVertexAttribI4uiv({:?}, {:?}): {}", index, v, err);
       }
     }
     out
@@ -7983,18 +7878,18 @@ pub mod functions {
   ///
   /// Fallbacks: VertexAttribIPointerEXT
   #[inline]
-  pub unsafe fn VertexAttribIPointer(
+  pub unsafe fn glVertexAttribIPointer(
     index: GLuint,
     size: GLint,
     type_: GLenum,
     stride: GLsizei,
     pointer: *const c_void,
   ) {
-    trace!("VertexAttribIPointer");
+    trace!("glVertexAttribIPointer");
     let p: *mut c_void = {
       let temp_p = storage::VertexAttribIPointer.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("VertexAttribIPointer")
+        panic!("glVertexAttribIPointer is not loaded");
       }
       temp_p
     };
@@ -8003,10 +7898,9 @@ pub mod functions {
       extern "system" fn(GLuint, GLint, GLenum, GLsizei, *const c_void),
     >(p)(index, size, type_, stride, pointer);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "VertexAttribIPointer({:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glVertexAttribIPointer({:?}, {:?}, {:?}, {:?}, {:?}): {}",
           index, size, type_, stride, pointer, err
         );
       }
@@ -8017,7 +7911,7 @@ pub mod functions {
   ///
   /// Fallbacks: VertexAttribPointerARB
   #[inline]
-  pub unsafe fn VertexAttribPointer(
+  pub unsafe fn glVertexAttribPointer(
     index: GLuint,
     size: GLint,
     type_: GLenum,
@@ -8025,11 +7919,11 @@ pub mod functions {
     stride: GLsizei,
     pointer: *const c_void,
   ) {
-    trace!("VertexAttribPointer");
+    trace!("glVertexAttribPointer");
     let p: *mut c_void = {
       let temp_p = storage::VertexAttribPointer.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("VertexAttribPointer")
+        panic!("glVertexAttribPointer is not loaded");
       }
       temp_p
     };
@@ -8045,10 +7939,9 @@ pub mod functions {
       ),
     >(p)(index, size, type_, normalized, stride, pointer);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "VertexAttribPointer({:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glVertexAttribPointer({:?}, {:?}, {:?}, {:?}, {:?}, {:?}): {}",
           index, size, type_, normalized, stride, pointer, err
         );
       }
@@ -8057,12 +7950,12 @@ pub mod functions {
   }
   /// See [glViewport](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glViewport.xhtml)
   #[inline]
-  pub unsafe fn Viewport(x: GLint, y: GLint, width: GLsizei, height: GLsizei) {
-    trace!("Viewport");
+  pub unsafe fn glViewport(x: GLint, y: GLint, width: GLsizei, height: GLsizei) {
+    trace!("glViewport");
     let p: *mut c_void = {
       let temp_p = storage::Viewport.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("Viewport")
+        panic!("glViewport is not loaded");
       }
       temp_p
     };
@@ -8071,10 +7964,9 @@ pub mod functions {
       extern "system" fn(GLint, GLint, GLsizei, GLsizei),
     >(p)(x, y, width, height);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!(
-          "Viewport({:?}, {:?}, {:?}, {:?}): {}",
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glViewport({:?}, {:?}, {:?}, {:?}): {}",
           x, y, width, height, err
         );
       }
@@ -8085,12 +7977,12 @@ pub mod functions {
   ///
   /// Fallbacks: WaitSyncAPPLE
   #[inline]
-  pub unsafe fn WaitSync(sync: GLsync, flags: GLbitfield, timeout: GLuint64) {
-    trace!("WaitSync");
+  pub unsafe fn glWaitSync(sync: GLsync, flags: GLbitfield, timeout: GLuint64) {
+    trace!("glWaitSync");
     let p: *mut c_void = {
       let temp_p = storage::WaitSync.load(Ordering::Relaxed);
       if temp_p.is_null() {
-        panic!("WaitSync")
+        panic!("glWaitSync is not loaded");
       }
       temp_p
     };
@@ -8099,9 +7991,9 @@ pub mod functions {
       extern "system" fn(GLsync, GLbitfield, GLuint64),
     >(p)(sync, flags, timeout);
     if cfg!(debug_assertions) {
-      let err = GetError();
-      if err != NO_ERROR {
-        error!("WaitSync({:?}, {:?}, {:?}): {}", sync, flags, timeout, err);
+      let err = glGetError();
+      if err != GL_NO_ERROR {
+        error!("glWaitSync({:?}, {:?}, {:?}): {}", sync, flags, timeout, err);
       }
     }
     out
@@ -8410,6 +8302,7 @@ mod storage {
   pub static WaitSync: AtomicPtr<c_void> = AtomicPtr::new(null_mut());
 }
 
+#[doc(hidden)]
 pub mod ActiveTexture {
   use super::*;
 
@@ -8421,9 +8314,7 @@ pub mod ActiveTexture {
   /// Load `ActiveTexture` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -8437,6 +8328,7 @@ pub mod ActiveTexture {
   }
 }
 
+#[doc(hidden)]
 pub mod AttachShader {
   use super::*;
 
@@ -8448,9 +8340,7 @@ pub mod AttachShader {
   /// Load `AttachShader` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -8463,6 +8353,7 @@ pub mod AttachShader {
   }
 }
 
+#[doc(hidden)]
 pub mod BeginQuery {
   use super::*;
 
@@ -8474,9 +8365,7 @@ pub mod BeginQuery {
   /// Load `BeginQuery` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -8489,6 +8378,7 @@ pub mod BeginQuery {
   }
 }
 
+#[doc(hidden)]
 pub mod BeginTransformFeedback {
   use super::*;
 
@@ -8500,9 +8390,7 @@ pub mod BeginTransformFeedback {
   /// Load `BeginTransformFeedback` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -8520,6 +8408,7 @@ pub mod BeginTransformFeedback {
   }
 }
 
+#[doc(hidden)]
 pub mod BindAttribLocation {
   use super::*;
 
@@ -8531,9 +8420,7 @@ pub mod BindAttribLocation {
   /// Load `BindAttribLocation` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -8547,6 +8434,7 @@ pub mod BindAttribLocation {
   }
 }
 
+#[doc(hidden)]
 pub mod BindBuffer {
   use super::*;
 
@@ -8558,9 +8446,7 @@ pub mod BindBuffer {
   /// Load `BindBuffer` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -8573,6 +8459,7 @@ pub mod BindBuffer {
   }
 }
 
+#[doc(hidden)]
 pub mod BindBufferBase {
   use super::*;
 
@@ -8584,9 +8471,7 @@ pub mod BindBufferBase {
   /// Load `BindBufferBase` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -8604,6 +8489,7 @@ pub mod BindBufferBase {
   }
 }
 
+#[doc(hidden)]
 pub mod BindBufferRange {
   use super::*;
 
@@ -8615,9 +8501,7 @@ pub mod BindBufferRange {
   /// Load `BindBufferRange` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -8635,6 +8519,7 @@ pub mod BindBufferRange {
   }
 }
 
+#[doc(hidden)]
 pub mod BindFramebuffer {
   use super::*;
 
@@ -8646,9 +8531,7 @@ pub mod BindFramebuffer {
   /// Load `BindFramebuffer` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -8659,6 +8542,7 @@ pub mod BindFramebuffer {
   }
 }
 
+#[doc(hidden)]
 pub mod BindRenderbuffer {
   use super::*;
 
@@ -8670,9 +8554,7 @@ pub mod BindRenderbuffer {
   /// Load `BindRenderbuffer` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -8683,6 +8565,7 @@ pub mod BindRenderbuffer {
   }
 }
 
+#[doc(hidden)]
 pub mod BindSampler {
   use super::*;
 
@@ -8694,9 +8577,7 @@ pub mod BindSampler {
   /// Load `BindSampler` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -8707,6 +8588,7 @@ pub mod BindSampler {
   }
 }
 
+#[doc(hidden)]
 pub mod BindTexture {
   use super::*;
 
@@ -8718,9 +8600,7 @@ pub mod BindTexture {
   /// Load `BindTexture` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -8733,6 +8613,7 @@ pub mod BindTexture {
   }
 }
 
+#[doc(hidden)]
 pub mod BindTransformFeedback {
   use super::*;
 
@@ -8744,9 +8625,7 @@ pub mod BindTransformFeedback {
   /// Load `BindTransformFeedback` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -8758,6 +8637,7 @@ pub mod BindTransformFeedback {
   }
 }
 
+#[doc(hidden)]
 pub mod BindVertexArray {
   use super::*;
 
@@ -8769,9 +8649,7 @@ pub mod BindVertexArray {
   /// Load `BindVertexArray` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -8785,6 +8663,7 @@ pub mod BindVertexArray {
   }
 }
 
+#[doc(hidden)]
 pub mod BlendColor {
   use super::*;
 
@@ -8796,9 +8675,7 @@ pub mod BlendColor {
   /// Load `BlendColor` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -8811,6 +8688,7 @@ pub mod BlendColor {
   }
 }
 
+#[doc(hidden)]
 pub mod BlendEquation {
   use super::*;
 
@@ -8822,9 +8700,7 @@ pub mod BlendEquation {
   /// Load `BlendEquation` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -8838,6 +8714,7 @@ pub mod BlendEquation {
   }
 }
 
+#[doc(hidden)]
 pub mod BlendEquationSeparate {
   use super::*;
 
@@ -8849,9 +8726,7 @@ pub mod BlendEquationSeparate {
   /// Load `BlendEquationSeparate` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -8865,6 +8740,7 @@ pub mod BlendEquationSeparate {
   }
 }
 
+#[doc(hidden)]
 pub mod BlendFunc {
   use super::*;
 
@@ -8876,9 +8752,7 @@ pub mod BlendFunc {
   /// Load `BlendFunc` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -8889,6 +8763,7 @@ pub mod BlendFunc {
   }
 }
 
+#[doc(hidden)]
 pub mod BlendFuncSeparate {
   use super::*;
 
@@ -8900,9 +8775,7 @@ pub mod BlendFuncSeparate {
   /// Load `BlendFuncSeparate` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -8920,6 +8793,7 @@ pub mod BlendFuncSeparate {
   }
 }
 
+#[doc(hidden)]
 pub mod BlitFramebuffer {
   use super::*;
 
@@ -8931,9 +8805,7 @@ pub mod BlitFramebuffer {
   /// Load `BlitFramebuffer` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -8951,6 +8823,7 @@ pub mod BlitFramebuffer {
   }
 }
 
+#[doc(hidden)]
 pub mod BufferData {
   use super::*;
 
@@ -8962,9 +8835,7 @@ pub mod BufferData {
   /// Load `BufferData` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -8977,6 +8848,7 @@ pub mod BufferData {
   }
 }
 
+#[doc(hidden)]
 pub mod BufferSubData {
   use super::*;
 
@@ -8988,9 +8860,7 @@ pub mod BufferSubData {
   /// Load `BufferSubData` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9004,6 +8874,7 @@ pub mod BufferSubData {
   }
 }
 
+#[doc(hidden)]
 pub mod CheckFramebufferStatus {
   use super::*;
 
@@ -9015,9 +8886,7 @@ pub mod CheckFramebufferStatus {
   /// Load `CheckFramebufferStatus` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9031,6 +8900,7 @@ pub mod CheckFramebufferStatus {
   }
 }
 
+#[doc(hidden)]
 pub mod Clear {
   use super::*;
 
@@ -9042,9 +8912,7 @@ pub mod Clear {
   /// Load `Clear` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9055,6 +8923,7 @@ pub mod Clear {
   }
 }
 
+#[doc(hidden)]
 pub mod ClearBufferfi {
   use super::*;
 
@@ -9066,9 +8935,7 @@ pub mod ClearBufferfi {
   /// Load `ClearBufferfi` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9079,6 +8946,7 @@ pub mod ClearBufferfi {
   }
 }
 
+#[doc(hidden)]
 pub mod ClearBufferfv {
   use super::*;
 
@@ -9090,9 +8958,7 @@ pub mod ClearBufferfv {
   /// Load `ClearBufferfv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9103,6 +8969,7 @@ pub mod ClearBufferfv {
   }
 }
 
+#[doc(hidden)]
 pub mod ClearBufferiv {
   use super::*;
 
@@ -9114,9 +8981,7 @@ pub mod ClearBufferiv {
   /// Load `ClearBufferiv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9127,6 +8992,7 @@ pub mod ClearBufferiv {
   }
 }
 
+#[doc(hidden)]
 pub mod ClearBufferuiv {
   use super::*;
 
@@ -9138,9 +9004,7 @@ pub mod ClearBufferuiv {
   /// Load `ClearBufferuiv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9151,6 +9015,7 @@ pub mod ClearBufferuiv {
   }
 }
 
+#[doc(hidden)]
 pub mod ClearColor {
   use super::*;
 
@@ -9162,9 +9027,7 @@ pub mod ClearColor {
   /// Load `ClearColor` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9175,6 +9038,7 @@ pub mod ClearColor {
   }
 }
 
+#[doc(hidden)]
 pub mod ClearDepthf {
   use super::*;
 
@@ -9186,9 +9050,7 @@ pub mod ClearDepthf {
   /// Load `ClearDepthf` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9201,6 +9063,7 @@ pub mod ClearDepthf {
   }
 }
 
+#[doc(hidden)]
 pub mod ClearStencil {
   use super::*;
 
@@ -9212,9 +9075,7 @@ pub mod ClearStencil {
   /// Load `ClearStencil` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9225,6 +9086,7 @@ pub mod ClearStencil {
   }
 }
 
+#[doc(hidden)]
 pub mod ClientWaitSync {
   use super::*;
 
@@ -9236,9 +9098,7 @@ pub mod ClientWaitSync {
   /// Load `ClientWaitSync` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9252,6 +9112,7 @@ pub mod ClientWaitSync {
   }
 }
 
+#[doc(hidden)]
 pub mod ColorMask {
   use super::*;
 
@@ -9263,9 +9124,7 @@ pub mod ColorMask {
   /// Load `ColorMask` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9276,6 +9135,7 @@ pub mod ColorMask {
   }
 }
 
+#[doc(hidden)]
 pub mod CompileShader {
   use super::*;
 
@@ -9287,9 +9147,7 @@ pub mod CompileShader {
   /// Load `CompileShader` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9303,6 +9161,7 @@ pub mod CompileShader {
   }
 }
 
+#[doc(hidden)]
 pub mod CompressedTexImage2D {
   use super::*;
 
@@ -9314,9 +9173,7 @@ pub mod CompressedTexImage2D {
   /// Load `CompressedTexImage2D` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9330,6 +9187,7 @@ pub mod CompressedTexImage2D {
   }
 }
 
+#[doc(hidden)]
 pub mod CompressedTexImage3D {
   use super::*;
 
@@ -9341,9 +9199,7 @@ pub mod CompressedTexImage3D {
   /// Load `CompressedTexImage3D` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9357,6 +9213,7 @@ pub mod CompressedTexImage3D {
   }
 }
 
+#[doc(hidden)]
 pub mod CompressedTexSubImage2D {
   use super::*;
 
@@ -9368,9 +9225,7 @@ pub mod CompressedTexSubImage2D {
   /// Load `CompressedTexSubImage2D` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9384,6 +9239,7 @@ pub mod CompressedTexSubImage2D {
   }
 }
 
+#[doc(hidden)]
 pub mod CompressedTexSubImage3D {
   use super::*;
 
@@ -9395,9 +9251,7 @@ pub mod CompressedTexSubImage3D {
   /// Load `CompressedTexSubImage3D` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9411,6 +9265,7 @@ pub mod CompressedTexSubImage3D {
   }
 }
 
+#[doc(hidden)]
 pub mod CopyBufferSubData {
   use super::*;
 
@@ -9422,9 +9277,7 @@ pub mod CopyBufferSubData {
   /// Load `CopyBufferSubData` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9438,6 +9291,7 @@ pub mod CopyBufferSubData {
   }
 }
 
+#[doc(hidden)]
 pub mod CopyTexImage2D {
   use super::*;
 
@@ -9449,9 +9303,7 @@ pub mod CopyTexImage2D {
   /// Load `CopyTexImage2D` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9465,6 +9317,7 @@ pub mod CopyTexImage2D {
   }
 }
 
+#[doc(hidden)]
 pub mod CopyTexSubImage2D {
   use super::*;
 
@@ -9476,9 +9329,7 @@ pub mod CopyTexSubImage2D {
   /// Load `CopyTexSubImage2D` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9492,6 +9343,7 @@ pub mod CopyTexSubImage2D {
   }
 }
 
+#[doc(hidden)]
 pub mod CopyTexSubImage3D {
   use super::*;
 
@@ -9503,9 +9355,7 @@ pub mod CopyTexSubImage3D {
   /// Load `CopyTexSubImage3D` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9519,6 +9369,7 @@ pub mod CopyTexSubImage3D {
   }
 }
 
+#[doc(hidden)]
 pub mod CreateProgram {
   use super::*;
 
@@ -9530,9 +9381,7 @@ pub mod CreateProgram {
   /// Load `CreateProgram` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9546,6 +9395,7 @@ pub mod CreateProgram {
   }
 }
 
+#[doc(hidden)]
 pub mod CreateShader {
   use super::*;
 
@@ -9557,9 +9407,7 @@ pub mod CreateShader {
   /// Load `CreateShader` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9573,6 +9421,7 @@ pub mod CreateShader {
   }
 }
 
+#[doc(hidden)]
 pub mod CullFace {
   use super::*;
 
@@ -9584,9 +9433,7 @@ pub mod CullFace {
   /// Load `CullFace` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9597,6 +9444,7 @@ pub mod CullFace {
   }
 }
 
+#[doc(hidden)]
 pub mod DeleteBuffers {
   use super::*;
 
@@ -9608,9 +9456,7 @@ pub mod DeleteBuffers {
   /// Load `DeleteBuffers` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9624,6 +9470,7 @@ pub mod DeleteBuffers {
   }
 }
 
+#[doc(hidden)]
 pub mod DeleteFramebuffers {
   use super::*;
 
@@ -9635,9 +9482,7 @@ pub mod DeleteFramebuffers {
   /// Load `DeleteFramebuffers` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9651,6 +9496,7 @@ pub mod DeleteFramebuffers {
   }
 }
 
+#[doc(hidden)]
 pub mod DeleteProgram {
   use super::*;
 
@@ -9662,9 +9508,7 @@ pub mod DeleteProgram {
   /// Load `DeleteProgram` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9675,6 +9519,7 @@ pub mod DeleteProgram {
   }
 }
 
+#[doc(hidden)]
 pub mod DeleteQueries {
   use super::*;
 
@@ -9686,9 +9531,7 @@ pub mod DeleteQueries {
   /// Load `DeleteQueries` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9702,6 +9545,7 @@ pub mod DeleteQueries {
   }
 }
 
+#[doc(hidden)]
 pub mod DeleteRenderbuffers {
   use super::*;
 
@@ -9713,9 +9557,7 @@ pub mod DeleteRenderbuffers {
   /// Load `DeleteRenderbuffers` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9729,6 +9571,7 @@ pub mod DeleteRenderbuffers {
   }
 }
 
+#[doc(hidden)]
 pub mod DeleteSamplers {
   use super::*;
 
@@ -9740,9 +9583,7 @@ pub mod DeleteSamplers {
   /// Load `DeleteSamplers` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9753,6 +9594,7 @@ pub mod DeleteSamplers {
   }
 }
 
+#[doc(hidden)]
 pub mod DeleteShader {
   use super::*;
 
@@ -9764,9 +9606,7 @@ pub mod DeleteShader {
   /// Load `DeleteShader` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9777,6 +9617,7 @@ pub mod DeleteShader {
   }
 }
 
+#[doc(hidden)]
 pub mod DeleteSync {
   use super::*;
 
@@ -9788,9 +9629,7 @@ pub mod DeleteSync {
   /// Load `DeleteSync` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9803,6 +9642,7 @@ pub mod DeleteSync {
   }
 }
 
+#[doc(hidden)]
 pub mod DeleteTextures {
   use super::*;
 
@@ -9814,9 +9654,7 @@ pub mod DeleteTextures {
   /// Load `DeleteTextures` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9827,6 +9665,7 @@ pub mod DeleteTextures {
   }
 }
 
+#[doc(hidden)]
 pub mod DeleteTransformFeedbacks {
   use super::*;
 
@@ -9838,9 +9677,7 @@ pub mod DeleteTransformFeedbacks {
   /// Load `DeleteTransformFeedbacks` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9854,6 +9691,7 @@ pub mod DeleteTransformFeedbacks {
   }
 }
 
+#[doc(hidden)]
 pub mod DeleteVertexArrays {
   use super::*;
 
@@ -9865,9 +9703,7 @@ pub mod DeleteVertexArrays {
   /// Load `DeleteVertexArrays` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9885,6 +9721,7 @@ pub mod DeleteVertexArrays {
   }
 }
 
+#[doc(hidden)]
 pub mod DepthFunc {
   use super::*;
 
@@ -9896,9 +9733,7 @@ pub mod DepthFunc {
   /// Load `DepthFunc` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9909,6 +9744,7 @@ pub mod DepthFunc {
   }
 }
 
+#[doc(hidden)]
 pub mod DepthMask {
   use super::*;
 
@@ -9920,9 +9756,7 @@ pub mod DepthMask {
   /// Load `DepthMask` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9933,6 +9767,7 @@ pub mod DepthMask {
   }
 }
 
+#[doc(hidden)]
 pub mod DepthRangef {
   use super::*;
 
@@ -9944,9 +9779,7 @@ pub mod DepthRangef {
   /// Load `DepthRangef` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9959,6 +9792,7 @@ pub mod DepthRangef {
   }
 }
 
+#[doc(hidden)]
 pub mod DetachShader {
   use super::*;
 
@@ -9970,9 +9804,7 @@ pub mod DetachShader {
   /// Load `DetachShader` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -9985,6 +9817,7 @@ pub mod DetachShader {
   }
 }
 
+#[doc(hidden)]
 pub mod Disable {
   use super::*;
 
@@ -9996,9 +9829,7 @@ pub mod Disable {
   /// Load `Disable` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10009,6 +9840,7 @@ pub mod Disable {
   }
 }
 
+#[doc(hidden)]
 pub mod DisableVertexAttribArray {
   use super::*;
 
@@ -10020,9 +9852,7 @@ pub mod DisableVertexAttribArray {
   /// Load `DisableVertexAttribArray` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10036,6 +9866,7 @@ pub mod DisableVertexAttribArray {
   }
 }
 
+#[doc(hidden)]
 pub mod DrawArrays {
   use super::*;
 
@@ -10047,9 +9878,7 @@ pub mod DrawArrays {
   /// Load `DrawArrays` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10062,6 +9891,7 @@ pub mod DrawArrays {
   }
 }
 
+#[doc(hidden)]
 pub mod DrawArraysInstanced {
   use super::*;
 
@@ -10073,9 +9903,7 @@ pub mod DrawArraysInstanced {
   /// Load `DrawArraysInstanced` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10095,6 +9923,7 @@ pub mod DrawArraysInstanced {
   }
 }
 
+#[doc(hidden)]
 pub mod DrawBuffers {
   use super::*;
 
@@ -10106,9 +9935,7 @@ pub mod DrawBuffers {
   /// Load `DrawBuffers` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10127,6 +9954,7 @@ pub mod DrawBuffers {
   }
 }
 
+#[doc(hidden)]
 pub mod DrawElements {
   use super::*;
 
@@ -10138,9 +9966,7 @@ pub mod DrawElements {
   /// Load `DrawElements` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10151,6 +9977,7 @@ pub mod DrawElements {
   }
 }
 
+#[doc(hidden)]
 pub mod DrawElementsInstanced {
   use super::*;
 
@@ -10162,9 +9989,7 @@ pub mod DrawElementsInstanced {
   /// Load `DrawElementsInstanced` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10184,6 +10009,7 @@ pub mod DrawElementsInstanced {
   }
 }
 
+#[doc(hidden)]
 pub mod DrawRangeElements {
   use super::*;
 
@@ -10195,9 +10021,7 @@ pub mod DrawRangeElements {
   /// Load `DrawRangeElements` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10211,6 +10035,7 @@ pub mod DrawRangeElements {
   }
 }
 
+#[doc(hidden)]
 pub mod Enable {
   use super::*;
 
@@ -10222,9 +10047,7 @@ pub mod Enable {
   /// Load `Enable` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10235,6 +10058,7 @@ pub mod Enable {
   }
 }
 
+#[doc(hidden)]
 pub mod EnableVertexAttribArray {
   use super::*;
 
@@ -10246,9 +10070,7 @@ pub mod EnableVertexAttribArray {
   /// Load `EnableVertexAttribArray` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10262,6 +10084,7 @@ pub mod EnableVertexAttribArray {
   }
 }
 
+#[doc(hidden)]
 pub mod EndQuery {
   use super::*;
 
@@ -10273,9 +10096,7 @@ pub mod EndQuery {
   /// Load `EndQuery` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10288,6 +10109,7 @@ pub mod EndQuery {
   }
 }
 
+#[doc(hidden)]
 pub mod EndTransformFeedback {
   use super::*;
 
@@ -10299,9 +10121,7 @@ pub mod EndTransformFeedback {
   /// Load `EndTransformFeedback` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10319,6 +10139,7 @@ pub mod EndTransformFeedback {
   }
 }
 
+#[doc(hidden)]
 pub mod FenceSync {
   use super::*;
 
@@ -10330,9 +10151,7 @@ pub mod FenceSync {
   /// Load `FenceSync` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10345,6 +10164,7 @@ pub mod FenceSync {
   }
 }
 
+#[doc(hidden)]
 pub mod Finish {
   use super::*;
 
@@ -10356,9 +10176,7 @@ pub mod Finish {
   /// Load `Finish` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10369,6 +10187,7 @@ pub mod Finish {
   }
 }
 
+#[doc(hidden)]
 pub mod Flush {
   use super::*;
 
@@ -10380,9 +10199,7 @@ pub mod Flush {
   /// Load `Flush` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10393,6 +10210,7 @@ pub mod Flush {
   }
 }
 
+#[doc(hidden)]
 pub mod FlushMappedBufferRange {
   use super::*;
 
@@ -10404,9 +10222,7 @@ pub mod FlushMappedBufferRange {
   /// Load `FlushMappedBufferRange` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10424,6 +10240,7 @@ pub mod FlushMappedBufferRange {
   }
 }
 
+#[doc(hidden)]
 pub mod FramebufferRenderbuffer {
   use super::*;
 
@@ -10435,9 +10252,7 @@ pub mod FramebufferRenderbuffer {
   /// Load `FramebufferRenderbuffer` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10451,6 +10266,7 @@ pub mod FramebufferRenderbuffer {
   }
 }
 
+#[doc(hidden)]
 pub mod FramebufferTexture2D {
   use super::*;
 
@@ -10462,9 +10278,7 @@ pub mod FramebufferTexture2D {
   /// Load `FramebufferTexture2D` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10478,6 +10292,7 @@ pub mod FramebufferTexture2D {
   }
 }
 
+#[doc(hidden)]
 pub mod FramebufferTextureLayer {
   use super::*;
 
@@ -10489,9 +10304,7 @@ pub mod FramebufferTextureLayer {
   /// Load `FramebufferTextureLayer` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10509,6 +10322,7 @@ pub mod FramebufferTextureLayer {
   }
 }
 
+#[doc(hidden)]
 pub mod FrontFace {
   use super::*;
 
@@ -10520,9 +10334,7 @@ pub mod FrontFace {
   /// Load `FrontFace` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10533,6 +10345,7 @@ pub mod FrontFace {
   }
 }
 
+#[doc(hidden)]
 pub mod GenBuffers {
   use super::*;
 
@@ -10544,9 +10357,7 @@ pub mod GenBuffers {
   /// Load `GenBuffers` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10559,6 +10370,7 @@ pub mod GenBuffers {
   }
 }
 
+#[doc(hidden)]
 pub mod GenFramebuffers {
   use super::*;
 
@@ -10570,9 +10382,7 @@ pub mod GenFramebuffers {
   /// Load `GenFramebuffers` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10586,6 +10396,7 @@ pub mod GenFramebuffers {
   }
 }
 
+#[doc(hidden)]
 pub mod GenQueries {
   use super::*;
 
@@ -10597,9 +10408,7 @@ pub mod GenQueries {
   /// Load `GenQueries` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10612,6 +10421,7 @@ pub mod GenQueries {
   }
 }
 
+#[doc(hidden)]
 pub mod GenRenderbuffers {
   use super::*;
 
@@ -10623,9 +10433,7 @@ pub mod GenRenderbuffers {
   /// Load `GenRenderbuffers` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10639,6 +10447,7 @@ pub mod GenRenderbuffers {
   }
 }
 
+#[doc(hidden)]
 pub mod GenSamplers {
   use super::*;
 
@@ -10650,9 +10459,7 @@ pub mod GenSamplers {
   /// Load `GenSamplers` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10663,6 +10470,7 @@ pub mod GenSamplers {
   }
 }
 
+#[doc(hidden)]
 pub mod GenTextures {
   use super::*;
 
@@ -10674,9 +10482,7 @@ pub mod GenTextures {
   /// Load `GenTextures` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10687,6 +10493,7 @@ pub mod GenTextures {
   }
 }
 
+#[doc(hidden)]
 pub mod GenTransformFeedbacks {
   use super::*;
 
@@ -10698,9 +10505,7 @@ pub mod GenTransformFeedbacks {
   /// Load `GenTransformFeedbacks` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10714,6 +10519,7 @@ pub mod GenTransformFeedbacks {
   }
 }
 
+#[doc(hidden)]
 pub mod GenVertexArrays {
   use super::*;
 
@@ -10725,9 +10531,7 @@ pub mod GenVertexArrays {
   /// Load `GenVertexArrays` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10745,6 +10549,7 @@ pub mod GenVertexArrays {
   }
 }
 
+#[doc(hidden)]
 pub mod GenerateMipmap {
   use super::*;
 
@@ -10756,9 +10561,7 @@ pub mod GenerateMipmap {
   /// Load `GenerateMipmap` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10772,6 +10575,7 @@ pub mod GenerateMipmap {
   }
 }
 
+#[doc(hidden)]
 pub mod GetActiveAttrib {
   use super::*;
 
@@ -10783,9 +10587,7 @@ pub mod GetActiveAttrib {
   /// Load `GetActiveAttrib` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10799,6 +10601,7 @@ pub mod GetActiveAttrib {
   }
 }
 
+#[doc(hidden)]
 pub mod GetActiveUniform {
   use super::*;
 
@@ -10810,9 +10613,7 @@ pub mod GetActiveUniform {
   /// Load `GetActiveUniform` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10826,6 +10627,7 @@ pub mod GetActiveUniform {
   }
 }
 
+#[doc(hidden)]
 pub mod GetActiveUniformBlockName {
   use super::*;
 
@@ -10837,9 +10639,7 @@ pub mod GetActiveUniformBlockName {
   /// Load `GetActiveUniformBlockName` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10852,6 +10652,7 @@ pub mod GetActiveUniformBlockName {
   }
 }
 
+#[doc(hidden)]
 pub mod GetActiveUniformBlockiv {
   use super::*;
 
@@ -10863,9 +10664,7 @@ pub mod GetActiveUniformBlockiv {
   /// Load `GetActiveUniformBlockiv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10878,6 +10677,7 @@ pub mod GetActiveUniformBlockiv {
   }
 }
 
+#[doc(hidden)]
 pub mod GetActiveUniformsiv {
   use super::*;
 
@@ -10889,9 +10689,7 @@ pub mod GetActiveUniformsiv {
   /// Load `GetActiveUniformsiv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10902,6 +10700,7 @@ pub mod GetActiveUniformsiv {
   }
 }
 
+#[doc(hidden)]
 pub mod GetAttachedShaders {
   use super::*;
 
@@ -10913,9 +10712,7 @@ pub mod GetAttachedShaders {
   /// Load `GetAttachedShaders` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10926,6 +10723,7 @@ pub mod GetAttachedShaders {
   }
 }
 
+#[doc(hidden)]
 pub mod GetAttribLocation {
   use super::*;
 
@@ -10937,9 +10735,7 @@ pub mod GetAttribLocation {
   /// Load `GetAttribLocation` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10953,6 +10749,7 @@ pub mod GetAttribLocation {
   }
 }
 
+#[doc(hidden)]
 pub mod GetBooleanv {
   use super::*;
 
@@ -10964,9 +10761,7 @@ pub mod GetBooleanv {
   /// Load `GetBooleanv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -10977,6 +10772,7 @@ pub mod GetBooleanv {
   }
 }
 
+#[doc(hidden)]
 pub mod GetBufferParameteri64v {
   use super::*;
 
@@ -10988,9 +10784,7 @@ pub mod GetBufferParameteri64v {
   /// Load `GetBufferParameteri64v` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11002,6 +10796,7 @@ pub mod GetBufferParameteri64v {
   }
 }
 
+#[doc(hidden)]
 pub mod GetBufferParameteriv {
   use super::*;
 
@@ -11013,9 +10808,7 @@ pub mod GetBufferParameteriv {
   /// Load `GetBufferParameteriv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11029,6 +10822,7 @@ pub mod GetBufferParameteriv {
   }
 }
 
+#[doc(hidden)]
 pub mod GetBufferPointerv {
   use super::*;
 
@@ -11040,9 +10834,7 @@ pub mod GetBufferPointerv {
   /// Load `GetBufferPointerv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11060,6 +10852,7 @@ pub mod GetBufferPointerv {
   }
 }
 
+#[doc(hidden)]
 pub mod GetError {
   use super::*;
 
@@ -11071,9 +10864,7 @@ pub mod GetError {
   /// Load `GetError` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11084,6 +10875,7 @@ pub mod GetError {
   }
 }
 
+#[doc(hidden)]
 pub mod GetFloatv {
   use super::*;
 
@@ -11095,9 +10887,7 @@ pub mod GetFloatv {
   /// Load `GetFloatv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11108,6 +10898,7 @@ pub mod GetFloatv {
   }
 }
 
+#[doc(hidden)]
 pub mod GetFragDataLocation {
   use super::*;
 
@@ -11119,9 +10910,7 @@ pub mod GetFragDataLocation {
   /// Load `GetFragDataLocation` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11135,6 +10924,7 @@ pub mod GetFragDataLocation {
   }
 }
 
+#[doc(hidden)]
 pub mod GetFramebufferAttachmentParameteriv {
   use super::*;
 
@@ -11148,9 +10938,7 @@ pub mod GetFramebufferAttachmentParameteriv {
   /// Load `GetFramebufferAttachmentParameteriv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11168,6 +10956,7 @@ pub mod GetFramebufferAttachmentParameteriv {
   }
 }
 
+#[doc(hidden)]
 pub mod GetInteger64i_v {
   use super::*;
 
@@ -11179,9 +10968,7 @@ pub mod GetInteger64i_v {
   /// Load `GetInteger64i_v` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11192,6 +10979,7 @@ pub mod GetInteger64i_v {
   }
 }
 
+#[doc(hidden)]
 pub mod GetInteger64v {
   use super::*;
 
@@ -11203,9 +10991,7 @@ pub mod GetInteger64v {
   /// Load `GetInteger64v` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11219,6 +11005,7 @@ pub mod GetInteger64v {
   }
 }
 
+#[doc(hidden)]
 pub mod GetIntegeri_v {
   use super::*;
 
@@ -11230,9 +11017,7 @@ pub mod GetIntegeri_v {
   /// Load `GetIntegeri_v` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11246,6 +11031,7 @@ pub mod GetIntegeri_v {
   }
 }
 
+#[doc(hidden)]
 pub mod GetIntegerv {
   use super::*;
 
@@ -11257,9 +11043,7 @@ pub mod GetIntegerv {
   /// Load `GetIntegerv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11270,6 +11054,7 @@ pub mod GetIntegerv {
   }
 }
 
+#[doc(hidden)]
 pub mod GetInternalformativ {
   use super::*;
 
@@ -11281,9 +11066,7 @@ pub mod GetInternalformativ {
   /// Load `GetInternalformativ` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11294,6 +11077,7 @@ pub mod GetInternalformativ {
   }
 }
 
+#[doc(hidden)]
 pub mod GetProgramBinary {
   use super::*;
 
@@ -11305,9 +11089,7 @@ pub mod GetProgramBinary {
   /// Load `GetProgramBinary` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11321,6 +11103,7 @@ pub mod GetProgramBinary {
   }
 }
 
+#[doc(hidden)]
 pub mod GetProgramInfoLog {
   use super::*;
 
@@ -11332,9 +11115,7 @@ pub mod GetProgramInfoLog {
   /// Load `GetProgramInfoLog` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11345,6 +11126,7 @@ pub mod GetProgramInfoLog {
   }
 }
 
+#[doc(hidden)]
 pub mod GetProgramiv {
   use super::*;
 
@@ -11356,9 +11138,7 @@ pub mod GetProgramiv {
   /// Load `GetProgramiv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11369,6 +11149,7 @@ pub mod GetProgramiv {
   }
 }
 
+#[doc(hidden)]
 pub mod GetQueryObjectuiv {
   use super::*;
 
@@ -11380,9 +11161,7 @@ pub mod GetQueryObjectuiv {
   /// Load `GetQueryObjectuiv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11396,6 +11175,7 @@ pub mod GetQueryObjectuiv {
   }
 }
 
+#[doc(hidden)]
 pub mod GetQueryiv {
   use super::*;
 
@@ -11407,9 +11187,7 @@ pub mod GetQueryiv {
   /// Load `GetQueryiv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11422,6 +11200,7 @@ pub mod GetQueryiv {
   }
 }
 
+#[doc(hidden)]
 pub mod GetRenderbufferParameteriv {
   use super::*;
 
@@ -11433,9 +11212,7 @@ pub mod GetRenderbufferParameteriv {
   /// Load `GetRenderbufferParameteriv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11452,6 +11229,7 @@ pub mod GetRenderbufferParameteriv {
   }
 }
 
+#[doc(hidden)]
 pub mod GetSamplerParameterfv {
   use super::*;
 
@@ -11463,9 +11241,7 @@ pub mod GetSamplerParameterfv {
   /// Load `GetSamplerParameterfv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11477,6 +11253,7 @@ pub mod GetSamplerParameterfv {
   }
 }
 
+#[doc(hidden)]
 pub mod GetSamplerParameteriv {
   use super::*;
 
@@ -11488,9 +11265,7 @@ pub mod GetSamplerParameteriv {
   /// Load `GetSamplerParameteriv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11502,6 +11277,7 @@ pub mod GetSamplerParameteriv {
   }
 }
 
+#[doc(hidden)]
 pub mod GetShaderInfoLog {
   use super::*;
 
@@ -11513,9 +11289,7 @@ pub mod GetShaderInfoLog {
   /// Load `GetShaderInfoLog` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11526,6 +11300,7 @@ pub mod GetShaderInfoLog {
   }
 }
 
+#[doc(hidden)]
 pub mod GetShaderPrecisionFormat {
   use super::*;
 
@@ -11537,9 +11312,7 @@ pub mod GetShaderPrecisionFormat {
   /// Load `GetShaderPrecisionFormat` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11552,6 +11325,7 @@ pub mod GetShaderPrecisionFormat {
   }
 }
 
+#[doc(hidden)]
 pub mod GetShaderSource {
   use super::*;
 
@@ -11563,9 +11337,7 @@ pub mod GetShaderSource {
   /// Load `GetShaderSource` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11579,6 +11351,7 @@ pub mod GetShaderSource {
   }
 }
 
+#[doc(hidden)]
 pub mod GetShaderiv {
   use super::*;
 
@@ -11590,9 +11363,7 @@ pub mod GetShaderiv {
   /// Load `GetShaderiv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11603,6 +11374,7 @@ pub mod GetShaderiv {
   }
 }
 
+#[doc(hidden)]
 pub mod GetString {
   use super::*;
 
@@ -11614,9 +11386,7 @@ pub mod GetString {
   /// Load `GetString` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11627,6 +11397,7 @@ pub mod GetString {
   }
 }
 
+#[doc(hidden)]
 pub mod GetStringi {
   use super::*;
 
@@ -11638,9 +11409,7 @@ pub mod GetStringi {
   /// Load `GetStringi` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11651,6 +11420,7 @@ pub mod GetStringi {
   }
 }
 
+#[doc(hidden)]
 pub mod GetSynciv {
   use super::*;
 
@@ -11662,9 +11432,7 @@ pub mod GetSynciv {
   /// Load `GetSynciv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11677,6 +11445,7 @@ pub mod GetSynciv {
   }
 }
 
+#[doc(hidden)]
 pub mod GetTexParameterfv {
   use super::*;
 
@@ -11688,9 +11457,7 @@ pub mod GetTexParameterfv {
   /// Load `GetTexParameterfv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11701,6 +11468,7 @@ pub mod GetTexParameterfv {
   }
 }
 
+#[doc(hidden)]
 pub mod GetTexParameteriv {
   use super::*;
 
@@ -11712,9 +11480,7 @@ pub mod GetTexParameteriv {
   /// Load `GetTexParameteriv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11725,6 +11491,7 @@ pub mod GetTexParameteriv {
   }
 }
 
+#[doc(hidden)]
 pub mod GetTransformFeedbackVarying {
   use super::*;
 
@@ -11736,9 +11503,7 @@ pub mod GetTransformFeedbackVarying {
   /// Load `GetTransformFeedbackVarying` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11755,6 +11520,7 @@ pub mod GetTransformFeedbackVarying {
   }
 }
 
+#[doc(hidden)]
 pub mod GetUniformBlockIndex {
   use super::*;
 
@@ -11766,9 +11532,7 @@ pub mod GetUniformBlockIndex {
   /// Load `GetUniformBlockIndex` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11779,6 +11543,7 @@ pub mod GetUniformBlockIndex {
   }
 }
 
+#[doc(hidden)]
 pub mod GetUniformIndices {
   use super::*;
 
@@ -11790,9 +11555,7 @@ pub mod GetUniformIndices {
   /// Load `GetUniformIndices` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11803,6 +11566,7 @@ pub mod GetUniformIndices {
   }
 }
 
+#[doc(hidden)]
 pub mod GetUniformLocation {
   use super::*;
 
@@ -11814,9 +11578,7 @@ pub mod GetUniformLocation {
   /// Load `GetUniformLocation` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11830,6 +11592,7 @@ pub mod GetUniformLocation {
   }
 }
 
+#[doc(hidden)]
 pub mod GetUniformfv {
   use super::*;
 
@@ -11841,9 +11604,7 @@ pub mod GetUniformfv {
   /// Load `GetUniformfv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11856,6 +11617,7 @@ pub mod GetUniformfv {
   }
 }
 
+#[doc(hidden)]
 pub mod GetUniformiv {
   use super::*;
 
@@ -11867,9 +11629,7 @@ pub mod GetUniformiv {
   /// Load `GetUniformiv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11882,6 +11642,7 @@ pub mod GetUniformiv {
   }
 }
 
+#[doc(hidden)]
 pub mod GetUniformuiv {
   use super::*;
 
@@ -11893,9 +11654,7 @@ pub mod GetUniformuiv {
   /// Load `GetUniformuiv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11909,6 +11668,7 @@ pub mod GetUniformuiv {
   }
 }
 
+#[doc(hidden)]
 pub mod GetVertexAttribIiv {
   use super::*;
 
@@ -11920,9 +11680,7 @@ pub mod GetVertexAttribIiv {
   /// Load `GetVertexAttribIiv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11936,6 +11694,7 @@ pub mod GetVertexAttribIiv {
   }
 }
 
+#[doc(hidden)]
 pub mod GetVertexAttribIuiv {
   use super::*;
 
@@ -11947,9 +11706,7 @@ pub mod GetVertexAttribIuiv {
   /// Load `GetVertexAttribIuiv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11963,6 +11720,7 @@ pub mod GetVertexAttribIuiv {
   }
 }
 
+#[doc(hidden)]
 pub mod GetVertexAttribPointerv {
   use super::*;
 
@@ -11974,9 +11732,7 @@ pub mod GetVertexAttribPointerv {
   /// Load `GetVertexAttribPointerv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -11994,6 +11750,7 @@ pub mod GetVertexAttribPointerv {
   }
 }
 
+#[doc(hidden)]
 pub mod GetVertexAttribfv {
   use super::*;
 
@@ -12005,9 +11762,7 @@ pub mod GetVertexAttribfv {
   /// Load `GetVertexAttribfv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12025,6 +11780,7 @@ pub mod GetVertexAttribfv {
   }
 }
 
+#[doc(hidden)]
 pub mod GetVertexAttribiv {
   use super::*;
 
@@ -12036,9 +11792,7 @@ pub mod GetVertexAttribiv {
   /// Load `GetVertexAttribiv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12056,6 +11810,7 @@ pub mod GetVertexAttribiv {
   }
 }
 
+#[doc(hidden)]
 pub mod Hint {
   use super::*;
 
@@ -12067,9 +11822,7 @@ pub mod Hint {
   /// Load `Hint` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12080,6 +11833,7 @@ pub mod Hint {
   }
 }
 
+#[doc(hidden)]
 pub mod InvalidateFramebuffer {
   use super::*;
 
@@ -12091,9 +11845,7 @@ pub mod InvalidateFramebuffer {
   /// Load `InvalidateFramebuffer` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12105,6 +11857,7 @@ pub mod InvalidateFramebuffer {
   }
 }
 
+#[doc(hidden)]
 pub mod InvalidateSubFramebuffer {
   use super::*;
 
@@ -12116,9 +11869,7 @@ pub mod InvalidateSubFramebuffer {
   /// Load `InvalidateSubFramebuffer` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12131,6 +11882,7 @@ pub mod InvalidateSubFramebuffer {
   }
 }
 
+#[doc(hidden)]
 pub mod IsBuffer {
   use super::*;
 
@@ -12142,9 +11894,7 @@ pub mod IsBuffer {
   /// Load `IsBuffer` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12157,6 +11907,7 @@ pub mod IsBuffer {
   }
 }
 
+#[doc(hidden)]
 pub mod IsEnabled {
   use super::*;
 
@@ -12168,9 +11919,7 @@ pub mod IsEnabled {
   /// Load `IsEnabled` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12181,6 +11930,7 @@ pub mod IsEnabled {
   }
 }
 
+#[doc(hidden)]
 pub mod IsFramebuffer {
   use super::*;
 
@@ -12192,9 +11942,7 @@ pub mod IsFramebuffer {
   /// Load `IsFramebuffer` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12208,6 +11956,7 @@ pub mod IsFramebuffer {
   }
 }
 
+#[doc(hidden)]
 pub mod IsProgram {
   use super::*;
 
@@ -12219,9 +11968,7 @@ pub mod IsProgram {
   /// Load `IsProgram` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12232,6 +11979,7 @@ pub mod IsProgram {
   }
 }
 
+#[doc(hidden)]
 pub mod IsQuery {
   use super::*;
 
@@ -12243,9 +11991,7 @@ pub mod IsQuery {
   /// Load `IsQuery` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12258,6 +12004,7 @@ pub mod IsQuery {
   }
 }
 
+#[doc(hidden)]
 pub mod IsRenderbuffer {
   use super::*;
 
@@ -12269,9 +12016,7 @@ pub mod IsRenderbuffer {
   /// Load `IsRenderbuffer` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12285,6 +12030,7 @@ pub mod IsRenderbuffer {
   }
 }
 
+#[doc(hidden)]
 pub mod IsSampler {
   use super::*;
 
@@ -12296,9 +12042,7 @@ pub mod IsSampler {
   /// Load `IsSampler` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12309,6 +12053,7 @@ pub mod IsSampler {
   }
 }
 
+#[doc(hidden)]
 pub mod IsShader {
   use super::*;
 
@@ -12320,9 +12065,7 @@ pub mod IsShader {
   /// Load `IsShader` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12333,6 +12076,7 @@ pub mod IsShader {
   }
 }
 
+#[doc(hidden)]
 pub mod IsSync {
   use super::*;
 
@@ -12344,9 +12088,7 @@ pub mod IsSync {
   /// Load `IsSync` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12359,6 +12101,7 @@ pub mod IsSync {
   }
 }
 
+#[doc(hidden)]
 pub mod IsTexture {
   use super::*;
 
@@ -12370,9 +12113,7 @@ pub mod IsTexture {
   /// Load `IsTexture` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12383,6 +12124,7 @@ pub mod IsTexture {
   }
 }
 
+#[doc(hidden)]
 pub mod IsTransformFeedback {
   use super::*;
 
@@ -12394,9 +12136,7 @@ pub mod IsTransformFeedback {
   /// Load `IsTransformFeedback` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12410,6 +12150,7 @@ pub mod IsTransformFeedback {
   }
 }
 
+#[doc(hidden)]
 pub mod IsVertexArray {
   use super::*;
 
@@ -12421,9 +12162,7 @@ pub mod IsVertexArray {
   /// Load `IsVertexArray` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12441,6 +12180,7 @@ pub mod IsVertexArray {
   }
 }
 
+#[doc(hidden)]
 pub mod LineWidth {
   use super::*;
 
@@ -12452,9 +12192,7 @@ pub mod LineWidth {
   /// Load `LineWidth` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12465,6 +12203,7 @@ pub mod LineWidth {
   }
 }
 
+#[doc(hidden)]
 pub mod LinkProgram {
   use super::*;
 
@@ -12476,9 +12215,7 @@ pub mod LinkProgram {
   /// Load `LinkProgram` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12491,6 +12228,7 @@ pub mod LinkProgram {
   }
 }
 
+#[doc(hidden)]
 pub mod MapBufferRange {
   use super::*;
 
@@ -12502,9 +12240,7 @@ pub mod MapBufferRange {
   /// Load `MapBufferRange` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12518,6 +12254,7 @@ pub mod MapBufferRange {
   }
 }
 
+#[doc(hidden)]
 pub mod PauseTransformFeedback {
   use super::*;
 
@@ -12529,9 +12266,7 @@ pub mod PauseTransformFeedback {
   /// Load `PauseTransformFeedback` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12545,6 +12280,7 @@ pub mod PauseTransformFeedback {
   }
 }
 
+#[doc(hidden)]
 pub mod PixelStorei {
   use super::*;
 
@@ -12556,9 +12292,7 @@ pub mod PixelStorei {
   /// Load `PixelStorei` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12569,6 +12303,7 @@ pub mod PixelStorei {
   }
 }
 
+#[doc(hidden)]
 pub mod PolygonOffset {
   use super::*;
 
@@ -12580,9 +12315,7 @@ pub mod PolygonOffset {
   /// Load `PolygonOffset` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12593,6 +12326,7 @@ pub mod PolygonOffset {
   }
 }
 
+#[doc(hidden)]
 pub mod ProgramBinary {
   use super::*;
 
@@ -12604,9 +12338,7 @@ pub mod ProgramBinary {
   /// Load `ProgramBinary` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12620,6 +12352,7 @@ pub mod ProgramBinary {
   }
 }
 
+#[doc(hidden)]
 pub mod ProgramParameteri {
   use super::*;
 
@@ -12631,9 +12364,7 @@ pub mod ProgramParameteri {
   /// Load `ProgramParameteri` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12651,6 +12382,7 @@ pub mod ProgramParameteri {
   }
 }
 
+#[doc(hidden)]
 pub mod ReadBuffer {
   use super::*;
 
@@ -12662,9 +12394,7 @@ pub mod ReadBuffer {
   /// Load `ReadBuffer` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12675,6 +12405,7 @@ pub mod ReadBuffer {
   }
 }
 
+#[doc(hidden)]
 pub mod ReadPixels {
   use super::*;
 
@@ -12686,9 +12417,7 @@ pub mod ReadPixels {
   /// Load `ReadPixels` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12699,6 +12428,7 @@ pub mod ReadPixels {
   }
 }
 
+#[doc(hidden)]
 pub mod ReleaseShaderCompiler {
   use super::*;
 
@@ -12710,9 +12440,7 @@ pub mod ReleaseShaderCompiler {
   /// Load `ReleaseShaderCompiler` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12724,6 +12452,7 @@ pub mod ReleaseShaderCompiler {
   }
 }
 
+#[doc(hidden)]
 pub mod RenderbufferStorage {
   use super::*;
 
@@ -12735,9 +12464,7 @@ pub mod RenderbufferStorage {
   /// Load `RenderbufferStorage` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12751,6 +12478,7 @@ pub mod RenderbufferStorage {
   }
 }
 
+#[doc(hidden)]
 pub mod RenderbufferStorageMultisample {
   use super::*;
 
@@ -12762,9 +12490,7 @@ pub mod RenderbufferStorageMultisample {
   /// Load `RenderbufferStorageMultisample` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12783,6 +12509,7 @@ pub mod RenderbufferStorageMultisample {
   }
 }
 
+#[doc(hidden)]
 pub mod ResumeTransformFeedback {
   use super::*;
 
@@ -12794,9 +12521,7 @@ pub mod ResumeTransformFeedback {
   /// Load `ResumeTransformFeedback` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12810,6 +12535,7 @@ pub mod ResumeTransformFeedback {
   }
 }
 
+#[doc(hidden)]
 pub mod SampleCoverage {
   use super::*;
 
@@ -12821,9 +12547,7 @@ pub mod SampleCoverage {
   /// Load `SampleCoverage` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12837,6 +12561,7 @@ pub mod SampleCoverage {
   }
 }
 
+#[doc(hidden)]
 pub mod SamplerParameterf {
   use super::*;
 
@@ -12848,9 +12573,7 @@ pub mod SamplerParameterf {
   /// Load `SamplerParameterf` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12861,6 +12584,7 @@ pub mod SamplerParameterf {
   }
 }
 
+#[doc(hidden)]
 pub mod SamplerParameterfv {
   use super::*;
 
@@ -12872,9 +12596,7 @@ pub mod SamplerParameterfv {
   /// Load `SamplerParameterfv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12885,6 +12607,7 @@ pub mod SamplerParameterfv {
   }
 }
 
+#[doc(hidden)]
 pub mod SamplerParameteri {
   use super::*;
 
@@ -12896,9 +12619,7 @@ pub mod SamplerParameteri {
   /// Load `SamplerParameteri` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12909,6 +12630,7 @@ pub mod SamplerParameteri {
   }
 }
 
+#[doc(hidden)]
 pub mod SamplerParameteriv {
   use super::*;
 
@@ -12920,9 +12642,7 @@ pub mod SamplerParameteriv {
   /// Load `SamplerParameteriv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12933,6 +12653,7 @@ pub mod SamplerParameteriv {
   }
 }
 
+#[doc(hidden)]
 pub mod Scissor {
   use super::*;
 
@@ -12944,9 +12665,7 @@ pub mod Scissor {
   /// Load `Scissor` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12957,6 +12676,7 @@ pub mod Scissor {
   }
 }
 
+#[doc(hidden)]
 pub mod ShaderBinary {
   use super::*;
 
@@ -12968,9 +12688,7 @@ pub mod ShaderBinary {
   /// Load `ShaderBinary` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -12981,6 +12699,7 @@ pub mod ShaderBinary {
   }
 }
 
+#[doc(hidden)]
 pub mod ShaderSource {
   use super::*;
 
@@ -12992,9 +12711,7 @@ pub mod ShaderSource {
   /// Load `ShaderSource` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13007,6 +12724,7 @@ pub mod ShaderSource {
   }
 }
 
+#[doc(hidden)]
 pub mod StencilFunc {
   use super::*;
 
@@ -13018,9 +12736,7 @@ pub mod StencilFunc {
   /// Load `StencilFunc` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13031,6 +12747,7 @@ pub mod StencilFunc {
   }
 }
 
+#[doc(hidden)]
 pub mod StencilFuncSeparate {
   use super::*;
 
@@ -13042,9 +12759,7 @@ pub mod StencilFuncSeparate {
   /// Load `StencilFuncSeparate` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13055,6 +12770,7 @@ pub mod StencilFuncSeparate {
   }
 }
 
+#[doc(hidden)]
 pub mod StencilMask {
   use super::*;
 
@@ -13066,9 +12782,7 @@ pub mod StencilMask {
   /// Load `StencilMask` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13079,6 +12793,7 @@ pub mod StencilMask {
   }
 }
 
+#[doc(hidden)]
 pub mod StencilMaskSeparate {
   use super::*;
 
@@ -13090,9 +12805,7 @@ pub mod StencilMaskSeparate {
   /// Load `StencilMaskSeparate` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13103,6 +12816,7 @@ pub mod StencilMaskSeparate {
   }
 }
 
+#[doc(hidden)]
 pub mod StencilOp {
   use super::*;
 
@@ -13114,9 +12828,7 @@ pub mod StencilOp {
   /// Load `StencilOp` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13127,6 +12839,7 @@ pub mod StencilOp {
   }
 }
 
+#[doc(hidden)]
 pub mod StencilOpSeparate {
   use super::*;
 
@@ -13138,9 +12851,7 @@ pub mod StencilOpSeparate {
   /// Load `StencilOpSeparate` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13154,6 +12865,7 @@ pub mod StencilOpSeparate {
   }
 }
 
+#[doc(hidden)]
 pub mod TexImage2D {
   use super::*;
 
@@ -13165,9 +12877,7 @@ pub mod TexImage2D {
   /// Load `TexImage2D` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13178,6 +12888,7 @@ pub mod TexImage2D {
   }
 }
 
+#[doc(hidden)]
 pub mod TexImage3D {
   use super::*;
 
@@ -13189,9 +12900,7 @@ pub mod TexImage3D {
   /// Load `TexImage3D` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13204,6 +12913,7 @@ pub mod TexImage3D {
   }
 }
 
+#[doc(hidden)]
 pub mod TexParameterf {
   use super::*;
 
@@ -13215,9 +12925,7 @@ pub mod TexParameterf {
   /// Load `TexParameterf` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13228,6 +12936,7 @@ pub mod TexParameterf {
   }
 }
 
+#[doc(hidden)]
 pub mod TexParameterfv {
   use super::*;
 
@@ -13239,9 +12948,7 @@ pub mod TexParameterfv {
   /// Load `TexParameterfv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13252,6 +12959,7 @@ pub mod TexParameterfv {
   }
 }
 
+#[doc(hidden)]
 pub mod TexParameteri {
   use super::*;
 
@@ -13263,9 +12971,7 @@ pub mod TexParameteri {
   /// Load `TexParameteri` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13276,6 +12982,7 @@ pub mod TexParameteri {
   }
 }
 
+#[doc(hidden)]
 pub mod TexParameteriv {
   use super::*;
 
@@ -13287,9 +12994,7 @@ pub mod TexParameteriv {
   /// Load `TexParameteriv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13300,6 +13005,7 @@ pub mod TexParameteriv {
   }
 }
 
+#[doc(hidden)]
 pub mod TexStorage2D {
   use super::*;
 
@@ -13311,9 +13017,7 @@ pub mod TexStorage2D {
   /// Load `TexStorage2D` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13326,6 +13030,7 @@ pub mod TexStorage2D {
   }
 }
 
+#[doc(hidden)]
 pub mod TexStorage3D {
   use super::*;
 
@@ -13337,9 +13042,7 @@ pub mod TexStorage3D {
   /// Load `TexStorage3D` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13352,6 +13055,7 @@ pub mod TexStorage3D {
   }
 }
 
+#[doc(hidden)]
 pub mod TexSubImage2D {
   use super::*;
 
@@ -13363,9 +13067,7 @@ pub mod TexSubImage2D {
   /// Load `TexSubImage2D` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13379,6 +13081,7 @@ pub mod TexSubImage2D {
   }
 }
 
+#[doc(hidden)]
 pub mod TexSubImage3D {
   use super::*;
 
@@ -13390,9 +13093,7 @@ pub mod TexSubImage3D {
   /// Load `TexSubImage3D` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13406,6 +13107,7 @@ pub mod TexSubImage3D {
   }
 }
 
+#[doc(hidden)]
 pub mod TransformFeedbackVaryings {
   use super::*;
 
@@ -13417,9 +13119,7 @@ pub mod TransformFeedbackVaryings {
   /// Load `TransformFeedbackVaryings` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13433,6 +13133,7 @@ pub mod TransformFeedbackVaryings {
   }
 }
 
+#[doc(hidden)]
 pub mod Uniform1f {
   use super::*;
 
@@ -13444,9 +13145,7 @@ pub mod Uniform1f {
   /// Load `Uniform1f` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13459,6 +13158,7 @@ pub mod Uniform1f {
   }
 }
 
+#[doc(hidden)]
 pub mod Uniform1fv {
   use super::*;
 
@@ -13470,9 +13170,7 @@ pub mod Uniform1fv {
   /// Load `Uniform1fv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13485,6 +13183,7 @@ pub mod Uniform1fv {
   }
 }
 
+#[doc(hidden)]
 pub mod Uniform1i {
   use super::*;
 
@@ -13496,9 +13195,7 @@ pub mod Uniform1i {
   /// Load `Uniform1i` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13511,6 +13208,7 @@ pub mod Uniform1i {
   }
 }
 
+#[doc(hidden)]
 pub mod Uniform1iv {
   use super::*;
 
@@ -13522,9 +13220,7 @@ pub mod Uniform1iv {
   /// Load `Uniform1iv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13537,6 +13233,7 @@ pub mod Uniform1iv {
   }
 }
 
+#[doc(hidden)]
 pub mod Uniform1ui {
   use super::*;
 
@@ -13548,9 +13245,7 @@ pub mod Uniform1ui {
   /// Load `Uniform1ui` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13563,6 +13258,7 @@ pub mod Uniform1ui {
   }
 }
 
+#[doc(hidden)]
 pub mod Uniform1uiv {
   use super::*;
 
@@ -13574,9 +13270,7 @@ pub mod Uniform1uiv {
   /// Load `Uniform1uiv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13589,6 +13283,7 @@ pub mod Uniform1uiv {
   }
 }
 
+#[doc(hidden)]
 pub mod Uniform2f {
   use super::*;
 
@@ -13600,9 +13295,7 @@ pub mod Uniform2f {
   /// Load `Uniform2f` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13615,6 +13308,7 @@ pub mod Uniform2f {
   }
 }
 
+#[doc(hidden)]
 pub mod Uniform2fv {
   use super::*;
 
@@ -13626,9 +13320,7 @@ pub mod Uniform2fv {
   /// Load `Uniform2fv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13641,6 +13333,7 @@ pub mod Uniform2fv {
   }
 }
 
+#[doc(hidden)]
 pub mod Uniform2i {
   use super::*;
 
@@ -13652,9 +13345,7 @@ pub mod Uniform2i {
   /// Load `Uniform2i` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13667,6 +13358,7 @@ pub mod Uniform2i {
   }
 }
 
+#[doc(hidden)]
 pub mod Uniform2iv {
   use super::*;
 
@@ -13678,9 +13370,7 @@ pub mod Uniform2iv {
   /// Load `Uniform2iv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13693,6 +13383,7 @@ pub mod Uniform2iv {
   }
 }
 
+#[doc(hidden)]
 pub mod Uniform2ui {
   use super::*;
 
@@ -13704,9 +13395,7 @@ pub mod Uniform2ui {
   /// Load `Uniform2ui` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13719,6 +13408,7 @@ pub mod Uniform2ui {
   }
 }
 
+#[doc(hidden)]
 pub mod Uniform2uiv {
   use super::*;
 
@@ -13730,9 +13420,7 @@ pub mod Uniform2uiv {
   /// Load `Uniform2uiv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13745,6 +13433,7 @@ pub mod Uniform2uiv {
   }
 }
 
+#[doc(hidden)]
 pub mod Uniform3f {
   use super::*;
 
@@ -13756,9 +13445,7 @@ pub mod Uniform3f {
   /// Load `Uniform3f` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13771,6 +13458,7 @@ pub mod Uniform3f {
   }
 }
 
+#[doc(hidden)]
 pub mod Uniform3fv {
   use super::*;
 
@@ -13782,9 +13470,7 @@ pub mod Uniform3fv {
   /// Load `Uniform3fv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13797,6 +13483,7 @@ pub mod Uniform3fv {
   }
 }
 
+#[doc(hidden)]
 pub mod Uniform3i {
   use super::*;
 
@@ -13808,9 +13495,7 @@ pub mod Uniform3i {
   /// Load `Uniform3i` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13823,6 +13508,7 @@ pub mod Uniform3i {
   }
 }
 
+#[doc(hidden)]
 pub mod Uniform3iv {
   use super::*;
 
@@ -13834,9 +13520,7 @@ pub mod Uniform3iv {
   /// Load `Uniform3iv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13849,6 +13533,7 @@ pub mod Uniform3iv {
   }
 }
 
+#[doc(hidden)]
 pub mod Uniform3ui {
   use super::*;
 
@@ -13860,9 +13545,7 @@ pub mod Uniform3ui {
   /// Load `Uniform3ui` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13875,6 +13558,7 @@ pub mod Uniform3ui {
   }
 }
 
+#[doc(hidden)]
 pub mod Uniform3uiv {
   use super::*;
 
@@ -13886,9 +13570,7 @@ pub mod Uniform3uiv {
   /// Load `Uniform3uiv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13901,6 +13583,7 @@ pub mod Uniform3uiv {
   }
 }
 
+#[doc(hidden)]
 pub mod Uniform4f {
   use super::*;
 
@@ -13912,9 +13595,7 @@ pub mod Uniform4f {
   /// Load `Uniform4f` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13927,6 +13608,7 @@ pub mod Uniform4f {
   }
 }
 
+#[doc(hidden)]
 pub mod Uniform4fv {
   use super::*;
 
@@ -13938,9 +13620,7 @@ pub mod Uniform4fv {
   /// Load `Uniform4fv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13953,6 +13633,7 @@ pub mod Uniform4fv {
   }
 }
 
+#[doc(hidden)]
 pub mod Uniform4i {
   use super::*;
 
@@ -13964,9 +13645,7 @@ pub mod Uniform4i {
   /// Load `Uniform4i` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -13979,6 +13658,7 @@ pub mod Uniform4i {
   }
 }
 
+#[doc(hidden)]
 pub mod Uniform4iv {
   use super::*;
 
@@ -13990,9 +13670,7 @@ pub mod Uniform4iv {
   /// Load `Uniform4iv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14005,6 +13683,7 @@ pub mod Uniform4iv {
   }
 }
 
+#[doc(hidden)]
 pub mod Uniform4ui {
   use super::*;
 
@@ -14016,9 +13695,7 @@ pub mod Uniform4ui {
   /// Load `Uniform4ui` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14031,6 +13708,7 @@ pub mod Uniform4ui {
   }
 }
 
+#[doc(hidden)]
 pub mod Uniform4uiv {
   use super::*;
 
@@ -14042,9 +13720,7 @@ pub mod Uniform4uiv {
   /// Load `Uniform4uiv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14057,6 +13733,7 @@ pub mod Uniform4uiv {
   }
 }
 
+#[doc(hidden)]
 pub mod UniformBlockBinding {
   use super::*;
 
@@ -14068,9 +13745,7 @@ pub mod UniformBlockBinding {
   /// Load `UniformBlockBinding` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14081,6 +13756,7 @@ pub mod UniformBlockBinding {
   }
 }
 
+#[doc(hidden)]
 pub mod UniformMatrix2fv {
   use super::*;
 
@@ -14092,9 +13768,7 @@ pub mod UniformMatrix2fv {
   /// Load `UniformMatrix2fv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14108,6 +13782,7 @@ pub mod UniformMatrix2fv {
   }
 }
 
+#[doc(hidden)]
 pub mod UniformMatrix2x3fv {
   use super::*;
 
@@ -14119,9 +13794,7 @@ pub mod UniformMatrix2x3fv {
   /// Load `UniformMatrix2x3fv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14135,6 +13808,7 @@ pub mod UniformMatrix2x3fv {
   }
 }
 
+#[doc(hidden)]
 pub mod UniformMatrix2x4fv {
   use super::*;
 
@@ -14146,9 +13820,7 @@ pub mod UniformMatrix2x4fv {
   /// Load `UniformMatrix2x4fv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14162,6 +13834,7 @@ pub mod UniformMatrix2x4fv {
   }
 }
 
+#[doc(hidden)]
 pub mod UniformMatrix3fv {
   use super::*;
 
@@ -14173,9 +13846,7 @@ pub mod UniformMatrix3fv {
   /// Load `UniformMatrix3fv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14189,6 +13860,7 @@ pub mod UniformMatrix3fv {
   }
 }
 
+#[doc(hidden)]
 pub mod UniformMatrix3x2fv {
   use super::*;
 
@@ -14200,9 +13872,7 @@ pub mod UniformMatrix3x2fv {
   /// Load `UniformMatrix3x2fv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14216,6 +13886,7 @@ pub mod UniformMatrix3x2fv {
   }
 }
 
+#[doc(hidden)]
 pub mod UniformMatrix3x4fv {
   use super::*;
 
@@ -14227,9 +13898,7 @@ pub mod UniformMatrix3x4fv {
   /// Load `UniformMatrix3x4fv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14243,6 +13912,7 @@ pub mod UniformMatrix3x4fv {
   }
 }
 
+#[doc(hidden)]
 pub mod UniformMatrix4fv {
   use super::*;
 
@@ -14254,9 +13924,7 @@ pub mod UniformMatrix4fv {
   /// Load `UniformMatrix4fv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14270,6 +13938,7 @@ pub mod UniformMatrix4fv {
   }
 }
 
+#[doc(hidden)]
 pub mod UniformMatrix4x2fv {
   use super::*;
 
@@ -14281,9 +13950,7 @@ pub mod UniformMatrix4x2fv {
   /// Load `UniformMatrix4x2fv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14297,6 +13964,7 @@ pub mod UniformMatrix4x2fv {
   }
 }
 
+#[doc(hidden)]
 pub mod UniformMatrix4x3fv {
   use super::*;
 
@@ -14308,9 +13976,7 @@ pub mod UniformMatrix4x3fv {
   /// Load `UniformMatrix4x3fv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14324,6 +13990,7 @@ pub mod UniformMatrix4x3fv {
   }
 }
 
+#[doc(hidden)]
 pub mod UnmapBuffer {
   use super::*;
 
@@ -14335,9 +14002,7 @@ pub mod UnmapBuffer {
   /// Load `UnmapBuffer` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14351,6 +14016,7 @@ pub mod UnmapBuffer {
   }
 }
 
+#[doc(hidden)]
 pub mod UseProgram {
   use super::*;
 
@@ -14362,9 +14028,7 @@ pub mod UseProgram {
   /// Load `UseProgram` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14378,6 +14042,7 @@ pub mod UseProgram {
   }
 }
 
+#[doc(hidden)]
 pub mod ValidateProgram {
   use super::*;
 
@@ -14389,9 +14054,7 @@ pub mod ValidateProgram {
   /// Load `ValidateProgram` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14405,6 +14068,7 @@ pub mod ValidateProgram {
   }
 }
 
+#[doc(hidden)]
 pub mod VertexAttrib1f {
   use super::*;
 
@@ -14416,9 +14080,7 @@ pub mod VertexAttrib1f {
   /// Load `VertexAttrib1f` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14436,6 +14098,7 @@ pub mod VertexAttrib1f {
   }
 }
 
+#[doc(hidden)]
 pub mod VertexAttrib1fv {
   use super::*;
 
@@ -14447,9 +14110,7 @@ pub mod VertexAttrib1fv {
   /// Load `VertexAttrib1fv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14467,6 +14128,7 @@ pub mod VertexAttrib1fv {
   }
 }
 
+#[doc(hidden)]
 pub mod VertexAttrib2f {
   use super::*;
 
@@ -14478,9 +14140,7 @@ pub mod VertexAttrib2f {
   /// Load `VertexAttrib2f` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14498,6 +14158,7 @@ pub mod VertexAttrib2f {
   }
 }
 
+#[doc(hidden)]
 pub mod VertexAttrib2fv {
   use super::*;
 
@@ -14509,9 +14170,7 @@ pub mod VertexAttrib2fv {
   /// Load `VertexAttrib2fv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14529,6 +14188,7 @@ pub mod VertexAttrib2fv {
   }
 }
 
+#[doc(hidden)]
 pub mod VertexAttrib3f {
   use super::*;
 
@@ -14540,9 +14200,7 @@ pub mod VertexAttrib3f {
   /// Load `VertexAttrib3f` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14560,6 +14218,7 @@ pub mod VertexAttrib3f {
   }
 }
 
+#[doc(hidden)]
 pub mod VertexAttrib3fv {
   use super::*;
 
@@ -14571,9 +14230,7 @@ pub mod VertexAttrib3fv {
   /// Load `VertexAttrib3fv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14591,6 +14248,7 @@ pub mod VertexAttrib3fv {
   }
 }
 
+#[doc(hidden)]
 pub mod VertexAttrib4f {
   use super::*;
 
@@ -14602,9 +14260,7 @@ pub mod VertexAttrib4f {
   /// Load `VertexAttrib4f` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14622,6 +14278,7 @@ pub mod VertexAttrib4f {
   }
 }
 
+#[doc(hidden)]
 pub mod VertexAttrib4fv {
   use super::*;
 
@@ -14633,9 +14290,7 @@ pub mod VertexAttrib4fv {
   /// Load `VertexAttrib4fv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14653,6 +14308,7 @@ pub mod VertexAttrib4fv {
   }
 }
 
+#[doc(hidden)]
 pub mod VertexAttribDivisor {
   use super::*;
 
@@ -14664,9 +14320,7 @@ pub mod VertexAttribDivisor {
   /// Load `VertexAttribDivisor` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14686,6 +14340,7 @@ pub mod VertexAttribDivisor {
   }
 }
 
+#[doc(hidden)]
 pub mod VertexAttribI4i {
   use super::*;
 
@@ -14697,9 +14352,7 @@ pub mod VertexAttribI4i {
   /// Load `VertexAttribI4i` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14713,6 +14366,7 @@ pub mod VertexAttribI4i {
   }
 }
 
+#[doc(hidden)]
 pub mod VertexAttribI4iv {
   use super::*;
 
@@ -14724,9 +14378,7 @@ pub mod VertexAttribI4iv {
   /// Load `VertexAttribI4iv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14740,6 +14392,7 @@ pub mod VertexAttribI4iv {
   }
 }
 
+#[doc(hidden)]
 pub mod VertexAttribI4ui {
   use super::*;
 
@@ -14751,9 +14404,7 @@ pub mod VertexAttribI4ui {
   /// Load `VertexAttribI4ui` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14767,6 +14418,7 @@ pub mod VertexAttribI4ui {
   }
 }
 
+#[doc(hidden)]
 pub mod VertexAttribI4uiv {
   use super::*;
 
@@ -14778,9 +14430,7 @@ pub mod VertexAttribI4uiv {
   /// Load `VertexAttribI4uiv` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14794,6 +14444,7 @@ pub mod VertexAttribI4uiv {
   }
 }
 
+#[doc(hidden)]
 pub mod VertexAttribIPointer {
   use super::*;
 
@@ -14805,9 +14456,7 @@ pub mod VertexAttribIPointer {
   /// Load `VertexAttribIPointer` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14821,6 +14470,7 @@ pub mod VertexAttribIPointer {
   }
 }
 
+#[doc(hidden)]
 pub mod VertexAttribPointer {
   use super::*;
 
@@ -14832,9 +14482,7 @@ pub mod VertexAttribPointer {
   /// Load `VertexAttribPointer` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14848,6 +14496,7 @@ pub mod VertexAttribPointer {
   }
 }
 
+#[doc(hidden)]
 pub mod Viewport {
   use super::*;
 
@@ -14859,9 +14508,7 @@ pub mod Viewport {
   /// Load `Viewport` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gles_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
@@ -14872,6 +14519,7 @@ pub mod Viewport {
   }
 }
 
+#[doc(hidden)]
 pub mod WaitSync {
   use super::*;
 
@@ -14883,9 +14531,7 @@ pub mod WaitSync {
   /// Load `WaitSync` using the provided loader.
   ///
   /// ## Safety
-  ///
-  /// * This mostly trusts whatever the loader function says, so the loader must
-  ///   provide the correct pointer or a null pointer.
+  /// As per [`load_gl_with`](crate::load_gles_with)
   pub unsafe fn load_with<F>(mut load_fn: F)
   where
     F: FnMut(*const c_char) -> *const c_void,
