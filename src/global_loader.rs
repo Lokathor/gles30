@@ -275,17 +275,24 @@ unsafe fn load_all_functions(
   WaitSync::load_with(&mut *load_fn);
 }
 
+/// Function pointer sanity check.
+///
+/// * Null pointers (0) are bad.
+/// * Sometimes windows will return non-null error values.
+///   * Known non-null error values include 1, 2, 3, and -1.
+fn fn_ptr_ok(p: *const c_void) -> bool {
+  let p_u = p as usize;
+  (p_u >= 8) && (p_u != (-1_isize) as usize)
+}
+
 unsafe fn meta_loader(
   loader: &mut dyn FnMut(*const c_char) -> *const c_void,
   names: &[&[u8]],
 ) -> OptVoidPtr {
-  fn ptr_ok(p: *const c_void) -> bool {
-    !(p.is_null() || p as usize % core::mem::align_of::<usize>() == 0)
-  }
   for name in names.iter() {
     debug_assert!(*name.iter().last().unwrap() == 0_u8);
     let p = loader(name.as_ptr() as *const c_char);
-    if ptr_ok(p) {
+    if fn_ptr_ok(p) {
       return NonNull::new(p as *mut c_void);
     }
   }
