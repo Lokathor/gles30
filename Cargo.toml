@@ -2,17 +2,44 @@
 name = "gles30"
 description = "GLES 3.0 loader/bindings"
 repository = "https://github.com/Lokathor/gles30"
-version = "0.2.1-alpha.0"
+version = "0.3.0"
 authors = ["Lokathor <zefria@gmail.com>"]
 edition = "2018"
 license = "Zlib"
 
-[target."cfg(not(windows))".dependencies]
-libc = "0.2"
+[dependencies]
+# Enables `bytemuck::Zeroable` on the `GlFns` struct.
+bytemuck = { version = "1.2", optional = true }
+
+# Logging features below use this crate (otherwise println / eprintln)
+log = { version = "0.4", optional = true }
+
+# Uses this for C types (otherwise std::os::raw)
+chlorine = { version = "1", optional = true }
 
 [features]
-debug_error_checks = []
-debug_trace_messages = []
+default = []
+
+# Load and call GL globally
+global_loader = []
+
+# Load and call GL as a struct
+struct_loader = []
+
+# w/debug_assertions: `trace!` each call to GL before making the GL call.
+debug_trace_calls = []
+
+# w/debug_assertions: Call glGetError after every GL call and `error!` if necessary.
+debug_automatic_glGetError = []
+
+# Tag all GL funcitons as `#[inline]`
+inline = []
+
+# Tag all GL funcitons as `#[inline(always)]`
+inline_always = []
 
 [dev-dependencies]
-beryllium = "0.2.0-alpha.2"
+fermium = { version = "200.12", default-features = false, features = ["static_link"] }
+
+[package.metadata.docs.rs]
+features = ["global_loader", "struct_loader"]
