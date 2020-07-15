@@ -2,7 +2,7 @@
 name = "gles30"
 description = "GLES 3.0 loader/bindings"
 repository = "https://github.com/Lokathor/gles30"
-version = "0.3.1"
+version = "0.3.2-alpha.0"
 authors = ["Lokathor <zefria@gmail.com>"]
 edition = "2018"
 license = "Zlib OR Apache-2.0 OR MIT"
