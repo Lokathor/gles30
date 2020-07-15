@@ -5,7 +5,7 @@ repository = "https://github.com/Lokathor/gles30"
 version = "0.3.0"
 authors = ["Lokathor <zefria@gmail.com>"]
 edition = "2018"
-license = "Zlib"
+license = "Zlib OR Apache-2.0 OR MIT"
 
 [dependencies]
 # Enables `bytemuck::Zeroable` on the `GlFns` struct.
