@@ -1,4 +1,4 @@
 cargo install phosphorus
 mkdir target
-phosphorus ../gl.xml gles2 3 0 core >target/lib.rs
-rustfmt target/lib.rs
+phosphorus ../gl.xml gles2 4 6 core GL_KHR_debug >src/lib.rs
+cargo fmt
